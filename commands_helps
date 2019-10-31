@@ -11,3 +11,7 @@ translation:
         python manage.py compilemessages --locale=fr --locale=en
         or
         python manage.py compilemessages
+
+after modificating code:
+    sudo supervisorctl reload
+    sudo systemctl reload nginx

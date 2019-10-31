@@ -12,8 +12,20 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-import sys
+import json
 from django.utils.translation import ugettext_lazy as _
+
+try:
+    with open("server_settings.json") as server_conf_file:
+        SERVER_SETTINGS = json.load(server_conf_file)
+        # GLOBAL_CFG_TOKENS = json.load(server_conf_file)
+        # ENV_TOKENS_str = json.dumps(GLOBAL_CFG_TOKENS)
+        # while re.search("%(.+?)%", ENV_TOKENS_str):
+        #     ENV_TOKENS_str = re.sub("%(.+?)%", replace_env_dict, ENV_TOKENS_str)
+        #
+        # GLOBAL_CFG_TOKENS = json.loads(ENV_TOKENS_str)
+except:
+    SERVER_SETTINGS = {}
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +38,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1g*5+je)eg@((r8)4wk2g1aj)6f_n$1m!nqryq8p=*d@i@4xc4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = SERVER_SETTINGS.get("DEBUG", True)
 
-ALLOWED_HOSTS = ['99.79.161.51', 'ec2-99-79-161-51.ca-central-1.compute.amazonaws.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -94,12 +106,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
+DATABASES = SERVER_SETTINGS.get("DATABASES", {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+})
 
 
 # Password validation

@@ -114,4 +114,6 @@ venv3.bak/
 # migrations
 **/**/migrations/*
 
+server_settings.json
+
 
