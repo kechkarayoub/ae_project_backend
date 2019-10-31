@@ -1,0 +1,10 @@
+.model-testimonial .changelink,
+.model-contactbuy .changelink,
+.model-contact .changelink{
+    display: none !important;
+}
+.model-testimonial .messagelist,
+.model-contactbuy .messagelist,
+.model-contact .messagelist{
+    display: none;
+}

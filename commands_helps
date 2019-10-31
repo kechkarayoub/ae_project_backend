@@ -1,0 +1,13 @@
+test:
+    coverage run manage.py test
+    coverage html OR coverage report
+
+translation:
+    mekemessages:
+        python manage.py makemessages --locale=fr --locale=en
+        or
+        python manage.py makemessages --all
+    compilemessages:
+        python manage.py compilemessages --locale=fr --locale=en
+        or
+        python manage.py compilemessages

@@ -1,0 +1,13 @@
+SyntaxError: Generator expression must be parenthesized:
+    in [virtual env directory]/lib/site-packages/django/contrib/admin/widgets.py; replace:
+    related_url += '?' + '&amp;'.join(
+        '%s=%s' % (k, v) for k, v in params.items(),
+    )
+    by:
+    related_url += '?' + '&amp;'.join('%s=%s' % (k, v) for k, v in params.items())
+
+
+
+React test memory:
+run:
+    export NODE_OPTIONS=--max_old_space_size=4096
