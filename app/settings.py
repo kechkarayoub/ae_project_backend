@@ -16,7 +16,7 @@ import json
 from django.utils.translation import ugettext_lazy as _
 
 try:
-    with open("server_settings.json") as server_conf_file:
+    with open("app/server_settings.json") as server_conf_file:
         SERVER_SETTINGS = json.load(server_conf_file)
         # GLOBAL_CFG_TOKENS = json.load(server_conf_file)
         # ENV_TOKENS_str = json.dumps(GLOBAL_CFG_TOKENS)
