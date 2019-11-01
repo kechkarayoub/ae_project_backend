@@ -18,12 +18,6 @@ from django.utils.translation import ugettext_lazy as _
 try:
     with open("app/server_settings.json") as server_conf_file:
         SERVER_SETTINGS = json.load(server_conf_file)
-        # GLOBAL_CFG_TOKENS = json.load(server_conf_file)
-        # ENV_TOKENS_str = json.dumps(GLOBAL_CFG_TOKENS)
-        # while re.search("%(.+?)%", ENV_TOKENS_str):
-        #     ENV_TOKENS_str = re.sub("%(.+?)%", replace_env_dict, ENV_TOKENS_str)
-        #
-        # GLOBAL_CFG_TOKENS = json.loads(ENV_TOKENS_str)
 except:
     SERVER_SETTINGS = {}
 
