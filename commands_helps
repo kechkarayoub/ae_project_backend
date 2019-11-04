@@ -18,3 +18,11 @@ after modificating code:
 
 change server name:
     sudo nano /etc/nginx/sites-enabled/django.conf
+
+
+
+after restart aws instance:
+    change server_name in /etc/nginx/sites-available/ae_project:
+        sudo nano /etc/nginx/sites-available/my_project
+    add server front name to ae_project_backend/app/production.py
+        change CORS_ORIGIN_WHITELIST variable

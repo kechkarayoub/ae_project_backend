@@ -12,3 +12,8 @@ DATABASES = {
         "PORT": "3306"
     }
 }
+
+
+CORS_ORIGIN_WHITELIST = (
+       'ec2-35-183-37-3.ca-central-1.compute.amazonaws.com',
+)
