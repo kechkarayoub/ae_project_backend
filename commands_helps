@@ -15,3 +15,6 @@ translation:
 after modificating code:
     sudo supervisorctl reload
     sudo systemctl reload nginx
+
+change server name:
+    sudo nano /etc/nginx/sites-enabled/django.conf
