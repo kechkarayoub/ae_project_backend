@@ -6,11 +6,11 @@ from .utils import send_email, generate_random_color, get_complementary_color, c
     get_list_social_links_images
 from django.core import mail
 from colour import Color
-from app.added_settings import BACKEND_URL_ROOT
+from backend.added_settings import BACKEND_URL_ROOT
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.test import Client
 from django.urls import reverse
-from app import added_settings
+from backend import added_settings
 import json
 
 

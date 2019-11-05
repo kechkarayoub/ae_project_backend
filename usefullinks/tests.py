@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .apps import UsefullinksConfig
 from .models import LinkCategory, UsefulLink
-from app.added_settings import BACKEND_URL_ROOT
+from backend.added_settings import BACKEND_URL_ROOT
 from django.apps import apps
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.test import Client, TestCase

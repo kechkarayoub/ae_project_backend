@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from .models import Testimonial
 from .serializers import TestimonialSerializer
-from app.project_conf import NBR_TESTIMONIALS_PER_PAGE
-from app.utils import generate_random_color
+from backend.project_conf import NBR_TESTIMONIALS_PER_PAGE
+from backend.utils import generate_random_color
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from rest_framework import status
 from rest_framework.decorators import api_view

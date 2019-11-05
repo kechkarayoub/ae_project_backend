@@ -9,7 +9,7 @@ from .models import Contact, ContactBuy
 from django.contrib.admin.sites import AdminSite
 from django.test import Client
 from django.urls import reverse
-from app import added_settings
+from backend import added_settings
 import json
 
 

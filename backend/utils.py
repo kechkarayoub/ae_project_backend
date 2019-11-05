@@ -1,4 +1,4 @@
-from app.added_settings import BACKEND_URL_ROOT
+from backend.added_settings import BACKEND_URL_ROOT
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.mail import EmailMultiAlternatives
 from django.utils.translation import ugettext as _

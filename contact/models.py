@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from app import static_variables
-from app.utils import choices_format_to_tuple
+from backend import static_variables
+from backend.utils import choices_format_to_tuple
 from django.db import models
 from django.utils.translation import ugettext as _
 
