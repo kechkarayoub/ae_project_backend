@@ -5,10 +5,10 @@ DEBUG = False
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "ae_django_db",
-        "USER": "ae_django_db",
-        "PASSWORD": "ae_django_db",
-        "HOST": "ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com",
+        "NAME": "full_app_db",
+        "USER": "root",
+        "PASSWORD": "full_app_pws",
+        "HOST": "127.0.0.0",
         "PORT": "3306"
     }
 }
