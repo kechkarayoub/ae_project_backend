@@ -102,8 +102,8 @@ DATABASES = {
         'NAME': 'full_app_db',
         'USER': 'root',
         'PASSWORD': 'full_app_pwd',
-        'HOST': '',
-        'PORT': ''
+        'HOST': '127.0.0.0',
+        'PORT': '3306'
     }
 }
 
