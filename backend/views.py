@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # from __future__ import unicode_literals
-from app import added_settings, static_variables
-from app.utils import choices_format_to_dict
+from backend import added_settings, static_variables
+from backend.utils import choices_format_to_dict
 from django.http import JsonResponse
 from django.utils.translation import ugettext as _
 from sociallink.views import get_list_social_links

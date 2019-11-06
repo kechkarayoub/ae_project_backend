@@ -3,8 +3,8 @@
 
 from .models import Newsletter
 from .serializers import NewsletterSerializer
-from app.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
-from app.utils import send_email, get_list_social_links_images
+from backend.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
+from backend.utils import send_email, get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import get_template

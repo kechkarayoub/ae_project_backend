@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .models import ItemImage, Item
-from app.utils import generate_id
+from backend.utils import generate_id
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe

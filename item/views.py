@@ -3,8 +3,8 @@
 
 from .models import Item
 from .serializers import ItemSerializer
-from app.project_conf import NBR_ITEMS_PER_PAGE
-from app.static_variables import PRICES_RANGES_VALUES
+from backend.project_conf import NBR_ITEMS_PER_PAGE
+from backend.static_variables import PRICES_RANGES_VALUES
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.utils.translation import ugettext as _
@@ -105,8 +105,8 @@ def item_details(request, pk):
     serializer = ItemSerializer(item, context={'request': request})
     return Response(serializer.data)
 
-from app.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
-from app.utils import get_list_social_links_images
+from backend.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
+from backend.utils import get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.db import transaction

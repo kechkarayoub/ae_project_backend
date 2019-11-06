@@ -2,8 +2,8 @@
 
 
 from django.db import models
-from app import static_variables
-from app.utils import choices_format_to_tuple
+from backend import static_variables
+from backend.utils import choices_format_to_tuple
 import os
 import datetime
 from django.utils.translation import ugettext as _

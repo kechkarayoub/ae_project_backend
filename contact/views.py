@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .serializers import ContactBuySerializer, ContactSellSerializer
-from app.added_settings import ADMIN_EMAIL, BACKEND_URL_ROOT, SITE_NAME, SITE_URL_ROOT
-from app.utils import get_list_social_links_images, send_email
+from backend.added_settings import ADMIN_EMAIL, BACKEND_URL_ROOT, SITE_NAME, SITE_URL_ROOT
+from backend.utils import get_list_social_links_images, send_email
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _

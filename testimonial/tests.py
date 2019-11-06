@@ -12,7 +12,7 @@ import datetime
 from django.test import Client
 from django.urls import reverse
 import json
-from app.utils import get_complementary_color
+from backend.utils import get_complementary_color
 
 
 class ContactConfigTest(TestCase):

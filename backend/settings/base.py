@@ -15,11 +15,6 @@ import os
 import json
 from django.utils.translation import ugettext_lazy as _
 
-try:
-    with open("app/server_settings.json") as server_conf_file:
-        SERVER_SETTINGS = json.load(server_conf_file)
-except:
-    SERVER_SETTINGS = {}
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1g*5+je)eg@((r8)4wk2g1aj)6f_n$1m!nqryq8p=*d@i@4xc4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = SERVER_SETTINGS.get("DEBUG", True)
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -72,7 +67,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -94,18 +89,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = SERVER_SETTINGS.get("DATABASES", {
+
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'full_app_db',
+        'USER': 'full_app_user',
+        'PASSWORD': 'full_app_pwd',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
-})
+}
 
 
 # Password validation
