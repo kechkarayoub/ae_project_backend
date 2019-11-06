@@ -15,5 +15,5 @@ DATABASES = {
 
 
 CORS_ORIGIN_WHITELIST = (
-       'http://ec2-35-183-204-35.ca-central-1.compute.amazonaws.com',
+       'http://ec2-35-182-197-31.ca-central-1.compute.amazonaws.com',
 )
