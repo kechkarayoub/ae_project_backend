@@ -98,12 +98,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'full_app_db',
-        'USER': 'full_app_user',
-        'PASSWORD': 'full_app_pwd',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "ae_django_db",
+        "USER": "ae_django_db",
+        "PASSWORD": "ae_django_db",
+        "HOST": "ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com",
+        "PORT": "3306"
     }
 }
 
