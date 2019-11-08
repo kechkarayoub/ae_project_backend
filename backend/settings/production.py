@@ -5,15 +5,19 @@ DEBUG = False
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "full_app_db",
-        "USER": "root",
-        "PASSWORD": "full_app_pwd",
-        "HOST": "",
-        "PORT": ""
+        "NAME": "ae_django_db",
+        "USER": "ae_django_db",
+        "PASSWORD": "ae_django_db",
+        "HOST": "ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com",
+        "PORT": "3306"
     }
 }
 
+CORS_ORIGIN_WHITELIST = (
+       'http://35.183.147.63',
+)
+
 
 CORS_ORIGIN_WHITELIST = (
-       'http://ec2-35-182-197-31.ca-central-1.compute.amazonaws.com',
+       'http://35.183.147.63',
 )
