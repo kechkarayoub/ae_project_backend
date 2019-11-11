@@ -3,6 +3,7 @@ test:
     coverage html OR coverage report
 
 translation:
+    sudo apt-get install gettext
     mekemessages:
         python manage.py makemessages --locale=fr --locale=en
         or
@@ -13,16 +14,4 @@ translation:
         python manage.py compilemessages
 
 after modificating code:
-    sudo supervisorctl reload
-    sudo systemctl reload nginx
-
-change server name:
-    sudo nano /etc/nginx/sites-enabled/django.conf
-
-
-
-after restart aws instance:
-    change server_name in /etc/nginx/sites-available/ae_project:
-        sudo nano /etc/nginx/sites-available/my_project
-    add server front name to ae_project_backend/backend/production.py
-        change CORS_ORIGIN_WHITELIST variable
+    sudo service apache2 restart
