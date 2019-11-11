@@ -560,11 +560,11 @@ msgstr "Administrateur du site Django"
 msgid "Django administration"
 msgstr "Administration Django"
 
-#: .\templates\email_template.html:46 .\templates\email_template.html:48
+#: .\templates\item\email_template.html:46 .\templates\item\email_template.html:48
 msgid "Not interested to our messages?"
 msgstr "Pas intéressé par nos messages?"
 
-#: .\templates\email_template.html:46 .\templates\email_template.html:48
+#: .\templates\item\email_template.html:46 .\templates\item\email_template.html:48
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 

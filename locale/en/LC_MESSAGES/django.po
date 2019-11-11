@@ -553,11 +553,11 @@ msgstr ""
 msgid "Django administration"
 msgstr ""
 
-#: .\templates\email_template.html:46 .\templates\email_template.html:48
+#: .\templates\item\email_template.html:46 .\templates\item\email_template.html:48
 msgid "Not interested to our messages?"
 msgstr ""
 
-#: .\templates\email_template.html:46 .\templates\email_template.html:48
+#: .\templates\item\email_template.html:46 .\templates\item\email_template.html:48
 msgid "Unsubscribe"
 msgstr ""
 
