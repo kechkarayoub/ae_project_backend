@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .models import LinkCategory
 from .serializers import LinkSerializer
-from backend.added_settings import BACKEND_URL_ROOT
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.translation import ugettext as _
 from rest_framework.decorators import api_view
@@ -22,11 +22,11 @@ def links_list(request):
     guides = [
         {
             "label": _("The Buyer's Guide (PDF)"),
-            "url": BACKEND_URL_ROOT + static("usefullinks/docs/en/buyers-guide.pdf" if True else "usefullinks/docs/fr/guide-acheteur.pdf")
+            "url": settings.BACKEND_URL_ROOT + static("usefullinks/docs/en/buyers-guide.pdf" if True else "usefullinks/docs/fr/guide-acheteur.pdf")
         },
         {
             "label": _("The Seller's Guide (PDF)"),
-            "url": BACKEND_URL_ROOT + static("usefullinks/docs/en/sellers-guide.pdf" if True else "usefullinks/docs/fr/guide-vendeur.pdf")
+            "url": settings.BACKEND_URL_ROOT + static("usefullinks/docs/en/sellers-guide.pdf" if True else "usefullinks/docs/fr/guide-vendeur.pdf")
         }
     ]
 

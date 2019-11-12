@@ -3,7 +3,7 @@
 
 from .models import Newsletter
 from .serializers import NewsletterSerializer
-from backend.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
+from backend.added_settings import SITE_NAME
 from backend.utils import send_email, get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -53,20 +53,20 @@ def newsletter_create(request):
     if response_type != "conflict":
         footer_text_content = get_template('newsletter/footer_email.txt').render({
             "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
-                site_url_root=SITE_URL_ROOT, user_email=data["email"]
+                site_url_root=settings.SITE_URL_ROOT, user_email=data["email"]
             )
         })
         context = {
             "first_name": data['first_name'],
             "footer_text_content": footer_text_content,
             "last_name": data['last_name'],
-            "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
             "site_name": SITE_NAME,
-            "site_url_root": SITE_URL_ROOT,
+            "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
             "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
-                site_url_root=SITE_URL_ROOT, user_email=data["email"]
+                site_url_root=settings.SITE_URL_ROOT, user_email=data["email"]
             )
         }
         html_content = get_template('newsletter/subscription_template.html').render(context)
@@ -109,12 +109,12 @@ def newsletter_unsubscribe(request):
             context = {
                 "first_name": subscription.first_name,
                 "last_name": subscription.last_name,
-                "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
                 "resubscribe_url": "{site_url_root}/newsletter/resubscribe/{user_email}".format(
-                    site_url_root=SITE_URL_ROOT, user_email=subscription.email
+                    site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 ),
                 "site_name": SITE_NAME,
-                "site_url_root": SITE_URL_ROOT,
+                "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images()
             }
@@ -153,20 +153,20 @@ def newsletter_resubscribe(request):
 
             footer_text_content = get_template('newsletter/footer_email.txt').render({
                 "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
-                    site_url_root=SITE_URL_ROOT, user_email=subscription.email
+                    site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 )
             })
             context = {
                 "first_name": subscription.first_name,
                 "footer_text_content": footer_text_content,
                 "last_name": subscription.last_name,
-                "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
                 "site_name": SITE_NAME,
-                "site_url_root": SITE_URL_ROOT,
+                "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
                 "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
-                    site_url_root=SITE_URL_ROOT, user_email=subscription.email
+                    site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 )
             }
             html_content = get_template('newsletter/resubscription_template.html').render(context)

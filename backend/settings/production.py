@@ -21,3 +21,10 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ORIGIN_WHITELIST = (
        'http://35.183.147.63',
 )
+
+
+SITE_URL = "http://35.183.147.63"
+SITE_URL_ROOT = "http://{}".format(SITE_URL)
+
+BACKEND_URL = "http://35.182.105.225"
+BACKEND_URL_ROOT = "http://{}".format(BACKEND_URL)
