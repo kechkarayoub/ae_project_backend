@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from .models import Testimonial
 from django.conf import settings
-from backend.added_settings import BACKEND_URL_ROOT
 from django.utils.translation import get_language
 from rest_framework import serializers
 import locale
@@ -32,7 +31,7 @@ class TestimonialSerializer(serializers.ModelSerializer):
         else:
             representation['createdAt'] = instance.createdAt.strftime("%B %d, %Y")
         if instance.image and instance.image.url:
-            representation['image'] = BACKEND_URL_ROOT + instance.image.url
+            representation['image'] = settings.BACKEND_URL_ROOT + instance.image.url
         else:
             representation['image'] = ""
 
