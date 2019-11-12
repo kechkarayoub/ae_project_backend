@@ -152,7 +152,8 @@ def send_new_property_to_newsletters(sender, **kwargs):
     msg.mixed_subtype = 'related'
     for item_image in images_items:
         # Create an inline attachment
-        image = MIMEImage(item_image.image.read())
+        ext = '.'+item_image.image.url.split('.')[-1]
+        image = MIMEImage(item_image.image.read(), _subtype=ext)
         image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
         msg.attach(image)
     msg.send()
