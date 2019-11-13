@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # from __future__ import unicode_literals
-# from admin_data import AdminData
+from admin_data.models import AdminData
 from backend import added_settings, static_variables
 from backend.utils import choices_format_to_dict
 from django.conf import settings
@@ -10,20 +10,7 @@ from sociallink.views import get_list_social_links
 
 
 def global_params(request):
-    # realtor_data = AdminData.get_admin_data()
-    realtor_data = {
-        "full_name": "ELMAHBOUBI Abdjalil",
-        "agency_name": "Agency Name",
-        "address": _("address"),
-        "email": "Jalil.elmahboubi@gmail.com",
-        "tel": "xxxxxxxxxx",
-        "fax": "xxxxxxxxxx",
-        "position": {
-            "gps_latitude": 45.50866990,
-            "gps_longitude": -73.55399250,
-        }
-    }
-    realtor_data.update({"address": _(realtor_data["address"])})
+    realtor_data = AdminData.get_admin_data()
     return JsonResponse({
         "realtor_data": realtor_data,
         "selects_choices": {
@@ -72,20 +59,7 @@ def global_params(request):
 
 
 def header_params(request):
-    # realtor_data = AdminData.get_admin_data()
-    realtor_data = {
-        "full_name": "ELMAHBOUBI Abdjalil",
-        "agency_name": "Agency Name",
-        "address": _("address"),
-        "email": "Jalil.elmahboubi@gmail.com",
-        "tel": "xxxxxxxxxx",
-        "fax": "xxxxxxxxxx",
-        "position": {
-            "gps_latitude": 45.50866990,
-            "gps_longitude": -73.55399250,
-        }
-    }
-    realtor_data.update({"address": _(realtor_data["address"])})
+    realtor_data = AdminData.get_admin_data()
     return JsonResponse({
         "i18n": added_settings.I18N_ACTIVE,
         "langue_label": _("French"),

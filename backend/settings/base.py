@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'newsletter',
     'sociallink',
     'usefullinks',
+    'admin_data',
 ]
 
 MIDDLEWARE = [
