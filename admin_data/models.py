@@ -41,6 +41,7 @@ class AdminData(models.Model):
                 "agency_name": "Agency Name",
                 "address": _("address"),
                 "email": cls.get_admin_email(),
+                "image": "",
                 "tel": "xxxxxxxxxx",
                 "fax": "xxxxxxxxxx",
                 "position": {
@@ -57,7 +58,7 @@ class AdminData(models.Model):
             "enable_map": self.address,
             "fax": self.fax,
             "full_name": self.full_name,
-            "image": settings.BACKEND_URL_ROOT + "/" + self.image.url,
+            "image": settings.BACKEND_URL_ROOT + self.image.url,
             "tel": self.tel
         }
         if self.enable_map:
