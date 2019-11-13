@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from .serializers import ContactBuySerializer, ContactSellSerializer
-# from admin_data import AdminData
-from backend.added_settings import SITE_NAME
+from admin_data.models import AdminData
 from backend.utils import get_list_social_links_images, send_email
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -10,6 +9,7 @@ from django.utils.translation import ugettext as _
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from settings_db.models import SettingsDb
 from sociallink.views import get_list_social_links
 import datetime
 
@@ -30,7 +30,7 @@ def contact_sell_create(request):
                 "last_name": data['last_name'],
                 "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
                 "message": data['message'],
-                "site_name": SITE_NAME,
+                "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
@@ -89,7 +89,7 @@ def contact_buy_create(request):
                 (_("Swimming pool"), data['has_swimming_pool'] if 'has_swimming_pool' in data else "")
             ],
             "site_url_root": settings.SITE_URL_ROOT,
-            "site_name": SITE_NAME,
+            "site_name": SettingsDb.get_site_name(),
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images()
         }
@@ -113,7 +113,7 @@ def contact(request):
             "last_name": data['last_name'],
             "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
             "message": data['message'],
-            "site_name": SITE_NAME,
+            "site_name": SettingsDb.get_site_name(),
             "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),

@@ -75,25 +75,7 @@ class SettingsDb(models.Model):
             return cls.objects.get().to_home_page_data()
         except:
             return {
-                "empty": True,
-                "home_page_title_1": "",
-                "home_page_title_2": "",
-                "home_page_left_column_title": "",
-                "home_page_left_column_p_1": "",
-                "home_page_left_column_p_2": "",
-                "home_page_left_column_p_3": "",
-                "home_page_right_column_title": "",
-                "home_page_right_column_p_1": "",
-                "home_page_right_column_p_2": "",
-                "home_page_right_column_p_3": "",
-                "home_page_row_1_title": "",
-                "home_page_row_1_p_1": "",
-                "home_page_row_1_p_2": "",
-                "home_page_row_1_p_3": "",
-                "home_page_row_2_title": "",
-                "home_page_row_2_p_1": "",
-                "home_page_row_2_p_2": "",
-                "home_page_row_2_p_3": "",
+                "empty": True
             }
 
     def to_home_page_data(self):

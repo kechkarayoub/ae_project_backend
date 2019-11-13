@@ -3,7 +3,6 @@
 
 from .models import Newsletter
 from .serializers import NewsletterSerializer
-from backend.added_settings import SITE_NAME
 from backend.utils import send_email, get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -12,6 +11,7 @@ from django.utils.translation import ugettext as _
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from settings_db.models import SettingsDb
 from sociallink.views import get_list_social_links
 
 
@@ -61,7 +61,7 @@ def newsletter_create(request):
             "footer_text_content": footer_text_content,
             "last_name": data['last_name'],
             "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
-            "site_name": SITE_NAME,
+            "site_name": SettingsDb.get_site_name(),
             "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
@@ -113,7 +113,7 @@ def newsletter_unsubscribe(request):
                 "resubscribe_url": "{site_url_root}/newsletter/resubscribe/{user_email}".format(
                     site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 ),
-                "site_name": SITE_NAME,
+                "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images()
@@ -161,7 +161,7 @@ def newsletter_resubscribe(request):
                 "footer_text_content": footer_text_content,
                 "last_name": subscription.last_name,
                 "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
-                "site_name": SITE_NAME,
+                "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),

@@ -105,7 +105,6 @@ def item_details(request, pk):
     serializer = ItemSerializer(item, context={'request': request})
     return Response(serializer.data)
 
-from backend.added_settings import SITE_NAME
 from backend.utils import get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -116,6 +115,7 @@ from django.core.mail import send_mass_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from email.mime.image import MIMEImage
 from newsletter.models import Newsletter
+from settings_db.models import SettingsDb
 from sociallink.views import get_list_social_links
 
 def on_transaction_commit(func):
@@ -134,7 +134,7 @@ def send_new_property_to_newsletters(sender, **kwargs):
         "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
         "social_links": get_list_social_links(),
         "social_links_images": get_list_social_links_images(),
-        "site_name": SITE_NAME,
+        "site_name": SettingsDb.get_site_name(),
         "site_url_root": settings.SITE_URL_ROOT,
         "backend_url": settings.BACKEND_URL_ROOT,
         "property_label": new_item_data['label'],

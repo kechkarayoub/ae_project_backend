@@ -68,9 +68,3 @@ class ViewsTest(TestCase):
         self.assertEqual(content["is_maps_active"], added_settings.IS_MAPS_ACTIVE)
         self.assertEqual(content["footer_params"]["site_url_root"], settings.SITE_URL_ROOT)
 
-    def test_header_params_view(self):
-        response = self.client.get(reverse('header_params'))
-        self.assertEqual(response.status_code, 200)
-        content = json.loads(response.content)
-        self.assertTrue("realtor_data" in content)
-        self.assertEqual(content["i18n"], added_settings.I18N_ACTIVE)

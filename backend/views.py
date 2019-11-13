@@ -6,13 +6,14 @@ from backend.utils import choices_format_to_dict
 from django.conf import settings
 from django.http import JsonResponse
 from django.utils.translation import ugettext as _
+from settings_db.models import SettingsDb
 from sociallink.views import get_list_social_links
 
 
 def global_params(request):
-    realtor_data = AdminData.get_admin_data()
     return JsonResponse({
-        "realtor_data": realtor_data,
+        "home_page_data": SettingsDb.get_home_page_data(),
+        "realtor_data": AdminData.get_admin_data(),
         "selects_choices": {
             "CITIES": [[static_variables.CANADIAN_CITIES[0][0], _(static_variables.CANADIAN_CITIES[0][1])]] +
             static_variables.CANADIAN_CITIES[1:],
@@ -51,18 +52,15 @@ def global_params(request):
         "is_maps_active": added_settings.IS_MAPS_ACTIVE,
         "footer_params": {
             "socialLinks": get_list_social_links(),
-            "site_name": added_settings.SITE_NAME,
+            "site_name": SettingsDb.get_site_name(),
             "site_url_root": settings.SITE_URL_ROOT
+        },
+        "header_params": {
+            "i18n": added_settings.I18N_ACTIVE,
+            "langue_label": _("French"),
+            "langue_url": settings.SITE_URL_ROOT,
+            "realtor_data": AdminData.get_admin_data(),
+            "header_settings": SettingsDb.get_header_settings()
         }
 
-    })
-
-
-def header_params(request):
-    realtor_data = AdminData.get_admin_data()
-    return JsonResponse({
-        "i18n": added_settings.I18N_ACTIVE,
-        "langue_label": _("French"),
-        "langue_url": settings.SITE_URL_ROOT,
-        "realtor_data": realtor_data
     })
