@@ -16,8 +16,3 @@ DATABASES = {
 CORS_ORIGIN_WHITELIST = (
        'http://35.183.147.63',
 )
-
-
-CORS_ORIGIN_WHITELIST = (
-       'http://35.183.147.63',
-)
