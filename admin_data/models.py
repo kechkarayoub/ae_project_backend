@@ -22,7 +22,7 @@ class AdminData(models.Model):
     tel = models.CharField(_("Telephone"), blank=False, default="XXXXXXXXXX", max_length=255, null=False)
 
     def __str__(self):
-        return self.full_name
+        return "Admin data"
 
     @classmethod
     def get_admin_email(cls):

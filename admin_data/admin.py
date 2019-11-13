@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from .models import AdminData
-from backend.utils import generate_id
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
-from easy_select2 import select2_modelform
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -25,7 +23,7 @@ class AdminDataAdmin(TranslationAdmin):
             'admin_data/js/admin_data_form.js',
         )
     list_display = (
-        '__str__', 'email', 'agency_name', 'fax', 'tel'
+        '__str__', 'full_name', 'email', 'agency_name', 'fax', 'tel'
     )
     fieldsets = [
         (_("General information"), {

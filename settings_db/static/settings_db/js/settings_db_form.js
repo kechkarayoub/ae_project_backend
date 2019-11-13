@@ -1,0 +1,43 @@
+(function($) {
+    setTimeout(function(){
+        $(".field-image").on('change', 'input[type=file]', function(event){
+            var self = this;
+            var files = event.target.files;
+            for (var i = 0, f; f = files[i]; i++){
+                if (!f.type.match('image.*')){
+                    continue;
+                }
+                var reader = new FileReader();
+                reader.onload = (function(){
+                    return function(e){
+                        if($(self).closest(".module").find('.field-get_header_bg_image_preview').length > 0){
+                            var img = $(self).closest(".module").find('.field-get_header_bg_image_preview img');
+                            if(img.length){
+                                $(img).attr("src", e.target.result);
+                            }
+                            else{
+                                $(self).closest(".module").find(".field-get_header_bg_image_preview .readonly").html(
+                                    "<img src='" + e.target.result + "' width='150' height='150' style='object-fit: cover;'/>"
+                                );
+                            }
+                        }
+                        else if($(self).closest(".module").find('.field-get_logo_image_preview').length > 0){
+                            var img = $(self).closest(".module").find('.field-get_logo_image_preview img');
+                            if(img.length){
+                                $(img).attr("src", e.target.result);
+                            }
+                            else{
+                                $(self).closest(".module").find(".field-get_logo_image_preview .readonly").html(
+                                    "<img src='" + e.target.result + "' width='150' height='150' style='object-fit: cover;'/>"
+                                );
+                            }
+                        }
+
+                    };
+                })(f);
+                reader.readAsDataURL(f);
+            }
+        });
+        $("#settingsdb_form .submit-row input[name='_addanother']").addClass("hidden");
+    }, 100);
+})(django.jQuery);

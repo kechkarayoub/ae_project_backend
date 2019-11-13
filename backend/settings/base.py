@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'sociallink',
     'usefullinks',
     'admin_data',
+    'settings_db',
 ]
 
 MIDDLEWARE = [
