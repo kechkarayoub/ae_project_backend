@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from .models import Item, ItemImage
+from django.conf import settings
 from rest_framework import serializers
 
 
@@ -7,6 +8,15 @@ class ItemImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemImage
         fields = ('pk', 'image',)
+
+    def to_representation(self, instance):
+        representation = super(ItemImageSerializer, self).to_representation(instance)
+        if instance.image and instance.image.url:
+            representation['image'] = settings.BACKEND_URL_ROOT + instance.image.url
+        else:
+            representation['image'] = ""
+
+        return representation
 
 
 class ItemSerializer(serializers.ModelSerializer):

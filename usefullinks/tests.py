@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from .apps import UsefullinksConfig
 from .models import LinkCategory, UsefulLink
-from backend.added_settings import BACKEND_URL_ROOT
 from django.apps import apps
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -88,4 +88,4 @@ class ViewsTest(TestCase):
         self.assertEqual(content["categories"]["Link category2"][0]["pk"], 3)
         self.assertEqual(content["categories"]["Link category2"][0]["url"], "link21")
         self.assertEqual(content["categories"]["Link category1"][0]["label"], "Useful link11")
-        self.assertEqual(content["guides"][0]["url"], BACKEND_URL_ROOT + static("usefullinks/docs/en/buyers-guide.pdf"))
+        self.assertEqual(content["guides"][0]["url"], settings.BACKEND_URL_ROOT + static("usefullinks/docs/en/buyers-guide.pdf"))

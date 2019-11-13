@@ -6,7 +6,7 @@ from .utils import send_email, generate_random_color, get_complementary_color, c
     get_list_social_links_images
 from django.core import mail
 from colour import Color
-from backend.added_settings import BACKEND_URL_ROOT
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.test import Client
 from django.urls import reverse
@@ -51,7 +51,7 @@ class UtilsPackageTest(TestCase):
     def test_get_list_social_links_images(self):
         self.assertEqual(6, len(list(get_list_social_links_images().keys())))
         self.assertTrue("facebook" in list(get_list_social_links_images().keys()))
-        self.assertEqual(get_list_social_links_images()["youtube"], BACKEND_URL_ROOT + static("contact/images/youtube.png"))
+        self.assertEqual(get_list_social_links_images()["youtube"], settings.BACKEND_URL_ROOT + static("contact/images/youtube.png"))
 
 
 class ViewsTest(TestCase):
@@ -66,7 +66,7 @@ class ViewsTest(TestCase):
         self.assertTrue("selects_choices" in content)
         self.assertTrue("is_maps_active" in content)
         self.assertEqual(content["is_maps_active"], added_settings.IS_MAPS_ACTIVE)
-        self.assertEqual(content["footer_params"]["site_url_root"], added_settings.SITE_URL_ROOT)
+        self.assertEqual(content["footer_params"]["site_url_root"], settings.SITE_URL_ROOT)
 
     def test_header_params_view(self):
         response = self.client.get(reverse('header_params'))

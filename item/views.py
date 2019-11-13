@@ -105,7 +105,7 @@ def item_details(request, pk):
     serializer = ItemSerializer(item, context={'request': request})
     return Response(serializer.data)
 
-from backend.added_settings import SITE_NAME, SITE_URL_ROOT, BACKEND_URL_ROOT
+from backend.added_settings import SITE_NAME
 from backend.utils import get_list_social_links_images
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -131,12 +131,12 @@ def send_new_property_to_newsletters(sender, **kwargs):
     new_item_data = ItemSerializer(new_item).data
     images_items = new_item.images.all()
     context = {
-        "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+        "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
         "social_links": get_list_social_links(),
         "social_links_images": get_list_social_links_images(),
         "site_name": SITE_NAME,
-        "site_url_root": SITE_URL_ROOT,
-        "backend_url": BACKEND_URL_ROOT,
+        "site_url_root": settings.SITE_URL_ROOT,
+        "backend_url": settings.BACKEND_URL_ROOT,
         "property_label": new_item_data['label'],
         "property_short_description": new_item_data['short_description'],
         "property_description": new_item_data['description'],
@@ -152,7 +152,8 @@ def send_new_property_to_newsletters(sender, **kwargs):
     msg.mixed_subtype = 'related'
     for item_image in images_items:
         # Create an inline attachment
-        image = MIMEImage(item_image.image.read())
+        ext = '.'+item_image.image.url.split('.')[-1]
+        image = MIMEImage(item_image.image.read(), _subtype=ext)
         image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
         msg.attach(image)
     msg.send()

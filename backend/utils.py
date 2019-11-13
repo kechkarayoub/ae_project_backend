@@ -1,4 +1,4 @@
-from backend.added_settings import BACKEND_URL_ROOT
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.mail import EmailMultiAlternatives
 from django.utils.translation import ugettext as _
@@ -55,10 +55,10 @@ def generate_id(last_id=None):
 
 def get_list_social_links_images():
     return {
-        "facebook": BACKEND_URL_ROOT + static("contact/images/facebook.png"),
-        "google-plus": BACKEND_URL_ROOT + static("contact/images/gplus.png"),
-        "instagram": BACKEND_URL_ROOT + static("contact/images/instagram.png"),
-        "linkedin": BACKEND_URL_ROOT + static("contact/images/linkedin.png"),
-        "twitter": BACKEND_URL_ROOT + static("contact/images/twitter.png"),
-        "youtube": BACKEND_URL_ROOT + static("contact/images/youtube.png"),
+        "facebook": settings.BACKEND_URL_ROOT + static("contact/images/facebook.png"),
+        "google-plus": settings.BACKEND_URL_ROOT + static("contact/images/gplus.png"),
+        "instagram": settings.BACKEND_URL_ROOT + static("contact/images/instagram.png"),
+        "linkedin": settings.BACKEND_URL_ROOT + static("contact/images/linkedin.png"),
+        "twitter": settings.BACKEND_URL_ROOT + static("contact/images/twitter.png"),
+        "youtube": settings.BACKEND_URL_ROOT + static("contact/images/youtube.png"),
     }

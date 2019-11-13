@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from .serializers import ContactBuySerializer, ContactSellSerializer
-from backend.added_settings import ADMIN_EMAIL, BACKEND_URL_ROOT, SITE_NAME, SITE_URL_ROOT
+# from admin_data import AdminData
+from backend.added_settings import SITE_NAME
 from backend.utils import get_list_social_links_images, send_email
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
@@ -26,17 +28,17 @@ def contact_sell_create(request):
                 "email": data['email'],
                 "first_name": data['first_name'],
                 "last_name": data['last_name'],
-                "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
                 "message": data['message'],
                 "site_name": SITE_NAME,
-                "site_url_root": SITE_URL_ROOT,
+                "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
                 "phone": data['phone']
             }
             html_content = get_template('contact/contact_template.html').render(context)
             text_content = get_template('contact/contact_template.txt').render(context)
-            send_email(data["object"], text_content, data["email"], ADMIN_EMAIL, html_content)
+            send_email(data["object"], text_content, data["email"], AdminData.get_admin_email(), html_content)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -63,7 +65,7 @@ def contact_buy_create(request):
             "email": data['email'],
             "first_name": data['first_name'],
             "last_name": data['last_name'],
-            "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
             "phone": data['phone'] if 'phone' in data else "",
             "property_information": [
                 (_("Bathrooms number"), data['bathrooms_number_text'] if 'bathrooms_number' in data else ""),
@@ -86,14 +88,14 @@ def contact_buy_create(request):
                 (_("Status"), data['status_text'] if 'status' in data else ""),
                 (_("Swimming pool"), data['has_swimming_pool'] if 'has_swimming_pool' in data else "")
             ],
-            "site_url_root": SITE_URL_ROOT,
+            "site_url_root": settings.SITE_URL_ROOT,
             "site_name": SITE_NAME,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images()
         }
         html_content = get_template('contact/contact_buying_template.html').render(context)
         text_content = get_template('contact/contact_buying_template.txt').render(context)
-        send_email(_("Buying property"), text_content, data["email"], ADMIN_EMAIL, html_content)
+        send_email(_("Buying property"), text_content, data["email"], AdminData.get_admin_email(), html_content)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -109,10 +111,10 @@ def contact(request):
             "email": data['email'],
             "first_name": data['first_name'],
             "last_name": data['last_name'],
-            "logo_url": BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
             "message": data['message'],
             "site_name": SITE_NAME,
-            "site_url_root": SITE_URL_ROOT,
+            "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
             "phone": data['phone'],
@@ -120,7 +122,7 @@ def contact(request):
         }
         html_content = get_template('contact/contact_template.html').render(context)
         text_content = get_template('contact/contact_template.txt').render(context)
-        send_email(data["object"], text_content, data["email"], ADMIN_EMAIL, html_content)
+        send_email(data["object"], text_content, data["email"], AdminData.get_admin_email(), html_content)
         return Response({
             "success": True
         })
