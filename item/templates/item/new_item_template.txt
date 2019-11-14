@@ -7,4 +7,4 @@ A new property has been added!
 
 {{property_description|truncatechars:1}}
 
-For more information, visit this link: {{site_url_root}}/property/{{property_id}}
+For more information, visit this link: {{site_url_root}}/#/property/{{property_id}}

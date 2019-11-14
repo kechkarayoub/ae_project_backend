@@ -52,7 +52,7 @@ def newsletter_create(request):
             response_type = "conflict"
     if response_type != "conflict":
         footer_text_content = get_template('newsletter/footer_email.txt').render({
-            "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
+            "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
                 site_url_root=settings.SITE_URL_ROOT, user_email=data["email"]
             )
         })
@@ -65,7 +65,7 @@ def newsletter_create(request):
             "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
-            "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
+            "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
                 site_url_root=settings.SITE_URL_ROOT, user_email=data["email"]
             )
         }
@@ -110,7 +110,7 @@ def newsletter_unsubscribe(request):
                 "first_name": subscription.first_name,
                 "last_name": subscription.last_name,
                 "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
-                "resubscribe_url": "{site_url_root}/newsletter/resubscribe/{user_email}".format(
+                "resubscribe_url": "{site_url_root}/#/newsletter/resubscribe/{user_email}".format(
                     site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 ),
                 "site_name": SettingsDb.get_site_name(),
@@ -152,7 +152,7 @@ def newsletter_resubscribe(request):
             Newsletter.objects.filter(email=user_email).update(is_active=True)
 
             footer_text_content = get_template('newsletter/footer_email.txt').render({
-                "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
+                "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
                     site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 )
             })
@@ -165,7 +165,7 @@ def newsletter_resubscribe(request):
                 "site_url_root": settings.SITE_URL_ROOT,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
-                "unsubscribe_url": "{site_url_root}/newsletter/unsubscribe/{user_email}".format(
+                "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
                     site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 )
             }
