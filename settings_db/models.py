@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+from colorfield.fields import ColorField
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
@@ -15,21 +16,18 @@ class SettingsDb(models.Model):
         null=False,
         upload_to='images/settings_db/header'
     )
+    header_text_color = ColorField(_("Header text color"), default='#FFFFFF')
     logo = models.ImageField(help_text=_("Logo image"), null=False, upload_to='images/settings_db/header')
+    main_bg_image = models.ImageField(
+        default="",
+        help_text=_("Body background image"),
+        null=False,
+        upload_to='images/settings_db/header'
+    )
     site_name = models.CharField(_("Site name"), blank=False, max_length=255, null=False)
 
     home_page_title_1 = models.CharField(_("Title line 1"), blank=False, max_length=765, null=False)
     home_page_title_2 = models.CharField(_("Title line 2"), blank=True, max_length=765, null=True)
-
-    home_page_left_column_title = models.CharField(_("Left column title"), blank=True, max_length=510, null=True)
-    home_page_left_column_p_1 = models.TextField(_("Left column paragraph 1"), blank=True, null=True)
-    home_page_left_column_p_2 = models.TextField(_("Left column paragraph 2"), blank=True, null=True)
-    home_page_left_column_p_3 = models.TextField(_("Left column paragraph 3"), blank=True, null=True)
-
-    home_page_right_column_title = models.CharField(_("Right column title"), blank=True, max_length=510, null=True)
-    home_page_right_column_p_1 = models.TextField(_("Right column paragraph 1"), blank=True, null=True)
-    home_page_right_column_p_2 = models.TextField(_("Right column paragraph 2"), blank=True, null=True)
-    home_page_right_column_p_3 = models.TextField(_("Right column paragraph 3"), blank=True, null=True)
 
     home_page_row_1_title = models.CharField(_("Row 1 title"), blank=True, max_length=510, null=True)
     home_page_row_1_p_1 = models.TextField(_("Row 1 paragraph 1"), blank=True, null=True)
@@ -40,6 +38,11 @@ class SettingsDb(models.Model):
     home_page_row_2_p_1 = models.TextField(_("Row 2 paragraph 1"), blank=True, null=True)
     home_page_row_2_p_2 = models.TextField(_("Row 2 paragraph 2"), blank=True, null=True)
     home_page_row_2_p_3 = models.TextField(_("Row 2 paragraph 3"), blank=True, null=True)
+
+    home_page_row_3_title = models.CharField(_("Row 3 title"), blank=True, max_length=510, null=True)
+    home_page_row_3_p_1 = models.TextField(_("Row 3 paragraph 1"), blank=True, null=True)
+    home_page_row_3_p_2 = models.TextField(_("Row 3 paragraph 2"), blank=True, null=True)
+    home_page_row_3_p_3 = models.TextField(_("Row 3 paragraph 3"), blank=True, null=True)
 
     def __str__(self):
         return "Settings databases"
@@ -58,14 +61,18 @@ class SettingsDb(models.Model):
         except:
             return {
                 "header_bg": "",
+                "header_text_color": "#FFFFFF",
                 "logo": "",
+                "mainBgImage": "",
                 "site_name": cls.get_site_name(),
             }
 
     def to_header_settings(self):
         return {
                 "header_bg": settings.BACKEND_URL_ROOT + self.header_bg.url,
+                "header_text_color": self.header_text_color,
                 "logo": settings.BACKEND_URL_ROOT + self.logo.url,
+                "mainBgImage": settings.BACKEND_URL_ROOT + self.main_bg_image.url,
                 "site_name": SettingsDb.get_site_name(),
         }
 
@@ -82,14 +89,6 @@ class SettingsDb(models.Model):
         return {
             "home_page_title_1": self.home_page_title_1,
             "home_page_title_2": self.home_page_title_2,
-            "home_page_left_column_title": self.home_page_left_column_title,
-            "home_page_left_column_p_1": self.home_page_left_column_p_1,
-            "home_page_left_column_p_2": self.home_page_left_column_p_2,
-            "home_page_left_column_p_3": self.home_page_left_column_p_3,
-            "home_page_right_column_title": self.home_page_right_column_title,
-            "home_page_right_column_p_1": self.home_page_right_column_p_1,
-            "home_page_right_column_p_2": self.home_page_right_column_p_2,
-            "home_page_right_column_p_3": self.home_page_right_column_p_3,
             "home_page_row_1_title": self.home_page_row_1_title,
             "home_page_row_1_p_1": self.home_page_row_1_p_1,
             "home_page_row_1_p_2": self.home_page_row_1_p_2,
@@ -98,4 +97,8 @@ class SettingsDb(models.Model):
             "home_page_row_2_p_1": self.home_page_row_2_p_1,
             "home_page_row_2_p_2": self.home_page_row_2_p_2,
             "home_page_row_2_p_3": self.home_page_row_2_p_3,
+            "home_page_row_3_title": self.home_page_row_3_title,
+            "home_page_row_3_p_1": self.home_page_row_3_p_1,
+            "home_page_row_3_p_2": self.home_page_row_3_p_2,
+            "home_page_row_3_p_3": self.home_page_row_3_p_3,
         }

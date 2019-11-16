@@ -10,12 +10,12 @@
                 var reader = new FileReader();
                 reader.onload = (function(){
                     return function(e){
-                        var img = $(self).closest(".module").find('.field-get_user_image_preview img');
+                        var img = $(self).closest(".module").find('.field-get_admin_image_preview img');
                         if(img.length){
                             $(img).attr("src", e.target.result);
                         }
                         else{
-                            $(self).closest(".module").find(".field-get_user_image_preview .readonly").html(
+                            $(self).closest(".module").find(".field-get_admin_image_preview .readonly").html(
                                 "<img src='" + e.target.result + "' width='150' height='150' style='object-fit: cover;'/>"
                             );
                         }
@@ -25,5 +25,18 @@
                 reader.readAsDataURL(f);
             }
         });
-    }, 2000);
+        $("#id_enable_map").on('change', function(event){
+            var self = this;
+            if($(this).is(":checked")){
+                $(this).closest(".module").find(".field-gps_latitude, .field-gps_longitude").removeClass("hidden");
+            }
+            else{
+                $(this).closest(".module").find(".field-gps_latitude, .field-gps_longitude").addClass("hidden");
+            }
+        });
+        if(!$("#id_enable_map").is(":checked")){
+            $("#id_enable_map").closest(".module").find(".field-gps_latitude, .field-gps_longitude").addClass("hidden");
+        }
+        $("#admindata_form .submit-row input[name='_addanother']").addClass("hidden");
+    }, 100);
 })(django.jQuery);

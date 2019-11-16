@@ -11,15 +11,15 @@ class AdminData(models.Model):
         db_table = "admin_data"
 
     address = models.CharField(_("Address"), blank=False, max_length=510, null=False)
-    agency_name = models.CharField(_("Agency name"), blank=False, max_length=255, null=False)
+    agency_name = models.CharField(_("Royal Le page Triomphe"), blank=False, max_length=255, null=False)
     email = models.CharField(_("Email"), blank=False, default="Jalil.elmahboubi@gmail.com", max_length=255, null=False)
     enable_map = models.BooleanField(_("Enable map"), default=True)
-    fax = models.CharField(_("Fax"), blank=False, default="XXXXXXXXXX", max_length=255, null=False)
+    fax = models.CharField(_("Fax"), blank=False, default="450 462 1509", max_length=255, null=False)
     full_name = models.CharField(_("Full name"), blank=False, default="ELMAHBOUBI Abdjalil", max_length=255, null=False)
     gps_latitude = models.FloatField(_("GPS Latitude"), blank=True, default=45.50866990, null=True)
     gps_longitude = models.FloatField(_("GPS Longitude"), blank=True, default=-73.55399250, null=True)
     image = models.ImageField(help_text=_("Admin's image"), null=False, upload_to='images/admin_data')
-    tel = models.CharField(_("Telephone"), blank=False, default="XXXXXXXXXX", max_length=255, null=False)
+    tel = models.CharField(_("Telephone"), blank=False, default="514 967 3743", max_length=255, null=False)
 
     def __str__(self):
         return "Admin data"
@@ -38,12 +38,12 @@ class AdminData(models.Model):
         except:
             return {
                 "full_name": "ELMAHBOUBI Jalil",
-                "agency_name": "Agency Name",
-                "address": _("address"),
+                "agency_name": "Royal Le page Triomphe",
+                "address": "2190, Boul. Lapiniere, Brossard PQ J4W 1M2",
                 "email": cls.get_admin_email(),
                 "image": "",
-                "tel": "xxxxxxxxxx",
-                "fax": "xxxxxxxxxx",
+                "tel": "514 967 3743",
+                "fax": "450 462 1509",
                 "position": {
                     "gps_latitude": 45.50866990,
                     "gps_longitude": -73.55399250,

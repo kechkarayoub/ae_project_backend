@@ -12,6 +12,12 @@ def get_header_bg_image_preview(obj):
     return _("No file selected!")
 
 
+def get_main_bg_image_preview(obj):
+    if obj.main_bg_image:
+        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.main_bg_image)))
+    return _("No file selected!")
+
+
 def get_logo_image_preview(obj):
     if obj.logo:
         return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.logo)))
@@ -20,6 +26,10 @@ def get_logo_image_preview(obj):
 
 get_header_bg_image_preview.allow_tags = True
 get_header_bg_image_preview.short_description = _("Header Bg Image Preview")
+
+
+get_main_bg_image_preview.allow_tags = True
+get_main_bg_image_preview.short_description = _("Header Bg Image Preview")
 
 
 get_logo_image_preview.allow_tags = True
@@ -34,20 +44,22 @@ class SettingsDbAdmin(TranslationAdmin):
         )
     list_display = ('__str__',)
     fieldsets = [
+        (_("Global settings"), {
+            'fields': ['main_bg_image', get_main_bg_image_preview]
+        }),
         (_("Header settings"), {
-            'fields': ['site_name', 'header_bg', get_header_bg_image_preview, "logo", get_logo_image_preview]
+            'fields': ['site_name', 'header_bg', get_header_bg_image_preview, "header_text_color", "logo", get_logo_image_preview]
         }),
         (_("Home page settings"), {
             'fields': [
-                'home_page_title_1', 'home_page_title_2', 'home_page_left_column_title', 'home_page_left_column_p_1',
-                'home_page_left_column_p_2', 'home_page_left_column_p_3', 'home_page_right_column_title',
-                'home_page_right_column_p_1', 'home_page_right_column_p_2', 'home_page_right_column_p_3',
-                'home_page_row_1_title', 'home_page_row_1_p_1', 'home_page_row_1_p_2', 'home_page_row_1_p_3',
-                'home_page_row_2_title', 'home_page_row_2_p_1', 'home_page_row_2_p_2', 'home_page_row_2_p_3'
+                'home_page_title_1', 'home_page_title_2', 'home_page_row_1_title', 'home_page_row_1_p_1',
+                'home_page_row_1_p_2', 'home_page_row_1_p_3', 'home_page_row_2_title', 'home_page_row_2_p_1',
+                'home_page_row_2_p_2', 'home_page_row_2_p_3', 'home_page_row_3_title', 'home_page_row_3_p_1',
+                'home_page_row_3_p_2', 'home_page_row_3_p_3'
             ]
         }),
     ]
-    readonly_fields = [get_header_bg_image_preview, get_logo_image_preview]
+    readonly_fields = [get_header_bg_image_preview, get_main_bg_image_preview, get_logo_image_preview]
 
     def save_model(self, request, obj, form, change):
         if len(SettingsDb.objects.all()) > 0:
