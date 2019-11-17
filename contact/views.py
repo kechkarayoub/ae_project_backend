@@ -77,9 +77,9 @@ def contact_buy_create(request):
                 (_("Fireplace"), data['has_fireplace'] if 'has_fireplace' in data else ""),
                 (_("Garage"), data['has_garage'] if 'has_garage' in data else ""),
                 (_("Garden"), data['has_garden'] if 'has_garden' in data else ""),
-                (_("Lot size max"), str(data['lot_size_max'])
+                (_("Property size max"), str(data['lot_size_max'])
                     if 'lot_size_max' in data and int(data['lot_size_max']) > 0 else ""),
-                (_("Lot size min"), str(data['lot_size_min'])
+                (_("Property size min"), str(data['lot_size_min'])
                     if 'lot_size_min' in data and int(data['lot_size_min']) > 0 else ""),
                 (_("Price range"), data['price_range_text'] if 'price_range' in data else ""),
                 (_("Property type"), data['property_type_text'] if 'property_type' in data else ""),

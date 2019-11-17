@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-17 22:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\backend\settings\base.py:148
+msgid "English"
+msgstr ""
+
+#: .\backend\settings\base.py:149 .\backend\views.py:60
+msgid "French"
+msgstr ""
+
+#: .\backend\static_variables.py:5
+msgid "Select city"
+msgstr ""
+
+#: .\backend\static_variables.py:392
+msgid "Select property type"
+msgstr ""
+
+#: .\backend\static_variables.py:393
+msgid "Apartment"
+msgstr ""
+
+#: .\backend\static_variables.py:394
+msgid "Duplex"
+msgstr ""
+
+#: .\backend\static_variables.py:395
+msgid "Quadruplex"
+msgstr ""
+
+#: .\backend\static_variables.py:396
+msgid "Quintuplex"
+msgstr ""
+
+#: .\backend\static_variables.py:397
+msgid "Multiple housing"
+msgstr ""
+
+#: .\backend\static_variables.py:398
+msgid "Ground floor house"
+msgstr ""
+
+#: .\backend\static_variables.py:399
+msgid "Two or more storey"
+msgstr ""
+
+#: .\backend\static_variables.py:400
+msgid "Split-level"
+msgstr ""
+
+#: .\backend\static_variables.py:401
+msgid "One-and-a-half-storey house"
+msgstr ""
+
+#: .\backend\static_variables.py:402
+msgid "Mobile home"
+msgstr ""
+
+#: .\backend\static_variables.py:403
+msgid "House"
+msgstr ""
+
+#: .\backend\static_variables.py:404
+msgid "Loft / Studio"
+msgstr ""
+
+#: .\backend\static_variables.py:405
+msgid "Commercial"
+msgstr ""
+
+#: .\backend\static_variables.py:406
+msgid "Industrial"
+msgstr ""
+
+#: .\backend\static_variables.py:407
+msgid "Company (business)"
+msgstr ""
+
+#: .\backend\static_variables.py:408
+msgid "Bulk (block sale)"
+msgstr ""
+
+#: .\backend\static_variables.py:409
+msgid "Land"
+msgstr ""
+
+#: .\backend\static_variables.py:410
+msgid "Lot"
+msgstr ""
+
+#: .\backend\static_variables.py:411
+msgid "Farm"
+msgstr ""
+
+#: .\backend\static_variables.py:412
+msgid "Hobby farm"
+msgstr ""
+
+#: .\backend\static_variables.py:413
+msgid "Other"
+msgstr ""
+
+#: .\backend\static_variables.py:417
+msgid "Select building type"
+msgstr ""
+
+#: .\backend\static_variables.py:418
+msgid "Detached"
+msgstr ""
+
+#: .\backend\static_variables.py:419
+msgid "Semi detached"
+msgstr ""
+
+#: .\backend\static_variables.py:420
+msgid "Attached"
+msgstr ""
+
+#: .\backend\static_variables.py:421
+msgid "Attached corner unit"
+msgstr ""
+
+#: .\backend\static_variables.py:422
+msgid "Quadrex"
+msgstr ""
+
+#: .\backend\static_variables.py:426
+msgid "Select bedrooms number"
+msgstr ""
+
+#: .\backend\static_variables.py:427 .\backend\static_variables.py:436
+msgid "1"
+msgstr ""
+
+#: .\backend\static_variables.py:428 .\backend\static_variables.py:437
+msgid "2"
+msgstr ""
+
+#: .\backend\static_variables.py:429
+msgid "3"
+msgstr ""
+
+#: .\backend\static_variables.py:430
+msgid "4"
+msgstr ""
+
+#: .\backend\static_variables.py:431
+msgid "5 and more"
+msgstr ""
+
+#: .\backend\static_variables.py:435
+msgid "Select bathrooms number"
+msgstr ""
+
+#: .\backend\static_variables.py:438
+msgid "3 and more"
+msgstr ""
+
+#: .\backend\static_variables.py:442
+msgid "Select construction age"
+msgstr ""
+
+#: .\backend\static_variables.py:443
+msgid "Newly built"
+msgstr ""
+
+#: .\backend\static_variables.py:444
+msgid "10 years and less"
+msgstr ""
+
+#: .\backend\static_variables.py:445
+msgid "More than 10 years"
+msgstr ""
+
+#: .\backend\static_variables.py:449
+msgid "For sale"
+msgstr ""
+
+#: .\backend\static_variables.py:450
+msgid "For rent"
+msgstr ""
+
+#: .\backend\static_variables.py:451
+msgid "Sold"
+msgstr ""
+
+#: .\backend\static_variables.py:455
+msgid "Not specified"
+msgstr ""
+
+#: .\backend\static_variables.py:456
+msgid "Less than 200 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:457
+msgid "200 000$ - 300 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:458
+msgid "300 000$ - 400 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:459
+msgid "400 000$ - 500 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:460
+msgid "More than 500 000$"
+msgstr ""

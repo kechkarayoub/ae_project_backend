@@ -21,7 +21,7 @@ class Item(models.Model):
     added_field_3_value = models.CharField(_("Added field 3 value"), blank=True, max_length=255, null=True)
     address = models.CharField(_("Address"), blank=False, max_length=510, null=False)
     annual_income = models.DecimalField(
-        _("Annual income ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Annual incomes ($)"), blank=True, decimal_places=0, max_digits=9, null=True
     )
     apartments_number = models.PositiveIntegerField(_("Apartments number"), blank=True, null=True)
     bathrooms_number = models.CharField(
@@ -93,7 +93,7 @@ class Item(models.Model):
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
     is_active = models.BooleanField(_("Is active"), default=True)
     label = models.CharField(_("Label"), blank=False, max_length=255, null=False)
-    lot_size = models.PositiveIntegerField(_("Lot size(m²)"), default=0)
+    lot_size = models.PositiveIntegerField(_("Property size(m²)"), default=0)
     maximum_loan = models.DecimalField(
         _("Maximum loan (%)"), blank=True, decimal_places=2, max_digits=5, null=True
     )
