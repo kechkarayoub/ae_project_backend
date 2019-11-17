@@ -12,18 +12,21 @@ class SettingsDb(models.Model):
         db_table = "settings_db"
 
     header_image = models.ImageField(
+        blank=True,
         help_text=_("Header image"),
         null=True,
         upload_to='images/settings_db/header'
     )
     header_background_image = models.ImageField(
+        blank=True,
         help_text=_("Header background image"),
         null=True,
         upload_to='images/settings_db/header'
     )
     header_text_color = ColorField(_("Header text color"), default='#FFFFFF')
-    logo = models.ImageField(help_text=_("Logo image"), null=True, upload_to='images/settings_db/header')
+    logo = models.ImageField(blank=True, help_text=_("Logo image"), null=True, upload_to='images/settings_db/header')
     main_bg_image = models.ImageField(
+        blank=True,
         help_text=_("Body background image"),
         null=True,
         upload_to='images/settings_db/header'
