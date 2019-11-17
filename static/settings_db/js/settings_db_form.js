@@ -1,6 +1,6 @@
 (function($) {
     setTimeout(function(){
-        $(".field-header_bg").on('change', 'input[type=file]', function(event){
+        $(".field-header_image").on('change', 'input[type=file]', function(event){
             var self = this;
             var files = event.target.files;
             for (var i = 0, f; f = files[i]; i++){
@@ -10,12 +10,12 @@
                 var reader = new FileReader();
                 reader.onload = (function(){
                     return function(e){
-                        var img = $(self).closest(".module").find('.field-get_header_bg_image_preview img');
+                        var img = $(self).closest(".module").find('.field-get_header_image_preview img');
                         if(img.length){
                             $(img).attr("src", e.target.result);
                         }
                         else{
-                            $(self).closest(".module").find(".field-get_header_bg_image_preview .readonly").html(
+                            $(self).closest(".module").find(".field-get_header_image_preview .readonly").html(
                                 "<img src='" + e.target.result + "' width='150' height='150' style='object-fit: cover;'/>"
                             );
                         }

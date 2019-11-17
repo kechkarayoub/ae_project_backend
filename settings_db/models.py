@@ -11,17 +11,21 @@ class SettingsDb(models.Model):
     class Meta:
         db_table = "settings_db"
 
-    header_bg = models.ImageField(
+    header_image = models.ImageField(
+        help_text=_("Header image"),
+        null=True,
+        upload_to='images/settings_db/header'
+    )
+    header_background_image = models.ImageField(
         help_text=_("Header background image"),
-        null=False,
+        null=True,
         upload_to='images/settings_db/header'
     )
     header_text_color = ColorField(_("Header text color"), default='#FFFFFF')
-    logo = models.ImageField(help_text=_("Logo image"), null=False, upload_to='images/settings_db/header')
+    logo = models.ImageField(help_text=_("Logo image"), null=True, upload_to='images/settings_db/header')
     main_bg_image = models.ImageField(
-        default="",
         help_text=_("Body background image"),
-        null=False,
+        null=True,
         upload_to='images/settings_db/header'
     )
     site_name = models.CharField(_("Site name"), blank=False, max_length=255, null=False)
@@ -60,7 +64,8 @@ class SettingsDb(models.Model):
             return cls.objects.get().to_header_settings()
         except:
             return {
-                "header_bg": "",
+                "header_image": "",
+                "header_background_image": "",
                 "header_text_color": "#FFFFFF",
                 "logo": "",
                 "mainBgImage": "",
@@ -69,10 +74,14 @@ class SettingsDb(models.Model):
 
     def to_header_settings(self):
         return {
-                "header_bg": settings.BACKEND_URL_ROOT + self.header_bg.url,
+                "header_image": (settings.BACKEND_URL_ROOT + self.header_image.url)
+                if self.header_image and self.header_image .url else "",
+                "header_background_image": (settings.BACKEND_URL_ROOT + self.header_background_image.url)
+                if self.header_background_image and self.header_background_image else "",
                 "header_text_color": self.header_text_color,
-                "logo": settings.BACKEND_URL_ROOT + self.logo.url,
-                "mainBgImage": settings.BACKEND_URL_ROOT + self.main_bg_image.url,
+                "logo": (settings.BACKEND_URL_ROOT + self.logo.url) if self.logo and self.logo.url else "",
+                "mainBgImage": (settings.BACKEND_URL_ROOT + self.main_bg_image.url)
+                if self.main_bg_image and self.main_bg_image.url else "",
                 "site_name": SettingsDb.get_site_name(),
         }
 

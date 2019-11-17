@@ -6,9 +6,15 @@ from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 
 
-def get_header_bg_image_preview(obj):
-    if obj.header_bg:
-        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.header_bg)))
+def get_header_image_preview(obj):
+    if obj.header_image:
+        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.header_image)))
+    return _("No file selected!")
+
+
+def get_header_background_image_preview(obj):
+    if obj.header_background_image:
+        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.header_background_image)))
     return _("No file selected!")
 
 
@@ -24,8 +30,12 @@ def get_logo_image_preview(obj):
     return _("No file selected!")
 
 
-get_header_bg_image_preview.allow_tags = True
-get_header_bg_image_preview.short_description = _("Header Bg Image Preview")
+get_header_image_preview.allow_tags = True
+get_header_image_preview.short_description = _("Header Bg Image Preview")
+
+
+get_header_background_image_preview.allow_tags = True
+get_header_background_image_preview.short_description = _("Header Background Image Preview")
 
 
 get_main_bg_image_preview.allow_tags = True
@@ -48,7 +58,7 @@ class SettingsDbAdmin(TranslationAdmin):
             'fields': ['main_bg_image', get_main_bg_image_preview]
         }),
         (_("Header settings"), {
-            'fields': ['site_name', 'header_bg', get_header_bg_image_preview, "header_text_color", "logo", get_logo_image_preview]
+            'fields': ['site_name', 'header_background_image', get_header_background_image_preview, 'header_image', get_header_image_preview, "header_text_color", "logo", get_logo_image_preview]
         }),
         (_("Home page settings"), {
             'fields': [
@@ -59,7 +69,7 @@ class SettingsDbAdmin(TranslationAdmin):
             ]
         }),
     ]
-    readonly_fields = [get_header_bg_image_preview, get_main_bg_image_preview, get_logo_image_preview]
+    readonly_fields = [get_header_background_image_preview, get_header_image_preview, get_main_bg_image_preview, get_logo_image_preview]
 
     def save_model(self, request, obj, form, change):
         if len(SettingsDb.objects.all()) > 0:
