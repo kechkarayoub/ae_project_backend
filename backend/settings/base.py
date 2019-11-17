@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'usefullinks',
     'admin_data',
     'settings_db',
+    'funding',
 ]
 
 MIDDLEWARE = [

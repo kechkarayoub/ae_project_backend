@@ -394,6 +394,7 @@ PROPERTIES_TYPES = [
     ["duplex", _("Duplex")],
     ["quadruplex", _("Quadruplex")],
     ["quintuplex", _("Quintuplex")],
+    ["multiple_housing", _("Multiple housing")],
     ["ground_floor_house", _("Ground floor house")],
     ["two_or_more_storey", _("Two or more storey")],
     ["split_level", _("Split-level")],

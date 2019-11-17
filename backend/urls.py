@@ -26,6 +26,7 @@ urlpatterns = i18n_patterns(
     url(r'^api/items/', include('item.urls')),
     url(r'^api/contact/', include('contact.urls')),
     url(r'^api/testimonials/', include('testimonial.urls')),
+    url(r'^api/funding/', include('funding.urls')),
     url(r'^api/newsletter/', include('newsletter.urls')),
     url(r'^api/usefullinks/', include('usefullinks.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \

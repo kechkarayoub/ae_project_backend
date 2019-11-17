@@ -54,8 +54,17 @@ class ItemAdmin(TranslationAdmin):
         }),
         (_("Characteristics"), {
             'fields': [
-                'lot_size', 'bedrooms_number', 'bathrooms_number', 'property_type', 'building_type', 'construction_age',
-                'has_dining_room', 'has_fireplace', 'has_garage', 'has_swimming_pool', 'has_garden'
+                'annual_income', 'bedrooms_number', 'bathrooms_number', 'building_type', 'ccd', 'construction_age',
+                'cost_per_housing', 'down_payment_required', 'economic_value', 'gross_revenue_multiplier',
+                'property_type', 'apartments_number', 'housing_descriptions', 'has_dining_room', 'has_fireplace',
+                'has_garage', 'has_swimming_pool', 'has_garden', 'lot_size', 'maximum_loan', 'net_income_multiplier',
+                'overall_rate_update'
+            ]
+        }),
+        (_("Added fields"), {
+            'fields': [
+                'added_field_1_label', 'added_field_1_value', 'added_field_2_label', 'added_field_2_value',
+                'added_field_3_label', 'added_field_3_value',
             ]
         }),
         (_("Map options"), {
@@ -67,11 +76,11 @@ class ItemAdmin(TranslationAdmin):
     ]
     inlines = [ItemImagesInline]
     list_filter = [
-        'bathrooms_number', 'bedrooms_number', 'building_type', 'construction_age', 'createdAt', 'has_dining_room',
-        'has_fireplace', 'has_garage', 'has_garden', 'has_swimming_pool', 'is_active', 'lot_size', 'price',
-        'property_type', 'status', 'with_map'
+        'apartments_number', 'bathrooms_number', 'bedrooms_number', 'building_type', 'construction_age', 'createdAt',
+        'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden', 'has_swimming_pool', 'is_active', 'lot_size',
+        'price', 'property_type', 'status', 'with_map'
     ]
-    search_fields = ['label', 'description', 'short_description', 'address']
+    search_fields = ['address', 'description', 'label', 'housing_descriptions', 'short_description']
     readonly_fields = [get_item_image_map_preview]
 
     def save_model(self, request, obj, form, change):

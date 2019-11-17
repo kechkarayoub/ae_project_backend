@@ -25,8 +25,12 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = (
-            'pk', 'address', 'bedrooms_number', 'bathrooms_number', 'building_type', 'city', 'construction_age',
-            'description', 'gps_latitude', 'gps_longitude', 'has_dining_room', 'has_fireplace', 'has_garage',
-            'has_garden', 'has_swimming_pool', 'image_map', 'images', 'is_active', "is_new", 'label', 'lot_size',
-            'property_type','price', 'short_description', 'status', 'with_map'
+            'pk', 'added_field_1_label', 'added_field_1_value', 'added_field_2_label', 'added_field_2_value',
+            'added_field_3_label', 'added_field_3_value', 'address', 'annual_income', 'apartments_number',
+            'bedrooms_number', 'bathrooms_number', 'building_type', 'ccd', 'city', 'construction_age',
+            'cost_per_housing', 'description', 'down_payment_required', 'economic_value', 'gps_latitude',
+            'gps_longitude', 'gross_revenue_multiplier', 'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden',
+            'has_swimming_pool', 'housing_descriptions', 'image_map', 'images', 'is_active', "is_new", 'label',
+            'lot_size', 'maximum_loan', 'net_income_multiplier', 'overall_rate_update', 'property_type', 'price',
+            'short_description', 'status', 'with_map'
         )
