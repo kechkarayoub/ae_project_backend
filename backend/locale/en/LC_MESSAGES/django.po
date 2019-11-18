@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 22:10+0000\n"
+"POT-Creation-Date: 2019-11-18 12:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,38 @@ msgstr ""
 
 #: .\backend\static_variables.py:5
 msgid "Select city"
+msgstr ""
+
+#: .\backend\static_variables.py:41
+msgid "Brome Lake"
+msgstr ""
+
+#: .\backend\static_variables.py:128
+msgid "Greater Sudbury"
+msgstr ""
+
+#: .\backend\static_variables.py:131
+msgid "Haldimand County"
+msgstr ""
+
+#: .\backend\static_variables.py:205
+msgid "Montreal"
+msgstr ""
+
+#: .\backend\static_variables.py:206
+msgid "Montreal West"
+msgstr ""
+
+#: .\backend\static_variables.py:207
+msgid "Montreal-Est"
+msgstr ""
+
+#: .\backend\static_variables.py:257
+msgid "Prince Edward County"
+msgstr ""
+
+#: .\backend\static_variables.py:261
+msgid "Quebec"
 msgstr ""
 
 #: .\backend\static_variables.py:392

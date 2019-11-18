@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 22:10+0000\n"
-"PO-Revision-Date: 2019-11-17 22:01+0000\n"
+"POT-Creation-Date: 2019-11-18 12:14+0000\n"
+"PO-Revision-Date: 2019-11-18 12:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -29,6 +29,38 @@ msgstr "Français"
 #: .\backend\static_variables.py:5
 msgid "Select city"
 msgstr "Choisir une ville"
+
+#: .\backend\static_variables.py:41
+msgid "Brome Lake"
+msgstr "Lac-Brome"
+
+#: .\backend\static_variables.py:128
+msgid "Greater Sudbury"
+msgstr "Grand Sudbury"
+
+#: .\backend\static_variables.py:131
+msgid "Haldimand County"
+msgstr "Comté de Haldimand"
+
+#: .\backend\static_variables.py:205
+msgid "Montreal"
+msgstr "Montréal"
+
+#: .\backend\static_variables.py:206
+msgid "Montreal West"
+msgstr "Montréal West"
+
+#: .\backend\static_variables.py:207
+msgid "Montreal-Est"
+msgstr "Montréal-Est"
+
+#: .\backend\static_variables.py:257
+msgid "Prince Edward County"
+msgstr "Comté de Prince Edward"
+
+#: .\backend\static_variables.py:261
+msgid "Quebec"
+msgstr "Québec"
 
 #: .\backend\static_variables.py:392
 msgid "Select property type"
