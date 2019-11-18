@@ -15,8 +15,7 @@ def global_params(request):
         "home_page_data": SettingsDb.get_home_page_data(),
         "realtor_data": AdminData.get_admin_data(),
         "selects_choices": {
-            "CITIES": [[static_variables.CANADIAN_CITIES[0][0], _(static_variables.CANADIAN_CITIES[0][1])]] +
-            static_variables.CANADIAN_CITIES[1:],
+            "CITIES": [[canadian_city[0], _(canadian_city[1])] for canadian_city in static_variables.CANADIAN_CITIES],
             "PROPERTIES_TYPES": [
                 [property_type[0], _(property_type[1])] for property_type in static_variables.PROPERTIES_TYPES
             ],
