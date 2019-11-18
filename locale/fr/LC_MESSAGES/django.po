@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 22:10+0000\n"
+"POT-Creation-Date: 2019-11-18 12:14+0000\n"
 "PO-Revision-Date: 2019-11-17 22:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -490,83 +490,83 @@ msgstr "Paramètres de l'entête"
 msgid "Home page settings"
 msgstr "Paramètres de la page d'accueil"
 
-#: .\settings_db\models.py:15
+#: .\settings_db\models.py:16
 msgid "Header image"
 msgstr "L'image de l'entête"
 
-#: .\settings_db\models.py:20
+#: .\settings_db\models.py:22
 msgid "Header background image"
 msgstr "L'image d'arrière plan de l'entête"
 
-#: .\settings_db\models.py:24
+#: .\settings_db\models.py:26
 msgid "Header text color"
 msgstr "Couleur du texte de l'entête"
 
-#: .\settings_db\models.py:25
+#: .\settings_db\models.py:27
 msgid "Logo image"
 msgstr "Limage du logo"
 
-#: .\settings_db\models.py:27
+#: .\settings_db\models.py:30
 msgid "Body background image"
 msgstr "L'image principale d'arrière plan"
 
-#: .\settings_db\models.py:31
+#: .\settings_db\models.py:34
 msgid "Site name"
 msgstr "Site name"
 
-#: .\settings_db\models.py:33
+#: .\settings_db\models.py:36
 msgid "Title line 1"
 msgstr "1er ligne du titre"
 
-#: .\settings_db\models.py:34
+#: .\settings_db\models.py:37
 msgid "Title line 2"
 msgstr "2eme ligne du titre"
 
-#: .\settings_db\models.py:36
+#: .\settings_db\models.py:39
 msgid "Row 1 title"
 msgstr "Titre de la première partie"
 
-#: .\settings_db\models.py:37
+#: .\settings_db\models.py:40
 msgid "Row 1 paragraph 1"
 msgstr "1er paragraphe  de la première partie"
 
-#: .\settings_db\models.py:38
+#: .\settings_db\models.py:41
 msgid "Row 1 paragraph 2"
 msgstr "2eme paragraphe  de la première partie"
 
-#: .\settings_db\models.py:39
+#: .\settings_db\models.py:42
 msgid "Row 1 paragraph 3"
 msgstr "3eme paragraphe  de la première partie"
 
-#: .\settings_db\models.py:41
+#: .\settings_db\models.py:44
 msgid "Row 2 title"
 msgstr "Titre de la deuxième  partie"
 
-#: .\settings_db\models.py:42
+#: .\settings_db\models.py:45
 msgid "Row 2 paragraph 1"
 msgstr "1er paragraphe de la deuxième partie"
 
-#: .\settings_db\models.py:43
+#: .\settings_db\models.py:46
 msgid "Row 2 paragraph 2"
 msgstr "2eme paragraphe de la deuxième partie"
 
-#: .\settings_db\models.py:44
+#: .\settings_db\models.py:47
 msgid "Row 2 paragraph 3"
 msgstr "3eme paragraphe de la deuxième partie"
 
-#: .\settings_db\models.py:46
+#: .\settings_db\models.py:49
 msgid "Row 3 title"
 msgstr "Titre de la troisième partie"
 
-#: .\settings_db\models.py:47
+#: .\settings_db\models.py:50
 msgid "Row 3 paragraph 1"
 msgstr "1er paragraphe de la troisième partie"
 
-#: .\settings_db\models.py:48
+#: .\settings_db\models.py:51
 msgid "Row 3 paragraph 2"
 msgstr "2eme paragraphe de la troisième partie"
 
-#: .\settings_db\models.py:49
+#: .\settings_db\models.py:52
 msgid "Row 3 paragraph 3"
 msgstr "3eme paragraphe de la troisième partie"
 
