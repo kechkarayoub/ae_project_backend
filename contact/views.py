@@ -26,12 +26,14 @@ def contact_sell_create(request):
             serializer.save()
             context = {
                 "email": data['email'],
+                "environment": settings.ENVIRONMENT,
                 "first_name": data['first_name'],
                 "last_name": data['last_name'],
-                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
                 "message": data['message'],
                 "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
+                "show_unsubscribe_url": True,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
                 "phone": data['phone']
@@ -63,9 +65,10 @@ def contact_buy_create(request):
         serializer.save()
         context = {
             "email": data['email'],
+            "environment": settings.ENVIRONMENT,
             "first_name": data['first_name'],
             "last_name": data['last_name'],
-            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
             "phone": data['phone'] if 'phone' in data else "",
             "property_information": [
                 (_("Bathrooms number"), data['bathrooms_number_text'] if 'bathrooms_number' in data else ""),
@@ -88,8 +91,9 @@ def contact_buy_create(request):
                 (_("Status"), data['status_text'] if 'status' in data else ""),
                 (_("Swimming pool"), data['has_swimming_pool'] if 'has_swimming_pool' in data else "")
             ],
-            "site_url_root": settings.SITE_URL_ROOT,
             "site_name": SettingsDb.get_site_name(),
+            "site_url_root": settings.SITE_URL_ROOT,
+            "show_unsubscribe_url": True,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images()
         }
@@ -109,12 +113,14 @@ def contact(request):
         data = request.data
         context = {
             "email": data['email'],
+            "environment": settings.ENVIRONMENT,
             "first_name": data['first_name'],
             "last_name": data['last_name'],
-            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
             "message": data['message'],
             "site_name": SettingsDb.get_site_name(),
             "site_url_root": settings.SITE_URL_ROOT,
+            "show_unsubscribe_url": True,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
             "phone": data['phone'],

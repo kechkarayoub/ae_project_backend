@@ -15,12 +15,20 @@
                     <td align="right">
                         <table>
                             <tr>
-                                {% for social_link in social_links %}
-                                <td>
-<!--                                    <a href="{{social_link.url}}"><img src="{{social_links_images|get_value:social_link.fa_icon}}" alt="{{social_link.label}}" width="28px"/></a>-->
-                                    <a href="{{social_link.url}}"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" alt="{{social_link.label}}" width="28px" style="position: relative;"/></a>
-                                </td>
-                                {% endfor %}
+                                {% if environment == 'production' %}
+                                    {% for social_link in social_links %}
+                                        <td>
+                                            <a href="{{social_link.url}}"><img src="{{social_links_images|get_value:social_link.fa_icon}}" alt="{{social_link.label}}" width="28px" style="position: relative;"/></a>
+<!--                                        <a href="{{social_link.url}}"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" alt="{{social_link.label}}" width="28px" style="position: relative;"/></a>-->
+                                        </td>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for social_link in social_links %}
+                                        <td>
+                                            <a href="{{social_link.url}}"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" alt="{{social_link.label}}" width="28px" style="position: relative;"/></a>
+                                        </td>
+                                    {% endfor %}
+                                {% endif %}
                             </tr>
                         </table>
                     </td>
@@ -40,6 +48,7 @@
                         <p>&copy; <a href="{{site_url_root}}">{{site_name}}</a> {% now "Y" %}<p>
                     </td>
                 </tr>
+                {% if show_unsubscribe_url %}
                 <tr>
                     <td style="text-align: center;">
                         {% if unsubscribe_url %}
@@ -49,6 +58,7 @@
                         {% endif %}
                     </td>
                 </tr>
+                {% endif %}
             </table>
         </td>
         <td style="width: 10%;"></td>

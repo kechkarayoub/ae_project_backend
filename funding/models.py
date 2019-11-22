@@ -5,10 +5,22 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 
+class Bank(models.Model):
+    class Meta:
+        db_table = "bank"
+
+    email = models.EmailField(_("Email"), blank=False, max_length=255, null=False)
+    name = models.CharField(_("Name"), blank=False, max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Funding(models.Model):
     class Meta:
         db_table = "funding"
 
+    bank = models.ForeignKey(Bank, null=False, related_name="fundings")
     city = models.CharField(
         _("City"),
         blank=False,
@@ -28,3 +40,7 @@ class Funding(models.Model):
     initials_bg_color = models.CharField(_("Initials background color"), default="#ffffff", max_length=10)
     initials_color = models.CharField(_("Initials color"), default="#000000", max_length=10)
     last_name = models.CharField(_("Last name"), blank=False, max_length=30)
+    user_email = models.EmailField(_("Email"), blank=False, max_length=255, null=False)
+
+    def __str__(self):
+        return str(self.id)

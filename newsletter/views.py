@@ -57,17 +57,19 @@ def newsletter_create(request):
             )
         })
         context = {
+            "environment": settings.ENVIRONMENT,
             "first_name": data['first_name'],
             "footer_text_content": footer_text_content,
             "last_name": data['last_name'],
-            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
             "site_name": SettingsDb.get_site_name(),
             "site_url_root": settings.SITE_URL_ROOT,
             "social_links": get_list_social_links(),
             "social_links_images": get_list_social_links_images(),
             "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
                 site_url_root=settings.SITE_URL_ROOT, user_email=data["email"]
-            )
+            ),
+            "show_unsubscribe_url": True
         }
         html_content = get_template('newsletter/subscription_template.html').render(context)
         text_content = get_template('newsletter/subscription_template.txt').render(context)
@@ -107,20 +109,25 @@ def newsletter_unsubscribe(request):
         if subscription.is_active:
             Newsletter.objects.filter(email=user_email).update(is_active=False)
             context = {
+                "environment": settings.ENVIRONMENT,
                 "first_name": subscription.first_name,
                 "last_name": subscription.last_name,
-                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
                 "resubscribe_url": "{site_url_root}/#/newsletter/resubscribe/{user_email}".format(
                     site_url_root=settings.SITE_URL_ROOT, user_email=subscription.email
                 ),
                 "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
+                "show_unsubscribe_url": True,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images()
             }
             html_content = get_template('newsletter/unsubscription_template.html').render(context)
             text_content = get_template('newsletter/unsubscription_template.txt').render(context)
-            send_email(_("Unsubscription from the newsletter"), text_content, settings.EMAIL_HOST_USER, subscription.email, html_content)
+            send_email(
+                _("Unsubscription from the newsletter"), text_content, settings.EMAIL_HOST_USER, subscription.email,
+                html_content
+            )
             response ={
                 "success": True,
                 "message": _("Your subscription is deactivated!"),
@@ -157,12 +164,14 @@ def newsletter_resubscribe(request):
                 )
             })
             context = {
+                "environment": settings.ENVIRONMENT,
                 "first_name": subscription.first_name,
                 "footer_text_content": footer_text_content,
                 "last_name": subscription.last_name,
-                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
+                "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
                 "site_name": SettingsDb.get_site_name(),
                 "site_url_root": settings.SITE_URL_ROOT,
+                "show_unsubscribe_url": True,
                 "social_links": get_list_social_links(),
                 "social_links_images": get_list_social_links_images(),
                 "unsubscribe_url": "{site_url_root}/#/newsletter/unsubscribe/{user_email}".format(
@@ -171,7 +180,10 @@ def newsletter_resubscribe(request):
             }
             html_content = get_template('newsletter/resubscription_template.html').render(context)
             text_content = get_template('newsletter/resubscription_template.txt').render(context)
-            send_email(_("Resubscription to the newsletter"), text_content, settings.EMAIL_HOST_USER, subscription.email, html_content)
+            send_email(
+                _("Resubscription to the newsletter"), text_content, settings.EMAIL_HOST_USER, subscription.email,
+                html_content
+            )
             response = {
                 "success": True,
                 "message": _("Your subscription is reactivated!"),

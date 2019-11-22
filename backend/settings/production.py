@@ -23,3 +23,5 @@ SITE_URL_ROOT = "http://{}".format(SITE_URL)
 
 BACKEND_URL = "35.182.105.225"
 BACKEND_URL_ROOT = "http://{}".format(BACKEND_URL)
+
+ENVIRONMENT = "production"

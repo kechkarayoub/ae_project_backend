@@ -12,7 +12,7 @@ class FundingSerializer(serializers.ModelSerializer):
         model = Funding
         fields = (
             'city', 'createdAt', 'description', 'first_name', 'image', 'initials_bg_color', 'initials_color',
-            'last_name', 'pk',
+            'last_name', 'pk', 'user_email'
         )
 
     def to_representation(self, instance):

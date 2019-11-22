@@ -131,17 +131,19 @@ def send_new_property_to_newsletters(sender, **kwargs):
     new_item_data = ItemSerializer(new_item).data
     images_items = new_item.images.all()
     context = {
-        "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.png"),
-        "social_links": get_list_social_links(),
-        "social_links_images": get_list_social_links_images(),
-        "site_name": SettingsDb.get_site_name(),
-        "site_url_root": settings.SITE_URL_ROOT,
         "backend_url": settings.BACKEND_URL_ROOT,
+        "environment": settings.ENVIRONMENT,
+        "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
+        "property_description": new_item_data['description'],
+        "property_id": new_item_data['pk'],
+        "property_images": images_items,
         "property_label": new_item_data['label'],
         "property_short_description": new_item_data['short_description'],
-        "property_description": new_item_data['description'],
-        "property_images": images_items,
-        "property_id": new_item_data['pk'],
+        "site_name": SettingsDb.get_site_name(),
+        "site_url_root": settings.SITE_URL_ROOT,
+        "show_unsubscribe_url": True,
+        "social_links": get_list_social_links(),
+        "social_links_images": get_list_social_links_images(),
     }
     html_content = get_template('item/new_item_template.html').render(context)
     text_content = get_template('item/new_item_template.txt').render(context)
