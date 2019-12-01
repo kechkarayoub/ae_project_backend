@@ -9,7 +9,10 @@ def send_email(subject, text_content, from_address, to_address, html_content=Non
     msg = EmailMultiAlternatives(_(subject), text_content, from_address, [to_address])
     if html_content:
         msg.attach_alternative(html_content, "text/html")
-    msg.send()
+    try:
+        msg.send()
+    except Exception as e:
+        pass
 
 
 def generate_random_color(with_complementary=False):
