@@ -15,3 +15,21 @@ translation:
 
 after modificating code:
     sudo service apache2 restart
+
+
+
+import && export database:
+    export:
+        mysqldump -h _hostname -u _user -p _password --port=3306 --single-transaction --routines --triggers --databases  database database2 > file_name.sql
+        example:
+            mysqldump -h ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com -u ae_django_db -p ae_django_db --port=3306 --single-transaction --routines --triggers --databases ae_django_db > current_database.sql
+    import:
+        sudo mysql database_name < file_name.sql
+        example:
+            sudo mysql ae_django_db < current_database.sql
+
+grant access to www-data to store in media:
+    sudo groupadd mediawwwdata
+    sudo adduser www-data mediawwwdata
+    sudo chgrp -R mediawwwdata /home/ubuntu/backend
+    sudo chmod -R 760 /home/ubuntu/backend
