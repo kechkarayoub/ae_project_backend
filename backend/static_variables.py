@@ -204,7 +204,7 @@ CANADIAN_CITIES = [
     ["montmagny", "Montmagny"],
     ["montreal", _("Montreal")],
     ["montreal_west", _("Montreal West")],
-    ["montreal_est", _("Montreal-Est")],
+    ["montreal_est", _("Montreal-East")],
     ["mont_saint_hilaire", "Mont-Saint-Hilaire"],
     ["mont_tremblant", "Mont-Tremblant"],
     ["moose_jaw", "Moose Jaw"],
@@ -414,7 +414,7 @@ PROPERTIES_TYPES = [
 ]
 
 BUILDINGS_TYPES = [
-    ["", _("Select building type")],
+    ["", _("Select a type")],
     ["detached", _("Detached")],
     ["semi_detached", _("Semi detached")],
     ["attached", _("Attached")],
@@ -423,7 +423,7 @@ BUILDINGS_TYPES = [
 ]
 
 BEDROOMS_NUMBER = [
-    ["", _("Select bedrooms number")],
+    ["", _("Select a number")],
     ["1", _("1")],
     ["2", _("2")],
     ["3", _("3")],
@@ -432,7 +432,7 @@ BEDROOMS_NUMBER = [
 ]
 
 BATHROOMS_NUMBER = [
-    ["", _("Select bathrooms number")],
+    ["", _("Select a number")],
     ["1", _("1")],
     ["2", _("2")],
     ["3_", _("3 and more")],

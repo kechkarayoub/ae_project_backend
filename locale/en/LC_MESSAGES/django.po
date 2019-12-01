@@ -3,12 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: .\funding\templates\funding\funding_admin_template.html:14
+#: .\funding\templates\funding\funding_bank_template.html:14
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 12:14+0000\n"
+"POT-Creation-Date: 2019-12-01 20:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +49,10 @@ msgstr ""
 
 #: .\admin_data\models.py:15 .\contact\models.py:15 .\contact\models.py:61
 #: .\contact\templates\contact\contact_buying_template.html:23
-#: .\contact\templates\contact\contact_template.html:24
+#: .\contact\templates\contact\contact_template.html:24 .\funding\models.py:12
+#: .\funding\models.py:43
+#: .\funding\templates\funding\funding_admin_template.html:23
+#: .\funding\templates\funding\funding_bank_template.html:23
 #: .\newsletter\models.py:12
 msgid "Email"
 msgstr ""
@@ -80,13 +85,249 @@ msgstr ""
 msgid "Telephone"
 msgstr ""
 
-#: .\contact\models.py:14 .\contact\models.py:60 .\funding\models.py:20
+#: .\backend\settings\base.py:148
+msgid "English"
+msgstr ""
+
+#: .\backend\settings\base.py:149 .\backend\views.py:59
+msgid "French"
+msgstr ""
+
+#: .\backend\static_variables.py:5
+msgid "Select city"
+msgstr ""
+
+#: .\backend\static_variables.py:41
+msgid "Brome Lake"
+msgstr ""
+
+#: .\backend\static_variables.py:128
+msgid "Greater Sudbury"
+msgstr ""
+
+#: .\backend\static_variables.py:131
+msgid "Haldimand County"
+msgstr ""
+
+#: .\backend\static_variables.py:205
+msgid "Montreal"
+msgstr ""
+
+#: .\backend\static_variables.py:206
+msgid "Montreal West"
+msgstr ""
+
+#: .\backend\static_variables.py:207
+msgid "Montreal-East"
+msgstr ""
+
+#: .\backend\static_variables.py:257
+msgid "Prince Edward County"
+msgstr ""
+
+#: .\backend\static_variables.py:261
+msgid "Quebec"
+msgstr ""
+
+#: .\backend\static_variables.py:392
+msgid "Select property type"
+msgstr ""
+
+#: .\backend\static_variables.py:393
+msgid "Apartment"
+msgstr ""
+
+#: .\backend\static_variables.py:394
+msgid "Duplex"
+msgstr ""
+
+#: .\backend\static_variables.py:395
+msgid "Quadruplex"
+msgstr ""
+
+#: .\backend\static_variables.py:396
+msgid "Quintuplex"
+msgstr ""
+
+#: .\backend\static_variables.py:397
+msgid "Multiple housing"
+msgstr ""
+
+#: .\backend\static_variables.py:398
+msgid "Ground floor house"
+msgstr ""
+
+#: .\backend\static_variables.py:399
+msgid "Two or more storey"
+msgstr ""
+
+#: .\backend\static_variables.py:400
+msgid "Split-level"
+msgstr ""
+
+#: .\backend\static_variables.py:401
+msgid "One-and-a-half-storey house"
+msgstr ""
+
+#: .\backend\static_variables.py:402
+msgid "Mobile home"
+msgstr ""
+
+#: .\backend\static_variables.py:403
+msgid "House"
+msgstr ""
+
+#: .\backend\static_variables.py:404
+msgid "Loft / Studio"
+msgstr ""
+
+#: .\backend\static_variables.py:405
+msgid "Commercial"
+msgstr ""
+
+#: .\backend\static_variables.py:406
+msgid "Industrial"
+msgstr ""
+
+#: .\backend\static_variables.py:407
+msgid "Company (business)"
+msgstr ""
+
+#: .\backend\static_variables.py:408
+msgid "Bulk (block sale)"
+msgstr ""
+
+#: .\backend\static_variables.py:409
+msgid "Land"
+msgstr ""
+
+#: .\backend\static_variables.py:410
+msgid "Lot"
+msgstr ""
+
+#: .\backend\static_variables.py:411
+msgid "Farm"
+msgstr ""
+
+#: .\backend\static_variables.py:412
+msgid "Hobby farm"
+msgstr ""
+
+#: .\backend\static_variables.py:413
+msgid "Other"
+msgstr ""
+
+#: .\backend\static_variables.py:417
+msgid "Select a type"
+msgstr ""
+
+#: .\backend\static_variables.py:418
+msgid "Detached"
+msgstr ""
+
+#: .\backend\static_variables.py:419
+msgid "Semi detached"
+msgstr ""
+
+#: .\backend\static_variables.py:420
+msgid "Attached"
+msgstr ""
+
+#: .\backend\static_variables.py:421
+msgid "Attached corner unit"
+msgstr ""
+
+#: .\backend\static_variables.py:422
+msgid "Quadrex"
+msgstr ""
+
+#: .\backend\static_variables.py:426 .\backend\static_variables.py:435
+msgid "Select a number"
+msgstr ""
+
+#: .\backend\static_variables.py:427 .\backend\static_variables.py:436
+msgid "1"
+msgstr ""
+
+#: .\backend\static_variables.py:428 .\backend\static_variables.py:437
+msgid "2"
+msgstr ""
+
+#: .\backend\static_variables.py:429
+msgid "3"
+msgstr ""
+
+#: .\backend\static_variables.py:430
+msgid "4"
+msgstr ""
+
+#: .\backend\static_variables.py:431
+msgid "5 and more"
+msgstr ""
+
+#: .\backend\static_variables.py:438
+msgid "3 and more"
+msgstr ""
+
+#: .\backend\static_variables.py:442
+msgid "Select construction age"
+msgstr ""
+
+#: .\backend\static_variables.py:443
+msgid "Newly built"
+msgstr ""
+
+#: .\backend\static_variables.py:444
+msgid "10 years and less"
+msgstr ""
+
+#: .\backend\static_variables.py:445
+msgid "More than 10 years"
+msgstr ""
+
+#: .\backend\static_variables.py:449
+msgid "For sale"
+msgstr ""
+
+#: .\backend\static_variables.py:450
+msgid "For rent"
+msgstr ""
+
+#: .\backend\static_variables.py:451
+msgid "Sold"
+msgstr ""
+
+#: .\backend\static_variables.py:455
+msgid "Not specified"
+msgstr ""
+
+#: .\backend\static_variables.py:456
+msgid "Less than 200 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:457
+msgid "200 000$ - 300 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:458
+msgid "300 000$ - 400 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:459
+msgid "400 000$ - 500 000$"
+msgstr ""
+
+#: .\backend\static_variables.py:460
+msgid "More than 500 000$"
+msgstr ""
+
+#: .\contact\models.py:14 .\contact\models.py:60 .\funding\models.py:32
 #: .\item\models.py:69 .\testimonial\models.py:20
 msgid "Created at"
 msgstr ""
 
 #: .\contact\models.py:16 .\contact\models.py:17 .\contact\models.py:62
-#: .\contact\models.py:68 .\funding\models.py:22 .\newsletter\models.py:13
+#: .\contact\models.py:68 .\funding\models.py:34 .\newsletter\models.py:13
 #: .\newsletter\models.py:15 .\testimonial\models.py:21
 msgid "First name"
 msgstr ""
@@ -105,44 +346,44 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: .\contact\models.py:28 .\contact\views.py:71 .\item\models.py:28
+#: .\contact\models.py:28 .\contact\views.py:74 .\item\models.py:28
 msgid "Bathrooms number"
 msgstr ""
 
-#: .\contact\models.py:35 .\contact\views.py:72 .\item\models.py:35
+#: .\contact\models.py:35 .\contact\views.py:75 .\item\models.py:35
 msgid "Bedrooms number"
 msgstr ""
 
-#: .\contact\models.py:42 .\contact\views.py:73 .\item\models.py:42
+#: .\contact\models.py:42 .\contact\views.py:76 .\item\models.py:42
 msgid "Building type"
 msgstr ""
 
-#: .\contact\models.py:48 .\contact\views.py:74 .\funding\models.py:13
+#: .\contact\models.py:48 .\contact\views.py:77 .\funding\models.py:25
 #: .\item\models.py:52 .\testimonial\models.py:13
 msgid "City"
 msgstr ""
 
-#: .\contact\models.py:54 .\contact\views.py:75 .\item\models.py:60
+#: .\contact\models.py:54 .\contact\views.py:78 .\item\models.py:60
 msgid "Construction age"
 msgstr ""
 
-#: .\contact\models.py:63 .\contact\views.py:76 .\item\models.py:82
+#: .\contact\models.py:63 .\contact\views.py:79 .\item\models.py:82
 msgid "Dining room"
 msgstr ""
 
-#: .\contact\models.py:64 .\contact\views.py:77 .\item\models.py:83
+#: .\contact\models.py:64 .\contact\views.py:80 .\item\models.py:83
 msgid "Fireplace"
 msgstr ""
 
-#: .\contact\models.py:65 .\contact\views.py:78 .\item\models.py:84
+#: .\contact\models.py:65 .\contact\views.py:81 .\item\models.py:84
 msgid "Garage"
 msgstr ""
 
-#: .\contact\models.py:66 .\contact\views.py:79 .\item\models.py:85
+#: .\contact\models.py:66 .\contact\views.py:82 .\item\models.py:85
 msgid "Garden"
 msgstr ""
 
-#: .\contact\models.py:67 .\contact\views.py:89 .\item\models.py:86
+#: .\contact\models.py:67 .\contact\views.py:92 .\item\models.py:86
 msgid "Swimming pool"
 msgstr ""
 
@@ -154,23 +395,23 @@ msgstr ""
 msgid "Property size max(m²)"
 msgstr ""
 
-#: .\contact\models.py:71 .\contact\views.py:86
+#: .\contact\models.py:71 .\contact\views.py:89
 msgid "Occupation date"
 msgstr ""
 
-#: .\contact\models.py:72 .\contact\views.py:87
+#: .\contact\models.py:72 .\contact\views.py:90
 msgid "Other characteristics"
 msgstr ""
 
-#: .\contact\models.py:75 .\contact\views.py:84
+#: .\contact\models.py:75 .\contact\views.py:87
 msgid "Price range"
 msgstr ""
 
-#: .\contact\models.py:82 .\contact\views.py:85 .\item\models.py:110
+#: .\contact\models.py:82 .\contact\views.py:88 .\item\models.py:110
 msgid "Property type"
 msgstr ""
 
-#: .\contact\models.py:89 .\contact\views.py:88 .\item\models.py:119
+#: .\contact\models.py:89 .\contact\views.py:91 .\item\models.py:119
 msgid "Status"
 msgstr ""
 
@@ -184,7 +425,9 @@ msgid "Client information"
 msgstr ""
 
 #: .\contact\templates\contact\contact_buying_template.html:19
-#: .\contact\templates\contact\contact_template.html:20
+#: .\contact\templates\contact\contact_template.html:20 .\funding\models.py:13
+#: .\funding\templates\funding\funding_admin_template.html:19
+#: .\funding\templates\funding\funding_bank_template.html:19
 msgid "Name"
 msgstr ""
 
@@ -200,36 +443,49 @@ msgstr ""
 msgid "The client needs more information about this property"
 msgstr ""
 
-#: .\contact\views.py:80
+#: .\contact\views.py:83
 msgid "Property size max"
 msgstr ""
 
-#: .\contact\views.py:82
+#: .\contact\views.py:85
 msgid "Property size min"
 msgstr ""
 
-#: .\contact\views.py:98
+#: .\contact\views.py:102
 msgid "Buying property"
 msgstr ""
 
-#: .\funding\models.py:21 .\item\models.py:70
+#: .\funding\models.py:33 .\item\models.py:70
 msgid "Description"
 msgstr ""
 
-#: .\funding\models.py:24 .\testimonial\models.py:23
+#: .\funding\models.py:36 .\testimonial\models.py:23
 msgid "User's image."
 msgstr ""
 
-#: .\funding\models.py:28 .\testimonial\models.py:27
+#: .\funding\models.py:40 .\testimonial\models.py:27
 msgid "Initials background color"
 msgstr ""
 
-#: .\funding\models.py:29 .\testimonial\models.py:28
+#: .\funding\models.py:41 .\testimonial\models.py:28
 msgid "Initials color"
 msgstr ""
 
-#: .\funding\models.py:30 .\testimonial\models.py:29
+#: .\funding\models.py:42 .\testimonial\models.py:29
 msgid "Last name"
+msgstr ""
+
+#: .\funding\templates\funding\funding_admin_template.html:6
+#: .\funding\templates\funding\funding_bank_template.html:6
+msgid "Client funding!"
+msgstr ""
+
+#: .\funding\views.py:36
+msgid "Client funding email"
+msgstr ""
+
+#: .\funding\views.py:62
+msgid "An error has occurred. Check your connection."
 msgstr ""
 
 #: .\item\admin.py:55
@@ -349,21 +605,17 @@ msgstr ""
 msgid "With map"
 msgstr ""
 
-#: .\item\models.py:140
+#: .\item\models.py:140 .\item\models.py:146
 msgid "Item's image."
 msgstr ""
 
-#: .\item\models.py:146
-msgid "Image's item."
-msgstr ""
-
-#: .\item\templates\item\email_template.html:46
-#: .\item\templates\item\email_template.html:48
+#: .\item\templates\item\email_template.html:55
+#: .\item\templates\item\email_template.html:57
 msgid "Not interested to our messages?"
 msgstr ""
 
-#: .\item\templates\item\email_template.html:46
-#: .\item\templates\item\email_template.html:48
+#: .\item\templates\item\email_template.html:55
+#: .\item\templates\item\email_template.html:57
 msgid "Unsubscribe"
 msgstr ""
 
@@ -375,7 +627,7 @@ msgstr ""
 msgid "More infos..."
 msgstr ""
 
-#: .\item\views.py:149
+#: .\item\views.py:151
 msgid "New property"
 msgstr ""
 
@@ -426,38 +678,38 @@ msgid "You canceled your subscription by mistake?"
 msgstr ""
 
 #: .\newsletter\templates\newsletter\unsubscription_template.html:27
-msgid "Resubscribe from here"
+msgid "Re-subscribe from here"
 msgstr ""
 
-#: .\newsletter\views.py:75
+#: .\newsletter\views.py:77
 msgid "Subscription to the newsletter"
 msgstr ""
 
-#: .\newsletter\views.py:103 .\newsletter\views.py:147
+#: .\newsletter\views.py:105 .\newsletter\views.py:154
 msgid "Sorry, you haven't any subscription in our newsletter!"
 msgstr ""
 
-#: .\newsletter\views.py:123
+#: .\newsletter\views.py:128
 msgid "Unsubscription from the newsletter"
 msgstr ""
 
-#: .\newsletter\views.py:126
+#: .\newsletter\views.py:133
 msgid "Your subscription is deactivated!"
 msgstr ""
 
-#: .\newsletter\views.py:131
+#: .\newsletter\views.py:138
 msgid "Your subscription is already deactivated!"
 msgstr ""
 
-#: .\newsletter\views.py:174
+#: .\newsletter\views.py:184
 msgid "Resubscription to the newsletter"
 msgstr ""
 
-#: .\newsletter\views.py:177
+#: .\newsletter\views.py:189
 msgid "Your subscription is reactivated!"
 msgstr ""
 
-#: .\newsletter\views.py:182
+#: .\newsletter\views.py:194
 msgid "Your subscription is already activated!"
 msgstr ""
 
@@ -596,244 +848,3 @@ msgstr ""
 #: .\usefullinks\views.py:28
 msgid "The Seller's Guide (PDF)"
 msgstr ""
-
-#: .\backend\settings\base.py:148
-msgid "English"
-msgstr ""
-
-#: .\backend\settings\base.py:149 .\backend\views.py:60
-msgid "French"
-msgstr ""
-
-#: .\backend\static_variables.py:5
-msgid "Select city"
-msgstr ""
-
-#: .\backend\static_variables.py:41
-msgid "Brome Lake"
-msgstr ""
-
-#: .\backend\static_variables.py:128
-msgid "Greater Sudbury"
-msgstr ""
-
-#: .\backend\static_variables.py:131
-msgid "Haldimand County"
-msgstr ""
-
-#: .\backend\static_variables.py:205
-msgid "Montreal"
-msgstr ""
-
-#: .\backend\static_variables.py:206
-msgid "Montreal West"
-msgstr ""
-
-#: .\backend\static_variables.py:207
-msgid "Montreal-Est"
-msgstr ""
-
-#: .\backend\static_variables.py:257
-msgid "Prince Edward County"
-msgstr ""
-
-#: .\backend\static_variables.py:261
-msgid "Quebec"
-msgstr ""
-
-#: .\backend\static_variables.py:392
-msgid "Select property type"
-msgstr ""
-
-#: .\backend\static_variables.py:393
-msgid "Apartment"
-msgstr ""
-
-#: .\backend\static_variables.py:394
-msgid "Duplex"
-msgstr ""
-
-#: .\backend\static_variables.py:395
-msgid "Quadruplex"
-msgstr ""
-
-#: .\backend\static_variables.py:396
-msgid "Quintuplex"
-msgstr ""
-
-#: .\backend\static_variables.py:397
-msgid "Multiple housing"
-msgstr ""
-
-#: .\backend\static_variables.py:398
-msgid "Ground floor house"
-msgstr ""
-
-#: .\backend\static_variables.py:399
-msgid "Two or more storey"
-msgstr ""
-
-#: .\backend\static_variables.py:400
-msgid "Split-level"
-msgstr ""
-
-#: .\backend\static_variables.py:401
-msgid "One-and-a-half-storey house"
-msgstr ""
-
-#: .\backend\static_variables.py:402
-msgid "Mobile home"
-msgstr ""
-
-#: .\backend\static_variables.py:403
-msgid "House"
-msgstr ""
-
-#: .\backend\static_variables.py:404
-msgid "Loft / Studio"
-msgstr ""
-
-#: .\backend\static_variables.py:405
-msgid "Commercial"
-msgstr ""
-
-#: .\backend\static_variables.py:406
-msgid "Industrial"
-msgstr ""
-
-#: .\backend\static_variables.py:407
-msgid "Company (business)"
-msgstr ""
-
-#: .\backend\static_variables.py:408
-msgid "Bulk (block sale)"
-msgstr ""
-
-#: .\backend\static_variables.py:409
-msgid "Land"
-msgstr ""
-
-#: .\backend\static_variables.py:410
-msgid "Lot"
-msgstr ""
-
-#: .\backend\static_variables.py:411
-msgid "Farm"
-msgstr ""
-
-#: .\backend\static_variables.py:412
-msgid "Hobby farm"
-msgstr ""
-
-#: .\backend\static_variables.py:413
-msgid "Other"
-msgstr ""
-
-#: .\backend\static_variables.py:417
-msgid "Select building type"
-msgstr ""
-
-#: .\backend\static_variables.py:418
-msgid "Detached"
-msgstr ""
-
-#: .\backend\static_variables.py:419
-msgid "Semi detached"
-msgstr ""
-
-#: .\backend\static_variables.py:420
-msgid "Attached"
-msgstr ""
-
-#: .\backend\static_variables.py:421
-msgid "Attached corner unit"
-msgstr ""
-
-#: .\backend\static_variables.py:422
-msgid "Quadrex"
-msgstr ""
-
-#: .\backend\static_variables.py:426
-msgid "Select bedrooms number"
-msgstr ""
-
-#: .\backend\static_variables.py:427 .\backend\static_variables.py:436
-msgid "1"
-msgstr ""
-
-#: .\backend\static_variables.py:428 .\backend\static_variables.py:437
-msgid "2"
-msgstr ""
-
-#: .\backend\static_variables.py:429
-msgid "3"
-msgstr ""
-
-#: .\backend\static_variables.py:430
-msgid "4"
-msgstr ""
-
-#: .\backend\static_variables.py:431
-msgid "5 and more"
-msgstr ""
-
-#: .\backend\static_variables.py:435
-msgid "Select bathrooms number"
-msgstr ""
-
-#: .\backend\static_variables.py:438
-msgid "3 and more"
-msgstr ""
-
-#: .\backend\static_variables.py:442
-msgid "Select construction age"
-msgstr ""
-
-#: .\backend\static_variables.py:443
-msgid "Newly built"
-msgstr ""
-
-#: .\backend\static_variables.py:444
-msgid "10 years and less"
-msgstr ""
-
-#: .\backend\static_variables.py:445
-msgid "More than 10 years"
-msgstr ""
-
-#: .\backend\static_variables.py:449
-msgid "For sale"
-msgstr ""
-
-#: .\backend\static_variables.py:450
-msgid "For rent"
-msgstr ""
-
-#: .\backend\static_variables.py:451
-msgid "Sold"
-msgstr ""
-
-#: .\backend\static_variables.py:455
-msgid "Not specified"
-msgstr ""
-
-#: .\backend\static_variables.py:456
-msgid "Less than 200 000$"
-msgstr ""
-
-#: .\backend\static_variables.py:457
-msgid "200 000$ - 300 000$"
-msgstr ""
-
-#: .\backend\static_variables.py:458
-msgid "300 000$ - 400 000$"
-msgstr ""
-
-#: .\backend\static_variables.py:459
-msgid "400 000$ - 500 000$"
-msgstr ""
-
-#: .\backend\static_variables.py:460
-msgid "More than 500 000$"
-msgstr ""
-

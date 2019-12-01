@@ -143,7 +143,7 @@ class ItemImage(models.Model):
     item = models.ForeignKey(
         Item,
         db_index=True,
-        help_text=_("Image's item."),
+        help_text=_("Item's image."),
         on_delete=models.CASCADE,
         related_name="images"
     )
