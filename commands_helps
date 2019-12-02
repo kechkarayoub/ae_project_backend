@@ -29,7 +29,8 @@ import && export database:
             sudo mysql ae_django_db < current_database.sql
 
 grant access to www-data to store in media:
-    sudo groupadd mediawwwdata
-    sudo adduser www-data mediawwwdata
-    sudo chgrp -R mediawwwdata /home/ubuntu/backend
-    sudo chmod -R 760 /home/ubuntu/backend
+    sudo chown -R www-data:www-data /home/ubuntu/backend/media/
+    sudo chmod -R 770 /home/ubuntu/backend/media/
+
+smtp error:
+    https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp
