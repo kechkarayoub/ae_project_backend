@@ -249,6 +249,19 @@ My be it must run:
 
 
 
+Translation:
+    Install gettext:
+        $ sudo apt-get install gettext
+    Mekemessages:
+        $ python manage.py makemessages --locale=fr --locale=en
+        or
+        $ python manage.py makemessages --all
+    Compilemessages:
+        $ python manage.py compilemessages --locale=fr --locale=en
+        or
+        $ python manage.py compilemessages
+
+
 
 
 
@@ -262,3 +275,6 @@ Restart/Start nginx:
     $ sudo service nginx restart/start
 Stop apache:
     $ sudo service nginx stop
+
+
+
