@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-IMAGES_FOLDER = "images/"
+IMAGES_FOLDER = "preprod/images/"
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
@@ -13,8 +13,7 @@ DATABASES = {
         "PORT": "3306"
     }
 }
-
-SERVER_URL = '167.114.155.74'
+SERVER_URL = '15.222.49.90'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
@@ -26,4 +25,4 @@ CORS_ORIGIN_WHITELIST = (
        SITE_URL_ROOT,
 )
 
-ENVIRONMENT = "production"
+ENVIRONMENT = "preproduction"

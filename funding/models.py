@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from backend import static_variables
 from backend.utils import choices_format_to_tuple
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -35,7 +36,7 @@ class Funding(models.Model):
     image = models.ImageField(
         help_text=_("User's image."),
         null=True,
-        upload_to='images/funding/UsersImages'  # lien de l'image: /media/images/funding/UsersImages/*.*
+        upload_to=settings.IMAGES_FOLDER + 'funding/UsersImages'  # lien de l'image: /media/images/funding/UsersImages/*.*
     )
     initials_bg_color = models.CharField(_("Initials background color"), default="#ffffff", max_length=10)
     initials_color = models.CharField(_("Initials color"), default="#000000", max_length=10)

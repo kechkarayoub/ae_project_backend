@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from backend import static_variables
 from backend.utils import choices_format_to_tuple
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -22,7 +23,7 @@ class Testimonial(models.Model):
     image = models.ImageField(
         help_text=_("User's image."),
         null=True,
-        upload_to='images/testimonial/UsersImages'  # lien de l'image: /media/images/testimonial/UsersImages/*.*
+        upload_to=settings.IMAGES_FOLDER + 'testimonial/UsersImages'  # lien de l'image: /media/images/testimonial/UsersImages/*.*
     )
     initials_bg_color = models.CharField(_("Initials background color"), default="#ffffff", max_length=10)
     initials_color = models.CharField(_("Initials color"), default="#000000", max_length=10)

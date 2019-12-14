@@ -18,7 +18,7 @@ class AdminData(models.Model):
     full_name = models.CharField(_("Full name"), blank=False, default="ELMAHBOUBI Abdjalil", max_length=255, null=False)
     gps_latitude = models.FloatField(_("GPS Latitude"), blank=True, default=45.50866990, null=True)
     gps_longitude = models.FloatField(_("GPS Longitude"), blank=True, default=-73.55399250, null=True)
-    image = models.ImageField(help_text=_("Admin's image"), null=False, upload_to='images/admin_data')
+    image = models.ImageField(help_text=_("Admin's image"), null=False, upload_to=settings.IMAGES_FOLDER + 'admin_data')
     tel = models.CharField(_("Telephone"), blank=False, default="514 967 3743", max_length=255, null=False)
 
     def __str__(self):

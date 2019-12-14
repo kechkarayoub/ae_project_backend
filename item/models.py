@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
-from django.db import models
 from backend import static_variables
 from backend.utils import choices_format_to_tuple
-import os
-import datetime
+from django.conf import settings
+from django.db import models
 from django.utils.translation import ugettext as _
+import datetime
+import os
 
 
 class Item(models.Model):
@@ -88,7 +89,7 @@ class Item(models.Model):
     image_map = models.ImageField(
         help_text=_("Item's map's image."),
         null=True, blank=True,
-        upload_to='images/item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
+        upload_to=settings.IMAGES_FOLDER + 'item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
     )
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
     is_active = models.BooleanField(_("Is active"), default=True)
@@ -138,7 +139,7 @@ class ItemImage(models.Model):
 
     image = models.ImageField(
         help_text=_("Item's image."),
-        upload_to='images/item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
+        upload_to=settings.IMAGES_FOLDER + 'item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
     )
     item = models.ForeignKey(
         Item,

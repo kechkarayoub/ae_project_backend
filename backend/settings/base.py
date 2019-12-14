@@ -166,9 +166,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',
-)
 
 # email params
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
