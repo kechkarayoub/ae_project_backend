@@ -22,7 +22,7 @@ from django.contrib import admin
 
 urlpatterns = i18n_patterns(
     url(r'^', admin.site.urls, name="root"),
-    url(r'^admin/', admin.site.urls, name="admin_root"),
+    # url(r'^admin/', admin.site.urls, name="admin_root"),
     url(r'^api/global_params/', views.global_params, name="global_params"),
     url(r'^api/items/', include('item.urls')),
     url(r'^api/contact/', include('contact.urls')),
