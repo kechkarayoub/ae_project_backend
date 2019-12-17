@@ -65,6 +65,7 @@ class ContactBuy(models.Model):
     has_garage = models.BooleanField(_("Garage"), default=False)
     has_garden = models.BooleanField(_("Garden"), default=False)
     has_swimming_pool = models.BooleanField(_("Swimming pool"), default=False)
+    is_active = models.BooleanField(default=True)
     last_name = models.CharField(_("First name"), blank=False, max_length=30)
     lot_size_min = models.PositiveIntegerField(_("Property size min(m²)"), default=0,)
     lot_size_max = models.PositiveIntegerField(_("Property size max(m²)"), default=0,)
