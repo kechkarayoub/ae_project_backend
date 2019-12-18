@@ -41,7 +41,7 @@ class ContactBuyAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_context=None):
         if not request.META['QUERY_STRING'] and \
                 not request.META.get('HTTP_REFERER', '').startswith(request.build_absolute_uri()):
-            return HttpResponseRedirect(request.path + "?has_been_processed__exact=1")
+            return HttpResponseRedirect(request.path + "?has_been_processed__exact=0")
         return super(ContactBuyAdmin, self).changelist_view(request, extra_context=extra_context)
 
     def has_add_permission(self, request, obj=None):
