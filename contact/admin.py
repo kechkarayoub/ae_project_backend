@@ -28,8 +28,8 @@ class ContactBuyAdmin(admin.ModelAdmin):
             'contact/js/contact_buy_form.js',
         )
 
-    list_display = ('first_name', 'last_name', 'email', 'is_active',)
-    list_filter = ['is_active', 'createdAt',  'has_dining_room', 'has_fireplace', 'has_garage', 'has_swimming_pool', 'has_garden']
+    list_display = ('first_name', 'last_name', 'email', 'has_been_processed',)
+    list_filter = ['has_been_processed', 'createdAt',  'has_dining_room', 'has_fireplace', 'has_garage', 'has_swimming_pool', 'has_garden']
     ordering = ('-createdAt',)
     search_fields = ['first_name', 'last_name', 'email']
 
@@ -41,7 +41,7 @@ class ContactBuyAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_context=None):
         if not request.META['QUERY_STRING'] and \
                 not request.META.get('HTTP_REFERER', '').startswith(request.build_absolute_uri()):
-            return HttpResponseRedirect(request.path + "?is_active__exact=1")
+            return HttpResponseRedirect(request.path + "?has_been_processed__exact=1")
         return super(ContactBuyAdmin, self).changelist_view(request, extra_context=extra_context)
 
     def has_add_permission(self, request, obj=None):
