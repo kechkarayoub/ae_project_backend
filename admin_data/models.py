@@ -11,7 +11,7 @@ class AdminData(models.Model):
         db_table = "admin_data"
 
     address = models.CharField(_("Address"), blank=False, max_length=510, null=False)
-    agency_name = models.CharField(_("Royal Le page Triomphe"), blank=False, max_length=255, null=False)
+    agency_name = models.CharField(_("Agency name"), blank=False, max_length=255, null=False)
     email = models.CharField(_("Email"), blank=False, default="Jalil.elmahboubi@gmail.com", max_length=255, null=False)
     enable_map = models.BooleanField(_("Enable map"), default=True)
     fax = models.CharField(_("Fax"), blank=False, default="450 462 1509", max_length=255, null=False)
