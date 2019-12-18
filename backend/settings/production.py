@@ -27,3 +27,6 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 ENVIRONMENT = "production"
+
+EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
+EMAIL_HOST_PASSWORD = "epassword.com"

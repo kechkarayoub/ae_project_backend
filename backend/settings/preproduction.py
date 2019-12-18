@@ -26,3 +26,6 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 ENVIRONMENT = "preproduction"
+
+EMAIL_HOST_USER = "elmahboub.preprod@gmail.com"
+EMAIL_HOST_PASSWORD = "epassword.preprod"

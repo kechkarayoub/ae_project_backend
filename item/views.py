@@ -158,7 +158,7 @@ def send_new_property_to_newsletters(sender, **kwargs):
         image = MIMEImage(item_image.image.read(), _subtype=ext)
         image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
         msg.attach(image)
-    try:
-        msg.send()
-    except Exception as e:
-        pass
+    # try:
+    msg.send()
+    # except Exception as e:
+    #     pass

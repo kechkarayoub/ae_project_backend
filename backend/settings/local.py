@@ -23,3 +23,6 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 ENVIRONMENT = "development"
+
+EMAIL_HOST_USER = "buildingssite2019@gmail.com"
+EMAIL_HOST_PASSWORD = "building2019"
