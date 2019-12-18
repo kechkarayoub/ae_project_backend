@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 try:
+    # separating preproduction from production
     from .active_settings import ACTIVE_SETTINGS
 except:
     ACTIVE_SETTINGS = "backend.settings.production"
