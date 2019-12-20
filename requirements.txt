@@ -11,6 +11,8 @@ python-gettext==4.0
 pytz==2019.2
 django-modeltranslation==0.13.3
 django-colorfield==0.1.15
+django-storages==1.8
+django-dbbackup==3.2.0
 
 
 

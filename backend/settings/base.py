@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'admin_data',
     'settings_db',
     'funding',
+    'dbbackup'
 ]
 
 MIDDLEWARE = [
