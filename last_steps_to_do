@@ -1,5 +1,6 @@
-1) Activating virtualenv
-2) Run:
+1) Pull new code
+2) Activating virtualenv
+3) Run:
     $ pip3 install dropbox==9.4.0
     $ pip3 install django-storages==1.8
     $ pip3 install django-dbbackup==3.2.0
@@ -7,10 +8,10 @@
     $ python manage.py migrate django_cron --settings=backend.settings.preproduction
     $ python manage.py makemigrations --settings=backend.settings.preproduction
     $ python manage.py migrate --settings=backend.settings.preproduction
-3) Run these commands on linux:
+4) Run these commands on linux:
     $ crontab -e
     if for test:
         $ 0 0 * * MON source /home/ubuntu/.bashrc && source /home/ubuntu/venv/bin/activate && python /home/ubuntu/backend/manage.py runcrons --settings=backend.settings.preproduction > /home/ubuntu/cronjob.log
     else:
         $ */5 * * * * source /home/ubuntu/.bashrc && source /home/ubuntu/venv/bin/activate && python /home/ubuntu/backend/manage.py runcrons --settings=backend.settings.preproduction > /home/ubuntu/cronjob.log
-4) Remove line: RUN_EVERY_MINS = 1 from backend/settings_db/views.py
+5) Remove line: RUN_EVERY_MINS = 1 from backend/settings_db/views.py
