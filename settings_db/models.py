@@ -2,8 +2,8 @@
 
 
 from colorfield.fields import ColorField
-from django.db import models
 from django.conf import settings
+from django.db import models
 from django.utils.translation import ugettext as _
 
 
@@ -116,3 +116,12 @@ class SettingsDb(models.Model):
             "home_page_row_3_p_2": self.home_page_row_3_p_2,
             "home_page_row_3_p_3": self.home_page_row_3_p_3,
         }
+
+
+class ExecutedBackup(models.Model):
+    class Meta:
+        db_table = "executed_backup"
+
+    comment = models.TextField(default="")
+    createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
+    is_automatically = models.BooleanField(_("Is automatically"), default=True)

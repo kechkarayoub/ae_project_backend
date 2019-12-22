@@ -31,7 +31,6 @@ ENVIRONMENT = "production"
 EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.com"
 
-DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DBBACKUP_STORAGE_OPTIONS = {
     'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAADVwULSLq4Je33iFKEO8Odbg9I_Y3TI1wSHa7ZTSrEwx7',
 }

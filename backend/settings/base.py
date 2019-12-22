@@ -57,8 +57,13 @@ INSTALLED_APPS = [
     'admin_data',
     'settings_db',
     'funding',
-    'dbbackup'
+    'dbbackup',
+    'django_cron'
 ]
+
+CRON_CLASSES = (
+    "settings_db.views.BackupCronJob",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -173,3 +178,6 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_ROOT_PATH = os.path.join(BASE_DIR, 'data_backup')
