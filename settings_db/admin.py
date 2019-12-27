@@ -92,20 +92,23 @@ class ExecutedBackupAdmin(admin.ModelAdmin):
     search_fields = ['comment']
 
     def save_model(self, request, obj, form, change):
-        if not obj.id:
-            if not ExecutedBackup.objects.filter(createdAt__gte=datetime.now()-timedelta(hours=1)).exists():
-                if "linux" in sys.platform:
-                    kwargs = {}
-                    if settings.ENVIRONMENT == "preproduction":
-                        kwargs.update({
-                            "settings": "backend.settings.preproduction"
-                        })
-                    elif settings.ENVIRONMENT == "production":
-                        kwargs.update({
-                            "settings": "backend.settings.production"
-                        })
-                    management.call_command('dbbackup', **kwargs)
-                    management.call_command('mediabackup', **kwargs)
+        # if not obj.id:
+        #     if not ExecutedBackup.objects.filter(createdAt__gte=datetime.now()-timedelta(hours=1)).exists():
+        #         if "linux" in sys.platform:
+        #             kwargs = {}
+        #             if settings.ENVIRONMENT == "preproduction":
+        #                 kwargs.update({
+        #                     "settings": "backend.settings.preproduction"
+        #                 })
+        #             elif settings.ENVIRONMENT == "production":
+        #                 kwargs.update({
+        #                     "settings": "backend.settings.production"
+        #                 })
+        #             try:
+        #                 management.call_command('dbbackup', **kwargs)
+        #                 management.call_command('mediabackup', **kwargs)
+        #             except:
+        #                 pass
         super(ExecutedBackupAdmin, self).save_model(request, obj, form, change)
 
 

@@ -4,14 +4,13 @@
     $ pip3 install dropbox==9.4.0
     $ pip3 install django-storages==1.8
     $ pip3 install django-dbbackup==3.2.0
-    $ pip3 install django-cron==0.5.1
+    $ pip3 install celery==3.1.18
+    $ pip3 install redis==2.10.3
+    $ pip3 install django-celery-beat==1.5.0
+    $ pip3 install django-celery-results==1.1.2
     $ python manage.py migrate django_cron --settings=backend.settings.preproduction
     $ python manage.py makemigrations --settings=backend.settings.preproduction
     $ python manage.py migrate --settings=backend.settings.preproduction
-4) Run these commands on linux:
-    $ crontab -e
-    if for test:
-        $ 0 0 * * MON source /home/ubuntu/.bashrc && source /home/ubuntu/venv/bin/activate && python /home/ubuntu/backend/manage.py runcrons --settings=backend.settings.preproduction > /home/ubuntu/cronjob.log
-    else:
-        $ */5 * * * * source /home/ubuntu/.bashrc && source /home/ubuntu/venv/bin/activate && python /home/ubuntu/backend/manage.py runcrons --settings=backend.settings.preproduction > /home/ubuntu/cronjob.log
-5) Remove line: RUN_EVERY_MINS = 1 from backend/settings_db/views.py
+4) $ sudo apt install redis-server
+$ redis-server --port 6360
+$ redis-cli -p 6360

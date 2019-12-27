@@ -28,5 +28,5 @@ EMAIL_HOST_USER = "buildingssite2019@gmail.com"
 EMAIL_HOST_PASSWORD = "building2019"
 
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'ZqIdsaSERAAAAAAAAAAADfAw7nGE95vDGKV0etyohb-NQbSSr83zcGyc22DHyg0s',
+    'oauth2_access_token': 'ZqIdsaSERAAAAAAAAAAAIQu77bKBlxLw3S19dQoPCbcGax7AyLxVw7nyBe96lkrF',
 }

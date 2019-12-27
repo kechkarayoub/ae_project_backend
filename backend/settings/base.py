@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '1g*5+je)eg@((r8)4wk2g1aj)6f_n$1m!nqryq8p=*d@i@4xc4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -57,13 +57,14 @@ INSTALLED_APPS = [
     'admin_data',
     'settings_db',
     'funding',
-    'dbbackup',
-    'django_cron'
+    'dbbackup'
 ]
 
-CRON_CLASSES = (
-    "settings_db.views.BackupCronJob",
-)
+CELERY_BROKER_URL = 'redis://localhost:6360'
+CELERY_RESULT_BACKEND = 'redis://localhost:6360'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,21 +102,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+IMAGES_FOLDER = "images/"
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "ae_django_db",
-        "USER": "ae_django_db",
-        "PASSWORD": "ae_django_db",
-        "HOST": "ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com",
-        "PORT": "3306"
-    }
-}
+# DATABASES = {
+#     'default': {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "ae_django_db",
+#         "USER": "ae_django_db",
+#         "PASSWORD": "ae_django_db",
+#         "HOST": "ae-django-db.cpg8jmousblr.ca-central-1.rds.amazonaws.com",
+#         "PORT": "3306"
+#     }
+# }
 
 
 # Password validation
