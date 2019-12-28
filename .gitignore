@@ -67,7 +67,7 @@ instance/
 .scrapy
 
 # media
-#media/
+media/
 media/dev/
 media/preprod/
 
