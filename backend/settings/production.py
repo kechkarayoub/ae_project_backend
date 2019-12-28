@@ -34,5 +34,5 @@ EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.com"
 
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAAEc7X5aNBYhoW4aDC8Y7Yl0jObHnbILfmRTUvMYIfQT46',
+    'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAAFksZ5TCdI4CkWcT1uydZhGDTZNmKHbIYPWmwCN92Sb-Y',
 }
