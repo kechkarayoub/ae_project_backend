@@ -13,8 +13,10 @@ DATABASES = {
         "PORT": "3306"
     }
 }
-
-SERVER_URL = '167.114.155.74'
+try:
+    from .prod_conf import SERVER_URL
+except:
+    SERVER_URL = '167.114.155.74'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
