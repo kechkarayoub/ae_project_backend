@@ -182,4 +182,3 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_ROOT_PATH = os.path.join(BASE_DIR, 'data_backup')

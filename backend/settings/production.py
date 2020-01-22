@@ -13,8 +13,10 @@ DATABASES = {
         "PORT": "3306"
     }
 }
-
-SERVER_URL = '167.114.155.74'
+try:
+    from .prod_conf import SERVER_URL
+except:
+    SERVER_URL = '167.114.155.74'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
@@ -32,7 +34,7 @@ EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.com"
 
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAADVwULSLq4Je33iFKEO8Odbg9I_Y3TI1wSHa7ZTSrEwx7',
+    'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAAFksZ5TCdI4CkWcT1uydZhGDTZNmKHbIYPWmwCN92Sb-Y',
 }
 
 

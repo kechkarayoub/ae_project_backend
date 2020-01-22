@@ -67,7 +67,7 @@ instance/
 .scrapy
 
 # media
-#media/
+media/
 media/dev/
 media/preprod/
 
@@ -119,4 +119,6 @@ venv3.bak/
 
 server_settings.json
 
+
+prod_conf.py
 
