@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from .models import ExecutedBackup
+# from .models import ExecutedBackup
 from datetime import datetime, timedelta
 from django_cron import CronJobBase, Schedule
 from django.conf import settings

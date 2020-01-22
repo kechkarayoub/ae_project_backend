@@ -1,9 +1,10 @@
 1) Pull new code
 2) Activating virtualenv
 3) Run:
-    $ pip3 install dropbox==9.4.0
+    $ pip3 install dropbox==9.4.0 django-storages==1.8 django-dbbackup==3.2.0 celery==3.1.18 redis==2.10.3 django-celery-beat==1.5.0 django-celery-results==1.1.2
     $ pip3 install django-storages==1.8
     $ pip3 install django-dbbackup==3.2.0
+    for celery:
     $ pip3 install celery==3.1.18
     $ pip3 install redis==2.10.3
     $ pip3 install django-celery-beat==1.5.0
@@ -11,6 +12,7 @@
     $ python manage.py migrate django_cron --settings=backend.settings.preproduction
     $ python manage.py makemigrations --settings=backend.settings.preproduction
     $ python manage.py migrate --settings=backend.settings.preproduction
+
 4) $ sudo apt install redis-server
 $ redis-server --port 6360
 $ redis-cli -p 6360

@@ -230,6 +230,45 @@ server {
 #}
 
 
+For existing database:
+
+    Empty the django_migrations table:
+        Connect to mysql and choose database then run:
+            $ delete from django_migrations
+
+    For every app, delete its migrations folder: rm -rf <app>/migrations/:
+        Run:
+        $ rm -rf <app>/migrations/
+        Exemple:
+            rm -rf admin_data/migrations/
+            rm -rf contact/migrations/
+            rm -rf funding/migrations/
+            rm -rf item/migrations/
+            rm -rf newsletter/migrations/
+            rm -rf settings_db/migrations/
+            rm -rf sociallink/migrations/
+            rm -rf testimonial/migrations/
+            rm -rf usefullinks/migrations/
+    Reset the migrations for the "built-in" apps:
+        $ python manage.py migrate --fake --settings=backend.settings.production
+    For each app run:
+        $ python manage.py makemigrations <app> --settings=backend.settings.production
+        Take care of dependencies (models with ForeignKey's should run after their parent model).
+        Example:
+            python manage.py makemigrations admin_data --settings=backend.settings.production
+            python manage.py makemigrations contact --settings=backend.settings.production
+            python manage.py makemigrations funding --settings=backend.settings.production
+            python manage.py makemigrations item --settings=backend.settings.production
+            python manage.py makemigrations newsletter --settings=backend.settings.production
+            python manage.py makemigrations settings_db --settings=backend.settings.production
+            python manage.py makemigrations sociallink --settings=backend.settings.production
+            python manage.py makemigrations testimonial --settings=backend.settings.production
+            python manage.py makemigrations usefullinks --settings=backend.settings.production
+    Finally Run:
+        $ python manage.py migrate --fake-initial --settings=backend.settings.production
+        $ python manage.py migrate --fake --settings=backend.settings.production
+        $ python manage.py migrate --settings=backend.settings.production
+
 
 Run migrations for first time(migrations archived):
     $ python manage.py migrate --settings=backend.settings.production

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import ExecutedBackup, SettingsDb
+from .models import SettingsDb #ExecutedBackup,
 from datetime import datetime, timedelta
 from django.conf import settings
 from django.contrib import admin
@@ -84,33 +84,33 @@ class SettingsDbAdmin(TranslationAdmin):
         return len(SettingsDb.objects.all()) < 1
 
 
-class ExecutedBackupAdmin(admin.ModelAdmin):
-
-    list_display = ('createdAt', 'is_automatically',)
-    list_filter = ['is_automatically']
-    ordering = ('-createdAt',)
-    search_fields = ['comment']
-
-    def save_model(self, request, obj, form, change):
-        # if not obj.id:
-        #     if not ExecutedBackup.objects.filter(createdAt__gte=datetime.now()-timedelta(hours=1)).exists():
-        #         if "linux" in sys.platform:
-        #             kwargs = {}
-        #             if settings.ENVIRONMENT == "preproduction":
-        #                 kwargs.update({
-        #                     "settings": "backend.settings.preproduction"
-        #                 })
-        #             elif settings.ENVIRONMENT == "production":
-        #                 kwargs.update({
-        #                     "settings": "backend.settings.production"
-        #                 })
-        #             try:
-        #                 management.call_command('dbbackup', **kwargs)
-        #                 management.call_command('mediabackup', **kwargs)
-        #             except:
-        #                 pass
-        super(ExecutedBackupAdmin, self).save_model(request, obj, form, change)
+# class ExecutedBackupAdmin(admin.ModelAdmin):
+#
+#     list_display = ('createdAt', 'is_automatically',)
+#     list_filter = ['is_automatically']
+#     ordering = ('-createdAt',)
+#     search_fields = ['comment']
+#
+#     def save_model(self, request, obj, form, change):
+#         # if not obj.id:
+#         #     if not ExecutedBackup.objects.filter(createdAt__gte=datetime.now()-timedelta(hours=1)).exists():
+#         #         if "linux" in sys.platform:
+#         #             kwargs = {}
+#         #             if settings.ENVIRONMENT == "preproduction":
+#         #                 kwargs.update({
+#         #                     "settings": "backend.settings.preproduction"
+#         #                 })
+#         #             elif settings.ENVIRONMENT == "production":
+#         #                 kwargs.update({
+#         #                     "settings": "backend.settings.production"
+#         #                 })
+#         #             try:
+#         #                 management.call_command('dbbackup', **kwargs)
+#         #                 management.call_command('mediabackup', **kwargs)
+#         #             except:
+#         #                 pass
+#         super(ExecutedBackupAdmin, self).save_model(request, obj, form, change)
 
 
 admin.site.register(SettingsDb, SettingsDbAdmin)
-admin.site.register(ExecutedBackup, ExecutedBackupAdmin)
+# admin.site.register(ExecutedBackup, ExecutedBackupAdmin)

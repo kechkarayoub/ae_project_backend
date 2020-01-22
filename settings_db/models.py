@@ -118,10 +118,10 @@ class SettingsDb(models.Model):
         }
 
 
-class ExecutedBackup(models.Model):
-    class Meta:
-        db_table = "executed_backup"
-
-    comment = models.TextField(default="")
-    createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
-    is_automatically = models.BooleanField(_("Is automatically"), default=True)
+# class ExecutedBackup(models.Model):
+#     class Meta:
+#         db_table = "executed_backup"
+#
+#     comment = models.TextField(default="")
+#     createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
+#     is_automatically = models.BooleanField(_("Is automatically"), default=True)
