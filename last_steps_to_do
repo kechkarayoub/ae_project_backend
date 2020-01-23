@@ -1,14 +1,20 @@
 1) Pull new code
+and create environement.py file in settings directory that contains line:
+ENVIRONMENT = ""
 2) Activating virtualenv
 3) Run:
-    $ pip3 install dropbox==9.4.0 django-storages==1.8 django-dbbackup==3.2.0 celery==3.1.18 redis==2.10.3 django-celery-beat==1.5.0 django-celery-results==1.1.2
+    $ pip3 install dropbox==9.4.0 django-storages==1.8 django-dbbackup==3.2.0 celery==4.4.0 redis==2.10.3 django-celery-beat==1.5.0 django-celery-results==1.1.2
     $ pip3 install django-storages==1.8
     $ pip3 install django-dbbackup==3.2.0
     for celery:
-    $ pip3 install celery==3.1.18
+    $ sudo apt-get install -y erlang
+    $ sudo apt-get install rabbitmq-server
+    check status: $ systemctl status rabbitmq-server
+    $ pip3 install celery==4.4.0
     $ pip3 install redis==2.10.3
-    $ pip3 install django-celery-beat==1.5.0
+    $ pip3 install django-celdjango-celeryery-beat==1.5.0
     $ pip3 install django-celery-results==1.1.2
+    $ pip3 install --upgrade https://github.com/celery/celery/tarball/master
     $ python manage.py migrate django_cron --settings=backend.settings.preproduction
     $ python manage.py makemigrations --settings=backend.settings.preproduction
     $ python manage.py migrate --settings=backend.settings.preproduction

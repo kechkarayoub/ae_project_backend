@@ -34,3 +34,7 @@ grant access to www-data to store in media:
 
 smtp error:
     https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp
+
+
+generaye requirements file:
+    pip3 freeze > requirements.txt
