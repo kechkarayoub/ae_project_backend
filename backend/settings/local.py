@@ -1,6 +1,6 @@
 from .base import *
 
-
+DEBUG = True
 IMAGES_FOLDER = "dev/images/"
 
 DATABASES = {
