@@ -14,10 +14,6 @@ django-colorfield==0.1.15
 dropbox==9.4.0
 django-storages==1.8
 django-dbbackup==3.2.0
-celery==4.4.0
-redis==2.10.3
-django-celery-beat==1.5.0
-django-celery-results==1.1.2
 
 
 
