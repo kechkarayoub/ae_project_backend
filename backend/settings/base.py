@@ -60,17 +60,6 @@ INSTALLED_APPS = [
     'dbbackup',
     'djcelery'
 ]
-import djcelery
-djcelery.setup_loader()
-BROKER_URL = 'redis://localhost:6379/1'
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_BROKER_URL = 'amqp://localhost'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Canada/Eastern'
-CELERY_IMPORTS = ("settings_db.tasks")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -188,3 +177,21 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+
+
+# celery settings
+# import djcelery
+# djcelery.setup_loader()
+BROKER_URL = 'redis://127.0.0.1:6379/0'
+BROKER_TRANSPORT = 'redis'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Canada/Eastern'
+CELERY_IMPORTS = ("settings_db.tasks")
+
