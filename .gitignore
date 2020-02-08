@@ -115,7 +115,7 @@ venv3.bak/
 .mypy_cache/
 
 # migrations
-**/**/migrations/*
+**/migrations/*
 
 server_settings.json
 
