@@ -123,4 +123,5 @@ server_settings.json
 prod_conf.py
 
 backend/settings/environement.py
+backend/environement.txt
 

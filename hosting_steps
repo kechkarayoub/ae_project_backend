@@ -249,25 +249,66 @@ For existing database:
             rm -rf sociallink/migrations/
             rm -rf testimonial/migrations/
             rm -rf usefullinks/migrations/
-    Reset the migrations for the "built-in" apps:
-        $ python manage.py migrate --fake --settings=backend.settings.production
-    For each app run:
-        $ python manage.py makemigrations <app> --settings=backend.settings.production
-        Take care of dependencies (models with ForeignKey's should run after their parent model).
-        Example:
-            python manage.py makemigrations admin_data --settings=backend.settings.production
-            python manage.py makemigrations contact --settings=backend.settings.production
-            python manage.py makemigrations funding --settings=backend.settings.production
-            python manage.py makemigrations item --settings=backend.settings.production
-            python manage.py makemigrations newsletter --settings=backend.settings.production
-            python manage.py makemigrations settings_db --settings=backend.settings.production
-            python manage.py makemigrations sociallink --settings=backend.settings.production
-            python manage.py makemigrations testimonial --settings=backend.settings.production
-            python manage.py makemigrations usefullinks --settings=backend.settings.production
-    Finally Run:
-        $ python manage.py migrate --fake-initial --settings=backend.settings.production
-        $ python manage.py migrate --fake --settings=backend.settings.production
-        $ python manage.py migrate --settings=backend.settings.production
+    Production:
+        Reset the migrations for the "built-in" apps:
+            $ python manage.py migrate --fake --settings=backend.settings.production
+        For each app run:
+            $ python manage.py makemigrations <app> --settings=backend.settings.production
+            Take care of dependencies (models with ForeignKey's should run after their parent model).
+            Example:
+                python manage.py makemigrations admin_data --settings=backend.settings.production
+                python manage.py makemigrations contact --settings=backend.settings.production
+                python manage.py makemigrations funding --settings=backend.settings.production
+                python manage.py makemigrations item --settings=backend.settings.production
+                python manage.py makemigrations newsletter --settings=backend.settings.production
+                python manage.py makemigrations settings_db --settings=backend.settings.production
+                python manage.py makemigrations sociallink --settings=backend.settings.production
+                python manage.py makemigrations testimonial --settings=backend.settings.production
+                python manage.py makemigrations usefullinks --settings=backend.settings.production
+        Finally Run:
+            $ python manage.py migrate --fake-initial --settings=backend.settings.production
+            $ python manage.py migrate --fake --settings=backend.settings.production
+            $ python manage.py migrate --settings=backend.settings.production
+    Preproduction:
+        Reset the migrations for the "built-in" apps:
+            $ python manage.py migrate --fake --settings=backend.settings.preproduction
+        For each app run:
+            $ python manage.py makemigrations <app> --settings=backend.settings.preproduction
+            Take care of dependencies (models with ForeignKey's should run after their parent model).
+            Example:
+                python manage.py makemigrations admin_data --settings=backend.settings.preproduction
+                python manage.py makemigrations contact --settings=backend.settings.preproduction
+                python manage.py makemigrations funding --settings=backend.settings.preproduction
+                python manage.py makemigrations item --settings=backend.settings.preproduction
+                python manage.py makemigrations newsletter --settings=backend.settings.preproduction
+                python manage.py makemigrations settings_db --settings=backend.settings.preproduction
+                python manage.py makemigrations sociallink --settings=backend.settings.preproduction
+                python manage.py makemigrations testimonial --settings=backend.settings.preproduction
+                python manage.py makemigrations usefullinks --settings=backend.settings.preproduction
+        Finally Run:
+            $ python manage.py migrate --fake-initial --settings=backend.settings.preproduction
+            $ python manage.py migrate --fake --settings=backend.settings.preproduction
+            $ python manage.py migrate --settings=backend.settings.preproduction
+    Local:
+        Reset the migrations for the "built-in" apps:
+            $ python manage.py migrate --fake --settings=backend.settings.local
+        For each app run:
+            $ python manage.py makemigrations <app> --settings=backend.settings.local
+            Take care of dependencies (models with ForeignKey's should run after their parent model).
+            Example:
+                python manage.py makemigrations admin_data --settings=backend.settings.local
+                python manage.py makemigrations contact --settings=backend.settings.local
+                python manage.py makemigrations funding --settings=backend.settings.local
+                python manage.py makemigrations item --settings=backend.settings.local
+                python manage.py makemigrations newsletter --settings=backend.settings.local
+                python manage.py makemigrations settings_db --settings=backend.settings.local
+                python manage.py makemigrations sociallink --settings=backend.settings.local
+                python manage.py makemigrations testimonial --settings=backend.settings.local
+                python manage.py makemigrations usefullinks --settings=backend.settings.local
+        Finally Run:
+            $ python manage.py migrate --fake-initial --settings=backend.settings.local
+            $ python manage.py migrate --fake --settings=backend.settings.local
+            $ python manage.py migrate --settings=backend.settings.local
 
 
 Run migrations for first time(migrations archived):
