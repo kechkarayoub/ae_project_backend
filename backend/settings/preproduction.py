@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 IMAGES_FOLDER = "preprod/images/"
 DATABASES = {
