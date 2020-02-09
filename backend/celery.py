@@ -15,7 +15,7 @@ elif ENVIRONMENT == "preproduction":
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings.preproduction')
 else:
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings.local')
-django.setup()
+# django.setup()
 
 app = Celery('backend')
 
