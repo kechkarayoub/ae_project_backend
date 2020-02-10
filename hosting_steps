@@ -29,6 +29,8 @@ Begin installation:
         $ sudo apt-get install python3-pip
     Install virtualenv:
         $ sudo pip3 install virtualenv
+        or:
+        $ sudo apt-get install python-virtualenv
     Create virtialenv for the application:
         $ virtualenv venv (venv is the name of virtualenv)
     Activate virtualenv:
