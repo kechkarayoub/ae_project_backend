@@ -30,6 +30,7 @@ Begin installation:
     Install virtualenv:
         $ sudo pip3 install virtualenv
         or:
+        
         $ sudo apt-get install python-virtualenv
     Create virtialenv for the application:
         $ virtualenv venv (venv is the name of virtualenv)
@@ -135,7 +136,7 @@ Listen 8000
 
 
     Create www directory:
-        $ sudo mkdir /www && cd /www
+        $ mkdir /www && cd /www
     Run these commands:
         $ sudo gpasswd -a "ubuntu" www-data
         $ sudo chown -R "ubuntu":www-data /www
@@ -313,10 +314,20 @@ For existing database:
             $ python manage.py migrate --settings=backend.settings.local
 
 
-Run migrations for first time(migrations archived):
-    $ python manage.py migrate --settings=backend.settings.production
 Make migrations:
-    python manage.py makemigrations --settings=backend.settings.production
+    Production:
+    $ python manage.py makemigrations --settings=backend.settings.production
+    Preproduction:
+    $ python manage.py makemigrations --settings=backend.settings.preproduction
+    Local:
+    $ python manage.py makemigrations --settings=backend.settings.local
+Run migrations for first time(migrations archived):
+    Production:
+    $ python manage.py migrate --settings=backend.settings.production
+    Preproduction:
+    $ python manage.py migrate --settings=backend.settings.preproduction
+    Local:
+    $ python manage.py migrate --settings=backend.settings.local
 
 
 My be it must run:
