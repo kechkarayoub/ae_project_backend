@@ -16,7 +16,7 @@ DATABASES = {
 try:
     from .prod_conf import SERVER_URL
 except:
-    SERVER_URL = '167.114.155.74'
+    SERVER_URL = '91.234.194.87'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
