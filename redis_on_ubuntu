@@ -17,16 +17,40 @@ For production:
 3. Create environement.txt file in racine fof project with content:
     export environement="production"
 4. Run this command in project directory:
-    $ chmod u+x gunicorn_start.bash
+    production:
+        $ chmod u+x gunicorn_start_prod.bash
+   preproduction:
+        $ chmod u+x gunicorn_start_preprod.bash
 5. Install supervisor:
     $ sudo apt-get install supervisor
 6. create  /etc/supervisor/conf.d/gunicorn.conf file with content:
+-) for Production:
+
+
 ; ================================
 ;  gunicorn supervisor
 ; ================================
 
 [program:backend]
-command = sh /home/ubuntu/backend/gunicorn_start.bash          ; Command to start app
+command = sh /home/ubuntu/backend/gunicorn_start_prod.bash          ; Command to start app
+user = ubuntu                                               ; User to run as
+stdout_logfile = /home/ubuntu/logs/gunicorn/access.log  	; Where to write access log messages
+stderr_logfile = /home/ubuntu/logs/gunicorn/error.log  		; Where to write error log messages
+stdout_logfile_maxbytes=50
+stderr_logfile_maxbytes=50
+stdout_logfile_backups=10
+stderr_logfile_backups=10
+environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8             ; Set UTF-8 as default encoding
+
+-) for Preproduction:
+
+
+; ================================
+;  gunicorn supervisor
+; ================================
+
+[program:backend]
+command = sh /home/ubuntu/backend/gunicorn_start_preprod.bash          ; Command to start app
 user = ubuntu                                               ; User to run as
 stdout_logfile = /home/ubuntu/logs/gunicorn/access.log  	; Where to write access log messages
 stderr_logfile = /home/ubuntu/logs/gunicorn/error.log  		; Where to write error log messages
@@ -37,9 +61,9 @@ stderr_logfile_backups=10
 environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8             ; Set UTF-8 as default encoding
 
 (create directories):
-    sudo mkdir /home/ubuntu/logs
-    sudo mkdir /home/ubuntu/logs/gunicorn
-    sudo mkdir /home/ubuntu/logs/celery
+    mkdir /home/ubuntu/logs
+    mkdir /home/ubuntu/logs/gunicorn
+    mkdir /home/ubuntu/logs/celery
 
 7. create  /etc/supervisor/conf.d/celery_beat.conf file with content:
 
