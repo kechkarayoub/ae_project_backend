@@ -38,4 +38,4 @@ DBBACKUP_STORAGE_OPTIONS = {
 }
 
 
-MIGRATION_MODULES = {}
+MIGRATION_MODULES = dict([(app, 'migrations') for app in INSTALLED_APPS])
