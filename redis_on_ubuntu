@@ -12,8 +12,7 @@ For production:
     # check if running:
         $ gunicorn backend.wsgi:application  --bind 0.0.0.0:5000
 
-2. Create an empty file gunicorn.sock in venv directory:
-    venv/run/gunicorn.sock
+2. Pass
 3. Create environement.txt file in racine fof project with content:
     export environement="production"
 4. Run this command in project directory:

@@ -1,9 +1,8 @@
 #!/bin/bash
-source "/home/ubuntu/backend/environement.txt"
 NAME="backend"               					                  # Name of the application
 DJANGODIR=/home/ubuntu/backend             				                  # Django project directory
 DJANGOENVDIR=/home/ubuntu/venv            			                    # Django project env
-SOCKFILE=/home/ubuntu/venv/run/gunicorn.sock  		                  # we will communicte using this unix socket
+SOCKFILE=gunicorn.sock  		                            # we will communicte using this unix socket
 USER=ubuntu                   				                  # the user to run as
 GROUP=ubuntu                  					                # the group to run as
 NUM_WORKERS=3                                    				# how many worker processes should Gunicorn spawn (2 * CPUs + 1)
