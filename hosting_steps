@@ -62,7 +62,7 @@ ports.conf content:
 # have to change the VirtualHost statement in
 # /etc/apache2/sites-enabled/000-default.conf
 
-Listen 8000
+Listen 81
 
 <IfModule ssl_module>
         Listen 443
@@ -78,7 +78,7 @@ Listen 8000
             $ sudo nano /etc/apache2/sites-enabled/000-default.conf
 
 000-default.conf content:
-<VirtualHost *:8000>
+<VirtualHost *:81>
         ServerAdmin webmaster@localhost
         DocumentRoot /home/ubuntu/backend
 

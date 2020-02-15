@@ -21,7 +21,7 @@ except:
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
 
-BACKEND_URL = "{}:8000".format(SERVER_URL)
+BACKEND_URL = "{}:81".format(SERVER_URL)
 BACKEND_URL_ROOT = "http://{}".format(BACKEND_URL)
 
 CORS_ORIGIN_WHITELIST = (
@@ -38,4 +38,4 @@ DBBACKUP_STORAGE_OPTIONS = {
 }
 
 
-MIGRATION_MODULES = dict([(app, 'migrations') for app in INSTALLED_APPS])
+MIGRATION_MODULES = {}
