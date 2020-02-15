@@ -7,10 +7,11 @@ SOCKFILE=/home/ubuntu/venv/run/gunicorn.sock  		                  # we will comm
 USER=ubuntu                   				                  # the user to run as
 GROUP=ubuntu                  					                # the group to run as
 NUM_WORKERS=3                                    				# how many worker processes should Gunicorn spawn (2 * CPUs + 1)
-if [ $environement == "preproduction" ]
+DJANGO_SETTINGS_MODULE=backend.settings.production
+if [ $environement = "preproduction" ]
 then
   DJANGO_SETTINGS_MODULE=backend.settings.preproduction # which settings file should Django use
-else [ $environement == "production" ]
+else [ $environement = "production" ]
   DJANGO_SETTINGS_MODULE=backend.settings.production
 fi
 DJANGO_WSGI_MODULE=backend.wsgi                     						            # WSGI module name
@@ -18,8 +19,9 @@ DJANGO_WSGI_MODULE=backend.wsgi                     						            # WSGI mod
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
+cd $DJANGOENVDIR
+source bin/activate
 cd $DJANGODIR
-source /venv/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
