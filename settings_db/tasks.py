@@ -8,5 +8,6 @@ from backend.utils import send_email
 from django.conf import settings
 @app.task
 def test___task():
+    print('test email task')
     send_email("Test celery", "Celery work perfectly", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
     print('........................')

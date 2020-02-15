@@ -6,12 +6,26 @@ import random
 
 
 def send_email(subject, text_content, from_address, to_address, html_content=None):
+    if to_address == "kechkarayoub@gmail.com":
+        print('in send email task')
     msg = EmailMultiAlternatives(_(subject), text_content, from_address, [to_address])
     if html_content:
         msg.attach_alternative(html_content, "text/html")
     try:
+        if to_address == "kechkarayoub@gmail.com":
+            print('try send email')
         msg.send()
+        if to_address == "kechkarayoub@gmail.com":
+            print('email sent')
     except Exception as e:
+        if to_address == "kechkarayoub@gmail.com":
+            print('error')
+            print(repr(e))
+            # for just the message, or str(e), since print calls str under the hood
+            print(e)
+            # the arguments that the exception has been called with.
+            # the first one is usually the message. (OSError is different, though)
+            print(e.args)
         pass
 
 
