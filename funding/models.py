@@ -21,7 +21,7 @@ class Funding(models.Model):
     class Meta:
         db_table = "funding"
 
-    bank = models.ForeignKey(Bank, null=False, related_name="fundings")
+    bank = models.ForeignKey(Bank, null=False, on_delete=models.CASCADE, related_name="fundings")
     city = models.CharField(
         _("City"),
         blank=False,

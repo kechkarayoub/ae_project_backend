@@ -39,10 +39,13 @@ Begin installation:
         $ cd backend/
     Install requirements:
         $ pip3 install -r requirements.txt
-    Install Mysql server:
-        $ sudo apt-get install mysql-server
-    Install Python-Mysql connector:
-        $ sudo apt-get install python-mysqldb
+    Install Mysql server or Mariadb:
+        Mysql:
+            $ sudo apt-get install mysql-server
+            Install Python-Mysql connector:
+            $ sudo apt-get install python-mysqldb
+        Maria:
+            $ sudo apt-get install python3-dev mariadb-server libmariadbclient-dev libssl-dev
     Install Python3-dev:
         $ sudo apt-get install python3-dev libmysqlclient-dev
     Install Mysql-Client:
@@ -76,7 +79,7 @@ Listen 8000
 000-default.conf content:
 <VirtualHost *:8000>
         ServerAdmin webmaster@localhost
-        DocumentRoot /ubuntu/backend
+        DocumentRoot /home/ubuntu/backend
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
