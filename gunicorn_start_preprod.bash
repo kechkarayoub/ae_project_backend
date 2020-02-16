@@ -12,9 +12,8 @@ DJANGO_WSGI_MODULE=backend.wsgi                     						            # WSGI mod
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
-cd $DJANGOENVDIR
-source bin/activate
 cd $DJANGODIR
+source ../venv/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 

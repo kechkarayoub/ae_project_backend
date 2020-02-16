@@ -3,6 +3,8 @@
 change EMAIL_HOST_USER and EMAIL_HOST_PASSWORD variables in settings.py
 go to https://myaccount.google.com/u/0/security?pli=1&nlr=1#connectedapps  and active Accès moins sécurisé des applications from https://myaccount.google.com/u/0/lesssecureapps.
 
+visit : https://accounts.google.com/DisplayUnlockCaptcha
+
 
 
 

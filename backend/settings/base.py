@@ -195,3 +195,40 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Canada/Eastern'
 CELERY_IMPORTS = ("settings_db.tasks")
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, '../log_backend/django.log'),
+            'formatter': 'verbose',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)-8s [%(name)s:%(lineno)s] %(message)s',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}

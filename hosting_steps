@@ -340,6 +340,8 @@ My be it must run:
     #  $ sudo find /home/ubuntu/backend/ -type f -exec chmod ug+rw {} \;
     #  $ chgrp www-data /home/ubuntu/backend/media/
     #  $ chmod g+rwxs /home/ubuntu/backend/media/
+    $ mkdir /home/ubuntu/log_backend
+    $ sudo chown -R www-data:www-data /home/ubuntu/log_backend
     $ sudo chown -R www-data:www-data /home/ubuntu/backend/media/
     $ sudo chmod -R 770 /home/ubuntu/backend/media/
 
