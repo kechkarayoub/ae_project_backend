@@ -341,7 +341,11 @@ My be it must run:
     #  $ chgrp www-data /home/ubuntu/backend/media/
     #  $ chmod g+rwxs /home/ubuntu/backend/media/
     $ mkdir /home/ubuntu/log_backend
-    $ sudo chown -R www-data:www-data /home/ubuntu/log_backend
+    $ sudo groupadd ubuntuandwww
+    $ sudo usermod -a -G ubuntuandwww ubuntu
+    $ sudo usermod -a -G ubuntuandwww www-data
+    $ sudo chgrp -R ubuntuandwww /home/ubuntu/log_backend
+    $ sudo chmod -R 770 /home/ubuntu/log_backend
     $ sudo chown -R www-data:www-data /home/ubuntu/backend/media/
     $ sudo chmod -R 770 /home/ubuntu/backend/media/
 
