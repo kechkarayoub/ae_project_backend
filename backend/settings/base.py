@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'settings_db',
     'funding',
     'dbbackup',
-    'djcelery'
+    'djcelery',
+    'client'
 ]
 
 MIDDLEWARE = [

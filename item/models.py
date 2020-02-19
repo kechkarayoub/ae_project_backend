@@ -125,7 +125,7 @@ class Item(models.Model):
     with_map = models.BooleanField(_("With map"), default=False)
 
     def __str__(self):
-        return self.item_id
+        return self.label
 
     @property
     def is_new(self):

@@ -45,7 +45,7 @@ class ItemAdmin(TranslationAdmin):
         )
     form = ItemForm
     list_display = (
-        '__str__', 'city', 'property_type', 'building_type', 'price', 'lot_size', 'status', 'bedrooms_number',
+        'item_id', 'city', 'property_type', 'building_type', 'price', 'lot_size', 'status', 'bedrooms_number',
         'bathrooms_number', 'is_active',
     )
     fieldsets = [
