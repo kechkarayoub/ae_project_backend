@@ -2,6 +2,7 @@
 from .models import Client, Leasing
 from django.contrib import admin
 from django.http import HttpResponseRedirect
+import datetime
 
 
 class ClientAdmin(admin.ModelAdmin):
@@ -42,6 +43,10 @@ class LeasingAdmin(admin.ModelAdmin):
                 not request.META.get('HTTP_REFERER', '').startswith(request.build_absolute_uri()):
             return HttpResponseRedirect(request.path + "?is_paid__exact=0")
         return super(LeasingAdmin, self).changelist_view(request, extra_context=extra_context)
+
+    def save_model(self, request, obj, form, change):
+        obj.createdBy = "admin"
+        super(LeasingAdmin, self).save_model(request, obj, form, change)
 
 
 admin.site.register(Client, ClientAdmin)

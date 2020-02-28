@@ -7,6 +7,12 @@ from django.utils.translation import ugettext as _
 from item.models import Item
 import datetime
 
+TYPES = (
+    ("buyer", _("Buyer")),
+    ("seller", _("Seller")),
+    ("tenant", _("Tenant"))
+)
+
 
 YEARMONTH_INPUT_FORMATS = (
     '%m-%Y', '%m/%Y', # '2006-10', '10/2006'
@@ -23,6 +29,7 @@ class Client(models.Model):
     is_active = models.BooleanField(_("Is active"), default=True)
     last_name = models.CharField(_("First name"), blank=False, max_length=30)
     phone = models.CharField(_("Phone"), blank=True, default="", max_length=20)
+    type = models.CharField(_("Type"), blank=False, choices=TYPES, default="tenant", max_length=20)
 
     def full_name(self):
         return self.first_name + " " + self.last_name
@@ -59,14 +66,18 @@ class YearMonthField(models.CharField):
 class Leasing(models.Model):
     class Meta:
         db_table = "leasing"
+        unique_together = ['client', 'item', 'month_treated']
 
-    client = models.ForeignKey(Client, related_name="rented_items")
+    client = models.ForeignKey(Client, related_name="rented_items_by_months")
     createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
+    createdBy = models.CharField(_("Created by"), blank=False, default="celery", max_length=30)
     end_at = models.DateTimeField(_("End at"), null=True)
     is_active = models.BooleanField(_("Is active"), default=True)
     is_paid = models.BooleanField(_("Is paid"), default=False)
-    item = models.ForeignKey(Item, related_name="tenants")
-    month_treated = YearMonthField(default=format(datetime.datetime.now(), '%m/%Y'), help_text="mm/aaaa ou mm-aaaa", max_length=10)
+    item = models.ForeignKey(Item, related_name="tenants_by_months")
+    month_treated = YearMonthField(
+        default=format(datetime.datetime.now(), '%m/%Y'), help_text="mm/aaaa ou mm-aaaa", max_length=10
+    )
     payment_day = models.PositiveIntegerField(
         _("Payment day"), default=28, validators=[MaxValueValidator(31), MinValueValidator(1)]
     )

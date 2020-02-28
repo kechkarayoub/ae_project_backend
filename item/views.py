@@ -118,6 +118,7 @@ from newsletter.models import Newsletter
 from settings_db.models import SettingsDb
 from sociallink.views import get_list_social_links
 
+
 def on_transaction_commit(func):
     def inner(*args, **kwargs):
         transaction.on_commit(lambda: func(*args, **kwargs))
