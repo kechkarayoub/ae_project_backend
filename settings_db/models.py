@@ -13,45 +13,45 @@ class SettingsDb(models.Model):
 
     header_image = models.ImageField(
         blank=True,
-        help_text=_("Header image"),
+        help_text=_("Image d'en-tête"),
         null=True,
         upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
     )
     header_background_image = models.ImageField(
         blank=True,
-        help_text=_("Header background image"),
+        help_text=_("Image d'arrière-plan de l'en-tête"),
         null=True,
         upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
     )
-    header_text_color = ColorField(_("Header text color"), default='#FFFFFF')
+    header_text_color = ColorField(_("Couleur du texte de l'en-tête"), default='#FFFFFF')
     logo = models.ImageField(
-        blank=True, help_text=_("Logo image"), null=True, upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
+        blank=True, help_text=_("Image logo"), null=True, upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
     )
     main_bg_image = models.ImageField(
         blank=True,
-        help_text=_("Body background image"),
+        help_text=_("Image d'arrière-plan du body"),
         null=True,
         upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
     )
-    site_name = models.CharField(_("Site name"), blank=False, max_length=255, null=False)
+    site_name = models.CharField(_("Nom du site"), blank=False, max_length=255, null=False)
 
-    home_page_title_1 = models.CharField(_("Title line 1"), blank=False, max_length=765, null=False)
-    home_page_title_2 = models.CharField(_("Title line 2"), blank=True, max_length=765, null=True)
+    home_page_title_1 = models.CharField(_("1er ligne du titre"), blank=False, max_length=765, null=False)
+    home_page_title_2 = models.CharField(_("2eme ligne du titre"), blank=True, max_length=765, null=True)
 
-    home_page_row_1_title = models.CharField(_("Row 1 title"), blank=True, max_length=510, null=True)
-    home_page_row_1_p_1 = models.TextField(_("Row 1 paragraph 1"), blank=True, null=True)
-    home_page_row_1_p_2 = models.TextField(_("Row 1 paragraph 2"), blank=True, null=True)
-    home_page_row_1_p_3 = models.TextField(_("Row 1 paragraph 3"), blank=True, null=True)
+    home_page_row_1_title = models.CharField(_("Titre de la première partie"), blank=True, max_length=510, null=True)
+    home_page_row_1_p_1 = models.TextField(_("1er paragraphe de la première partie"), blank=True, null=True)
+    home_page_row_1_p_2 = models.TextField(_("2eme paragraphe de la première partie"), blank=True, null=True)
+    home_page_row_1_p_3 = models.TextField(_("3eme paragraphe de la première partie"), blank=True, null=True)
 
-    home_page_row_2_title = models.CharField(_("Row 2 title"), blank=True, max_length=510, null=True)
-    home_page_row_2_p_1 = models.TextField(_("Row 2 paragraph 1"), blank=True, null=True)
-    home_page_row_2_p_2 = models.TextField(_("Row 2 paragraph 2"), blank=True, null=True)
-    home_page_row_2_p_3 = models.TextField(_("Row 2 paragraph 3"), blank=True, null=True)
+    home_page_row_2_title = models.CharField(_("Titre de la deuxième partie"), blank=True, max_length=510, null=True)
+    home_page_row_2_p_1 = models.TextField(_("1er paragraphe de la deuxième partie"), blank=True, null=True)
+    home_page_row_2_p_2 = models.TextField(_("2eme paragraphe de la deuxième partie"), blank=True, null=True)
+    home_page_row_2_p_3 = models.TextField(_("3eme paragraphe de la deuxième partie"), blank=True, null=True)
 
-    home_page_row_3_title = models.CharField(_("Row 3 title"), blank=True, max_length=510, null=True)
-    home_page_row_3_p_1 = models.TextField(_("Row 3 paragraph 1"), blank=True, null=True)
-    home_page_row_3_p_2 = models.TextField(_("Row 3 paragraph 2"), blank=True, null=True)
-    home_page_row_3_p_3 = models.TextField(_("Row 3 paragraph 3"), blank=True, null=True)
+    home_page_row_3_title = models.CharField(_("Titre de la troisième partie"), blank=True, max_length=510, null=True)
+    home_page_row_3_p_1 = models.TextField(_("1er paragraphe de la troisième partie"), blank=True, null=True)
+    home_page_row_3_p_2 = models.TextField(_("2eme paragraphe de la troisième partie"), blank=True, null=True)
+    home_page_row_3_p_3 = models.TextField(_("3eme paragraphe de la troisième partie"), blank=True, null=True)
 
     def __str__(self):
         return "Settings databases"

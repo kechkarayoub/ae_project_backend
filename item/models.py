@@ -14,33 +14,33 @@ class Item(models.Model):
     class Meta:
         db_table = "item"
 
-    added_field_1_label = models.CharField(_("Added field 1 label"), blank=True, max_length=255, null=True)
-    added_field_1_value = models.CharField(_("Added field 1 value"), blank=True, max_length=255, null=True)
-    added_field_2_label = models.CharField(_("Added field 2 label"), blank=True, max_length=255, null=True)
-    added_field_2_value = models.CharField(_("Added field 2 value"), blank=True, max_length=255, null=True)
-    added_field_3_label = models.CharField(_("Added field 3 label"), blank=True, max_length=255, null=True)
-    added_field_3_value = models.CharField(_("Added field 3 value"), blank=True, max_length=255, null=True)
-    address = models.CharField(_("Address"), blank=False, max_length=510, null=False)
+    added_field_1_label = models.CharField(_("Étiquette du 1er champ ajouté"), blank=True, max_length=255, null=True)
+    added_field_1_value = models.CharField(_("Valeur du 1er champ ajouté"), blank=True, max_length=255, null=True)
+    added_field_2_label = models.CharField(_("Étiquette du 2eme champ ajouté"), blank=True, max_length=255, null=True)
+    added_field_2_value = models.CharField(_("Valeur du 1er champ ajouté"), blank=True, max_length=255, null=True)
+    added_field_3_label = models.CharField(_("Étiquette du 3eme champ ajouté"), blank=True, max_length=255, null=True)
+    added_field_3_value = models.CharField(_("Valeur du 1er champ ajouté"), blank=True, max_length=255, null=True)
+    address = models.CharField(_("Adresse"), blank=False, max_length=510, null=False)
     annual_income = models.DecimalField(
-        _("Annual incomes ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Revenus annuels ($)"), blank=True, decimal_places=0, max_digits=9, null=True
     )
-    apartments_number = models.PositiveIntegerField(_("Apartments number"), blank=True, null=True)
+    apartments_number = models.PositiveIntegerField(_("Nombre d'appartements"), blank=True, null=True)
     bathrooms_number = models.CharField(
-        _("Bathrooms number"),
+        _("Nombre de salles de bain"),
         blank=True,
         choices=choices_format_to_tuple(static_variables.BATHROOMS_NUMBER),
         default='',
         max_length=10
     )
     bedrooms_number = models.CharField(
-        _("Bedrooms number"),
+        _("Nombre de chambres"),
         blank=True,
         choices=choices_format_to_tuple(static_variables.BEDROOMS_NUMBER),
         default='',
         max_length=10
     )
     building_type = models.CharField(
-        _("Building type"),
+        _("Type de bâtiment"),
         blank=True,
         choices=choices_format_to_tuple(static_variables.BUILDINGS_TYPES),
         default='',
@@ -50,7 +50,7 @@ class Item(models.Model):
         _("Ccd (CCD)"), blank=True, decimal_places=2, max_digits=5, null=True
     )
     city = models.CharField(
-        _("City"),
+        _("Ville"),
         blank=False,
         choices=choices_format_to_tuple(static_variables.CANADIAN_CITIES),
         default='montreal',
@@ -58,71 +58,71 @@ class Item(models.Model):
         null=False
     )
     construction_age = models.CharField(
-        _("Construction age"),
+        _("L'âge du construction"),
         blank=True,
         choices=choices_format_to_tuple(static_variables.CONSTRUCTION_AGE),
         default='',
         max_length=50
     )
     cost_per_housing = models.DecimalField(
-        _("Cost per housing (CPH) ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Coût par logement (CPL) ($)"), blank=True, decimal_places=0, max_digits=9, null=True
     )
     createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
     description = models.TextField(_("Description"), blank=False, null=False)
     down_payment_required = models.DecimalField(
-        _("Down payment required ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Mise de fond minimal ($)"), blank=True, decimal_places=0, max_digits=9, null=True
     )
     economic_value = models.DecimalField(
-        _("Economic value ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Valeur économique ($)"), blank=True, decimal_places=0, max_digits=9, null=True
     )
     gps_latitude = models.FloatField(_("Latitude"), blank=True, default=46.813878, null=True)
     gps_longitude = models.FloatField(_("Longitude"), blank=True, default=-71.207981, null=True)
     gross_revenue_multiplier = models.DecimalField(
-        _("Gross revenue multiplier (GRM)"), blank=True, decimal_places=1, max_digits=4, null=True
+        _("Multiplicateur de revenu brut (MRB)"), blank=True, decimal_places=1, max_digits=4, null=True
     )
-    has_dining_room = models.BooleanField(_("Dining room"), default=False)
-    has_fireplace = models.BooleanField(_("Fireplace"), default=False)
+    has_dining_room = models.BooleanField(_("Salle à manger"), default=False)
+    has_fireplace = models.BooleanField(_("Cheminée"), default=False)
     has_garage = models.BooleanField(_("Garage"), default=False)
-    has_garden = models.BooleanField(_("Garden"), default=False)
-    has_swimming_pool = models.BooleanField(_("Swimming pool"), default=False)
-    housing_descriptions = models.CharField(_("Housing descriptions"), blank=True, max_length=1020, null=True)
+    has_garden = models.BooleanField(_("Jardin"), default=False)
+    has_swimming_pool = models.BooleanField(_("Piscine"), default=False)
+    housing_descriptions = models.CharField(_("Description des logements"), blank=True, max_length=1020, null=True)
     image_map = models.ImageField(
-        help_text=_("Item's map's image."),
+        help_text=_("L'image de la carte de la propriété."),
         null=True, blank=True,
         upload_to=settings.IMAGES_FOLDER + 'item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
     )
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
-    is_active = models.BooleanField(_("Is active"), default=True)
-    label = models.CharField(_("Label"), blank=False, max_length=255, null=False)
-    lot_size = models.PositiveIntegerField(_("Property size(m²)"), default=0)
+    is_active = models.BooleanField(_("Est active"), default=True)
+    label = models.CharField(_("Étiquette"), blank=False, max_length=255, null=False)
+    lot_size = models.PositiveIntegerField(_("Taille de la propriété(m²)"), default=0)
     maximum_loan = models.DecimalField(
-        _("Maximum loan (%)"), blank=True, decimal_places=2, max_digits=5, null=True
+        _("Prêt maximal (%)"), blank=True, decimal_places=2, max_digits=5, null=True
     )
     net_income_multiplier = models.DecimalField(
-        _("Net income multiplier (NIM)"), blank=True, decimal_places=1, max_digits=4, null=True
+        _("Multiplicateur de revenu net (MRN)"), blank=True, decimal_places=1, max_digits=4, null=True
     )
     overall_rate_update = models.DecimalField(
-        _("Overall rate of update (ORU) (%)"), blank=True, decimal_places=1, max_digits=4, null=True
+        _("Taux global d'actualisation (TGA) (%)"), blank=True, decimal_places=1, max_digits=4, null=True
     )
     price = models.DecimalField(
-        _("Price"), blank=False, decimal_places=0, default=0, max_digits=9, null=False
+        _("Prix"), blank=False, decimal_places=0, default=0, max_digits=9, null=False
     )
     property_type = models.CharField(
-        _("Property type"),
+        _("Type de la Propriété"),
         blank=False,
         choices=choices_format_to_tuple(static_variables.PROPERTIES_TYPES),
         default='',
         max_length=50,
         null=False
     )
-    short_description = models.CharField(_("Short description"), max_length=255, null=False, blank=False)
+    short_description = models.CharField(_("Brèf description"), max_length=255, null=False, blank=False)
     status = models.CharField(
-        _("Status"),
+        _("Statut"),
         choices=choices_format_to_tuple(static_variables.ITEMS_STATUS),
         default='for_sale',
         max_length=50
     )
-    with_map = models.BooleanField(_("With map"), default=False)
+    with_map = models.BooleanField(_("Avec Carte"), default=False)
 
     def __str__(self):
         return self.label
@@ -138,13 +138,13 @@ class ItemImage(models.Model):
         db_table = "itemimage"
 
     image = models.ImageField(
-        help_text=_("Item's image."),
+        help_text=_("Image de l'article."),
         upload_to=settings.IMAGES_FOLDER + 'item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
     )
     item = models.ForeignKey(
         Item,
         db_index=True,
-        help_text=_("Item's image."),
+        help_text=_("L'article."),
         on_delete=models.CASCADE,
         related_name="images"
     )

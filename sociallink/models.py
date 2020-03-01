@@ -19,6 +19,6 @@ class SocialLink(models.Model):
         ("youtube", "Youtube"),
     )
     fa_icon = models.CharField(_("Fa icon"), blank=False, default="", choices=FA_ICONS, max_length=20)
-    is_active = models.BooleanField(_("Is active"), default=True)
-    label = models.CharField(_("Label"), blank=False, max_length=30)
+    is_active = models.BooleanField(_("Est active"), default=True)
+    label = models.CharField(_("Étiquette"), blank=False, max_length=30)
     url = models.CharField(_("Url"), blank=False, default="", max_length=120)

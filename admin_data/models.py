@@ -10,16 +10,16 @@ class AdminData(models.Model):
     class Meta:
         db_table = "admin_data"
 
-    address = models.CharField(_("Address"), blank=False, max_length=510, null=False)
-    agency_name = models.CharField(_("Agency name"), blank=False, max_length=255, null=False)
+    address = models.CharField(_("Adresse"), blank=False, max_length=510, null=False)
+    agency_name = models.CharField(_("Nom de l'agence"), blank=False, max_length=255, null=False)
     email = models.CharField(_("Email"), blank=False, default="Jalil.elmahboubi@gmail.com", max_length=255, null=False)
-    enable_map = models.BooleanField(_("Enable map"), default=True)
+    enable_map = models.BooleanField(_("Activer la carte"), default=True)
     fax = models.CharField(_("Fax"), blank=False, default="450 462 1509", max_length=255, null=False)
-    full_name = models.CharField(_("Full name"), blank=False, default="ELMAHBOUBI Abdjalil", max_length=255, null=False)
+    full_name = models.CharField(_("Nom complet"), blank=False, default="ELMAHBOUBI Abdjalil", max_length=255, null=False)
     gps_latitude = models.FloatField(_("GPS Latitude"), blank=True, default=45.474459, null=True)
     gps_longitude = models.FloatField(_("GPS Longitude"), blank=True, default=-73.470234, null=True)
-    image = models.ImageField(help_text=_("Admin's image"), null=False, upload_to=settings.IMAGES_FOLDER + 'admin_data')
-    tel = models.CharField(_("Telephone"), blank=False, default="514 967 3743", max_length=255, null=False)
+    image = models.ImageField(help_text=_("L'image de l'administrateur"), null=False, upload_to=settings.IMAGES_FOLDER + 'admin_data')
+    tel = models.CharField(_("Téléphone"), blank=False, default="514 967 3743", max_length=255, null=False)
 
     def __str__(self):
         return "Admin data"

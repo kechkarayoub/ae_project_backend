@@ -536,8 +536,8 @@ msgid "Cost per housing (CPH) ($)"
 msgstr "Coût par logement (CPL) ($)"
 
 #: .\item\models.py:72
-msgid "Down payment required ($)"
-msgstr "Mise de fond nécessaire ($)"
+msgid "Minimum down payment ($)"
+msgstr "Mise de fond minimal ($)"
 
 #: .\item\models.py:75
 msgid "Economic value ($)"
@@ -598,7 +598,7 @@ msgstr "Prix"
 
 #: .\item\models.py:117
 msgid "Short description"
-msgstr "Brève description"
+msgstr "Brèf description"
 
 #: .\item\models.py:124
 msgid "With map"

@@ -1,30 +1,18 @@
 # -*- coding: utf-8 -*-
-from .models import Bank, Funding
-from backend.utils import generate_random_color
+from .models import Funding
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
 
 
-def get_user_image_preview(obj):
+def get_bank_image_preview(obj):
     if obj.image:
-        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.image)))
+        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (str(obj.bank_image)))
     return _("No file selected!")
 
 
-get_user_image_preview.allow_tags = True
-get_user_image_preview.short_description = _("Image Preview")
-
-
-class BankAdmin(admin.ModelAdmin):
-
-    fieldsets = (
-        (None, {
-            'fields': ('email', 'name',)
-        }),
-    )
-    list_display = ('name', 'email',)
-    search_fields = ['email', 'name']
+get_bank_image_preview.allow_tags = True
+get_bank_image_preview.short_description = _("Image Preview")
 
 
 class FundingAdmin(admin.ModelAdmin):
@@ -37,23 +25,17 @@ class FundingAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'city', 'description_en', 'description_fr', 'first_name', 'last_name', 'user_email', 'image',
-                get_user_image_preview, 'bank',
+                'bank_name', 'free_field_label', 'free_field_value', 'bank_logo', get_bank_image_preview, 'bank_email',
             )
         }),
     )
-    list_display = ('first_name', 'last_name', 'city', 'user_email')
-    list_filter = ['createdAt',  'city', 'bank']
-    search_fields = ['bank', 'first_name', 'last_name', 'description', 'user_email']
+    list_display = ('bank_name', 'bank_email')
+    search_fields = ['bank_name', 'bank_email', 'free_field_label', 'free_field_value']
     ordering = ('-createdAt',)
-    readonly_fields = [get_user_image_preview]
+    readonly_fields = [get_bank_image_preview]
 
     def save_model(self, request, obj, form, change):
-        color, complementary_color = generate_random_color(with_complementary=True)
-        obj.initials_color = color
-        obj.initials_bg_color = complementary_color
         super(FundingAdmin, self).save_model(request, obj, form, change)
 
 
-admin.site.register(Bank, BankAdmin)
 admin.site.register(Funding, FundingAdmin)

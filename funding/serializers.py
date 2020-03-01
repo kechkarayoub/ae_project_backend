@@ -11,8 +11,7 @@ class FundingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funding
         fields = (
-            'city', 'createdAt', 'description', 'first_name', 'image', 'initials_bg_color', 'initials_color',
-            'last_name', 'pk', 'user_email'
+            'bank_name', 'createdAt', 'bank_logo', 'free_field_label', 'free_field_value', 'bank_email', 'pk'
         )
 
     def to_representation(self, instance):
@@ -30,9 +29,9 @@ class FundingSerializer(serializers.ModelSerializer):
             representation['createdAt'] = instance.createdAt.strftime("%d %B, %Y")
         else:
             representation['createdAt'] = instance.createdAt.strftime("%B %d, %Y")
-        if instance.image and instance.image.url:
-            representation['image'] = settings.BACKEND_URL_ROOT + instance.image.url
+        if instance.bank_image and instance.bank_image.url:
+            representation['bank_image'] = settings.BACKEND_URL_ROOT + instance.image.url
         else:
-            representation['image'] = ""
+            representation['bank_image'] = ""
 
         return representation

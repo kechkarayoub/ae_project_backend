@@ -537,7 +537,7 @@ msgid "Cost per housing (CPH) ($)"
 msgstr ""
 
 #: .\item\models.py:72
-msgid "Down payment required ($)"
+msgid "Minimum down payment ($)"
 msgstr ""
 
 #: .\item\models.py:75

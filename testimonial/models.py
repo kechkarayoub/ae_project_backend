@@ -18,14 +18,14 @@ class Testimonial(models.Model):
         max_length=100,
         null=False
     )
-    createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
-    first_name = models.CharField(_("First name"), blank=False, max_length=30)
+    createdAt = models.DateTimeField(_("Créé le"), auto_now_add=True)
+    first_name = models.CharField(_("Prénom"), blank=False, max_length=30)
     image = models.ImageField(
-        help_text=_("User's image."),
+        help_text=_("L'image du témoin."),
         null=True,
         upload_to=settings.IMAGES_FOLDER + 'testimonial/UsersImages'  # lien de l'image: /media/images/testimonial/UsersImages/*.*
     )
-    initials_bg_color = models.CharField(_("Initials background color"), default="#ffffff", max_length=10)
-    initials_color = models.CharField(_("Initials color"), default="#000000", max_length=10)
-    last_name = models.CharField(_("Last name"), blank=False, max_length=30)
-    testimonial = models.TextField(_("Testimonial"), blank=False, null=False)
+    initials_bg_color = models.CharField(_("Couleur de fond des initiales"), default="#ffffff", max_length=10)
+    initials_color = models.CharField(_("Couleur des initiales"), default="#000000", max_length=10)
+    last_name = models.CharField(_("Nom"), blank=False, max_length=30)
+    testimonial = models.TextField(_("Témoignage"), blank=False, null=False)
