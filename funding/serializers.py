@@ -29,9 +29,9 @@ class FundingSerializer(serializers.ModelSerializer):
             representation['createdAt'] = instance.createdAt.strftime("%d %B, %Y")
         else:
             representation['createdAt'] = instance.createdAt.strftime("%B %d, %Y")
-        if instance.bank_image and instance.bank_image.url:
-            representation['bank_image'] = settings.BACKEND_URL_ROOT + instance.image.url
+        if instance.bank_logo and instance.bank_logo.url:
+            representation['bank_logo'] = settings.BACKEND_URL_ROOT + instance.bank_logo.url
         else:
-            representation['bank_image'] = ""
+            representation['bank_logo'] = ""
 
         return representation
