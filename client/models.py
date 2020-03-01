@@ -68,13 +68,13 @@ class Leasing(models.Model):
         db_table = "leasing"
         unique_together = ['client', 'item', 'month_treated']
 
-    client = models.ForeignKey(Client, related_name="rented_items_by_months")
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="rented_items_by_months")
     createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
     createdBy = models.CharField(_("Created by"), blank=False, default="celery", max_length=30)
     end_at = models.DateTimeField(_("End at"), null=True)
     is_active = models.BooleanField(_("Is active"), default=True)
     is_paid = models.BooleanField(_("Is paid"), default=False)
-    item = models.ForeignKey(Item, related_name="tenants_by_months")
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="tenants_by_months")
     month_treated = YearMonthField(
         default=format(datetime.datetime.now(), '%m/%Y'), help_text="mm/aaaa ou mm-aaaa", max_length=10
     )
