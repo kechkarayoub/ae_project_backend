@@ -4,6 +4,10 @@ from backend.utils import generate_random_color
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
+from easy_select2 import select2_modelform
+
+
+TestimonialForm = select2_modelform(Testimonial, attrs={'width': '250px'})
 
 
 def get_user_image_preview(obj):
@@ -22,6 +26,7 @@ class TestimonialAdmin(admin.ModelAdmin):
         js = (
             'testimonial/js/testimonial_form.js',
         )
+    form = TestimonialForm
 
     fieldsets = (
         (None, {
