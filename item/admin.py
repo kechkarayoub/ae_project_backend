@@ -80,7 +80,7 @@ class ItemAdmin(TranslationAdmin):
         'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden', 'has_swimming_pool', 'is_active', 'lot_size',
         'price', 'property_type', 'status', 'with_map'
     ]
-    search_fields = ['address', 'description', 'label', 'housing_descriptions', 'short_description']
+    search_fields = ['address', 'description', 'label', 'housing_descriptions', 'item_id', 'short_description']
     readonly_fields = [get_item_image_map_preview]
 
     def save_model(self, request, obj, form, change):
