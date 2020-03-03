@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
+from newsletter.models import Newsletter
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -21,6 +22,14 @@ def contact_sell_create(request):
     """
     if request.method == 'POST':
         data = request.data
+        if data.get("email") and (data.get("first_name") or data.get("last_name")) and not Newsletter.objects.filter(
+                email=data["email"]
+        ).exists():
+            Newsletter.objects.create(
+                email=data["email"],
+                first_name=data["first_name"] or data["last_name"],
+                last_name=data["last_name"] or data["first_name"]
+            )
         serializer = ContactSellSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -51,6 +60,14 @@ def contact_buy_create(request):
     Create a contact entry for buying a property.
     """
     data = request.data.copy()
+    if data.get("email") and (data.get("first_name") or data.get("last_name")) and not Newsletter.objects.filter(
+            email=data["email"]
+    ).exists():
+        Newsletter.objects.create(
+            email=data["email"],
+            first_name=data["first_name"] or data["last_name"],
+            last_name=data["last_name"] or data["first_name"]
+        )
     if not data.get("lot_size_max", ""):
         data["lot_size_max"] = 0
         data["lot_size_min"] = 0
@@ -111,6 +128,14 @@ def contact(request):
     """
     if request.method == 'POST':
         data = request.data
+        if data.get("email") and (data.get("first_name") or data.get("last_name")) and not Newsletter.objects.filter(
+                email=data["email"]
+        ).exists():
+            Newsletter.objects.create(
+                email=data["email"],
+                first_name=data["first_name"] or data["last_name"],
+                last_name=data["last_name"] or data["first_name"]
+            )
         context = {
             "email": data['email'],
             "environment": settings.ENVIRONMENT,
