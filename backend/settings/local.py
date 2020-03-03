@@ -3,6 +3,7 @@ from .base import *
 DEBUG = True
 
 IMAGES_FOLDER = "dev/images/"
+CATALOGS_FOLDER = "dev/catalogs/"
 
 DATABASES = {
     'default': {

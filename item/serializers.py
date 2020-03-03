@@ -32,5 +32,14 @@ class ItemSerializer(serializers.ModelSerializer):
             'gps_longitude', 'gross_revenue_multiplier', 'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden',
             'has_swimming_pool', 'housing_descriptions', 'image_map', 'images', 'is_active', "is_new", 'label',
             'lot_size', 'maximum_loan', 'net_income_multiplier', 'overall_rate_update', 'property_type', 'price',
-            'short_description', 'status', 'with_map'
+            'short_description', 'status', 'with_map', 'catalog'
         )
+
+    def to_representation(self, instance):
+        representation = super(ItemSerializer, self).to_representation(instance)
+        if instance.catalog and instance.catalog.url:
+            representation['catalog'] = settings.BACKEND_URL_ROOT + instance.catalog.url
+        else:
+            representation['catalog'] = ""
+
+        return representation

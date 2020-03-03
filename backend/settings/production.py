@@ -3,6 +3,7 @@ from .base import *
 DEBUG = False
 
 IMAGES_FOLDER = "images/"
+CATALOGS_FOLDER = "catalogs/"
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
@@ -16,7 +17,7 @@ DATABASES = {
 try:
     from .prod_conf import SERVER_URL
 except:
-    SERVER_URL = '91.234.194.87'
+    SERVER_URL = 'www.elmahboubi.com'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)

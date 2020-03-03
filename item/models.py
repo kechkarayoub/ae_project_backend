@@ -46,6 +46,12 @@ class Item(models.Model):
         default='',
         max_length=50
     )
+    catalog = models.FileField(
+        _("Description détaillée"),
+        help_text=_("Description détaillée en pdf"),
+        null=True,
+        upload_to=settings.CATALOGS_FOLDER + 'item/itemsCatalogs'  # lien du catalog: /media/catalogs/item/itemsCatalogs/*.*
+    )
     ccd = models.DecimalField(
         _("Ccd (CCD)"), blank=True, decimal_places=2, max_digits=5, null=True
     )

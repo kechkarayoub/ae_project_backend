@@ -99,6 +99,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 IMAGES_FOLDER = "images/"
+CATALOGS_FOLDER = "catalogs/"
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

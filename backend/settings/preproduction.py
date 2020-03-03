@@ -3,6 +3,7 @@ from .base import *
 DEBUG = True
 
 IMAGES_FOLDER = "preprod/images/"
+CATALOGS_FOLDER = "preprod/catalogs/"
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",

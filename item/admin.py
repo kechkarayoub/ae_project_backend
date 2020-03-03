@@ -58,7 +58,7 @@ class ItemAdmin(TranslationAdmin):
                 'cost_per_housing', 'down_payment_required', 'economic_value', 'gross_revenue_multiplier',
                 'property_type', 'apartments_number', 'housing_descriptions', 'has_dining_room', 'has_fireplace',
                 'has_garage', 'has_swimming_pool', 'has_garden', 'lot_size', 'maximum_loan', 'net_income_multiplier',
-                'overall_rate_update'
+                'overall_rate_update', 'catalog'
             ]
         }),
         (_("Added fields"), {
