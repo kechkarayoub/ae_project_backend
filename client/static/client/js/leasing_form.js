@@ -1,4 +1,5 @@
 (function($) {
     setTimeout(function(){
-    }, 0);
+        var $ = $ || django.jQuery;
+    }, 500);
 })(django.jQuery);

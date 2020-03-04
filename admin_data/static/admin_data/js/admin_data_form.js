@@ -1,5 +1,6 @@
 (function($) {
     setTimeout(function(){
+        var $ = $ || django.jQuery;
         $(".field-image").on('change', 'input[type=file]', function(event){
             var self = this;
             var files = event.target.files;
@@ -38,5 +39,5 @@
             $("#id_enable_map").closest(".module").find(".field-gps_latitude, .field-gps_longitude").addClass("hidden");
         }
         $("#admindata_form .submit-row input[name='_addanother']").addClass("hidden");
-    }, 100);
+    }, 500);
 })(django.jQuery);

@@ -1,5 +1,6 @@
 (function($) {
     setTimeout(function(){
+        var $ = $ || django.jQuery;
         $(".field-image").on('change', 'input[type=file]', function(event){
             var self = this;
             var files = event.target.files;

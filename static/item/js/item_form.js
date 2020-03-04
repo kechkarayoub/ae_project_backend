@@ -1,5 +1,6 @@
 (function($) {
     setTimeout(function(){
+        var $ = $ || django.jQuery;
         $("#images-group").on('change', '.field-image input[type=file]', function(event){
             var self = this;
             var files = event.target.files;
@@ -62,5 +63,5 @@
         if(!$("#id_with_map").is(":checked")){
             $("#id_with_map").closest(".module").find(".field-gps_latitude, .field-gps_longitude, .field-image_map.field-get_item_image_map_preview").addClass("hidden");
         }
-    }, 100);
+    }, 500);
 })(django.jQuery);

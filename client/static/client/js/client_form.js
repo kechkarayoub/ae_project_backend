@@ -20,6 +20,7 @@
 //        }
 //    });
     setTimeout(function(){
+        var $ = $ || django.jQuery;
         $('.btn-import').on('click', function(event){
             var self = this;
             $(this).closest("li").find("input.import_input").click();
@@ -50,5 +51,5 @@
                 }
             });
         });
-    }, 0);
+    }, 500);
 })(django.jQuery);

@@ -1,5 +1,6 @@
 (function($) {
     setTimeout(function(){
+        var $ = $ || django.jQuery;
         $(".field-header_background_image").on('change', 'input[type=file]', function(event){
             var self = this;
             var files = event.target.files;
@@ -97,5 +98,5 @@
             }
         });
         $("#settingsdb_form .submit-row input[name='_addanother']").addClass("hidden");
-    }, 100);
+    }, 500);
 })(django.jQuery);
