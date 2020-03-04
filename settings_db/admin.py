@@ -62,13 +62,16 @@ class SettingsDbAdmin(TranslationAdmin):
             'fields': ['main_bg_image', get_main_bg_image_preview]
         }),
         (_("Header settings"), {
-            'fields': ['site_name', 'header_background_image', get_header_background_image_preview, 'header_image', get_header_image_preview, "header_text_color", "logo", get_logo_image_preview]
+            'fields': [
+                'site_name', 'header_background_image', get_header_background_image_preview, 'header_image',
+                get_header_image_preview, "header_text_color", "logo", get_logo_image_preview
+            ]
         }),
         (_("E-mail de rappel de paiement"), {
             'fields': [
                 'reminder_payment_email_object', 'reminder_payment_email_message1', 'reminder_payment_email_message2',
-                'reminder_payment_email_message2', 'reminder_payment_email_message3', "reminder_payment_email_footer1",
-                'reminder_payment_email_footer2'
+                'reminder_payment_email_message3', "reminder_payment_email_footer_line1",
+                'reminder_payment_email_footer_line2'
             ]
         }),
         (_("Home page settings"), {
@@ -80,7 +83,9 @@ class SettingsDbAdmin(TranslationAdmin):
             ]
         }),
     ]
-    readonly_fields = [get_header_background_image_preview, get_header_image_preview, get_main_bg_image_preview, get_logo_image_preview]
+    readonly_fields = [
+        get_header_background_image_preview, get_header_image_preview, get_main_bg_image_preview, get_logo_image_preview
+    ]
 
     def save_model(self, request, obj, form, change):
         if len(SettingsDb.objects.all()) > 0:
