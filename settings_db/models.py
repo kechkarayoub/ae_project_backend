@@ -62,15 +62,18 @@ class SettingsDb(models.Model):
     reminder_payment_email_message1 = models.TextField(
         _("Paragraphe 1 de l'email de rappel de paiment"), blank=False,
         default="Veuillez payer votre loyer le 1er du mois. Si vous payer par Interac, veuillez utiliser le courriel"
-                " suivant: Jalil.elmahboubi@gmail.com", null=False
+                " suivant: Jalil.elmahboubi@gmail.com",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=False
     )
     reminder_payment_email_message2 = models.TextField(
         _("Paragraphe 2 de l'email de rappel de paiment"), blank=True,
         default="Une pénalité de 25.00$ sera ajouter après le 5 de chaque mois. \r\n Une pénalité de 125$ et demande "
-                "de résiliation de votre bail si le retard dépasse 3 semaines.", null=True
+                "de résiliation de votre bail si le retard dépasse 3 semaines.",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=True
     )
     reminder_payment_email_message3 = models.TextField(
-        _("Paragraphe 3 de l'email de rappel de paiment"), blank=True, default="", null=True
+        _("Paragraphe 3 de l'email de rappel de paiment"), blank=True, default="",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=True
     )
     reminder_payment_email_object = models.CharField(
         _("Sujet de l'email de rappel de paiment"), blank=False,
@@ -104,7 +107,7 @@ class SettingsDb(models.Model):
     @classmethod
     def get_reminder_email_data(cls):
         try:
-            return cls.objects.get().to_remailnder_email_data()
+            return cls.objects.get().to_reminder_email_data()
         except:
             return {
                 "object": "Rappelle: Paiement du loyer",
