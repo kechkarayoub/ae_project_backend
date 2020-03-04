@@ -51,11 +51,13 @@ def import_clients(request):
                 if not str(worksheet.row(row_header)[col_email].value).strip().lower() in ["email"]:
                     structured_file = False
                 if not structured_file:
+                    message = "Importation n'est pas terminée."
                     sheet_issues.append(
                         "Le fichier n'est pas valide ou n'est pas bien structuré dans la feille: {}.".format(sheet_name)
                     )
                     issues_exist = True
                 else:
+                    message = "Importation terminée."
                     idx = row_header + 1
                     while idx < worksheet.nrows:
                         client_row = worksheet.row(idx)
@@ -84,7 +86,6 @@ def import_clients(request):
                             issues_exist = True
                         idx += 1
                 issues[sheet_name] = sheet_issues
-            message = "Importation terminée."
             response.update({
                 "message": message,
                 "clients_created": clients_created,

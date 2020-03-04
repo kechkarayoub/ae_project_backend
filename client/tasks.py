@@ -1,6 +1,16 @@
 from.models import Leasing
 from backend.celery import app
 import datetime
+from backend.utils import send_email
+from django.conf import settings
+from .models import Client
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.template.loader import get_template
+from django.utils.translation import ugettext as _
+from settings_db.models import SettingsDb
+from django.core.mail import EmailMultiAlternatives
+from sociallink.views import get_list_social_links
+from backend.utils import send_email, get_list_social_links_images
 
 
 @app.task
@@ -24,3 +34,33 @@ def create_leasing_entries():
             price=leasing.price,
             start_at=leasing.start_at
         )
+
+@app.task
+def email_de_rappel_de_paiement():
+    reminder_email_data = SettingsDb.get_reminder_email_data()
+    context = {
+        "backend_url": settings.BACKEND_URL_ROOT,
+        "environment": settings.ENVIRONMENT,
+        "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
+        "message_1": reminder_email_data['message_1'],
+        "message_2": reminder_email_data['message_2'],
+        "message_3": reminder_email_data['message_3'],
+        "footer_1": reminder_email_data['footer_1'],
+        "footer_2": reminder_email_data['footer_2'],
+        "site_name": SettingsDb.get_site_name(),
+        "site_url_root": settings.SITE_URL_ROOT,
+        "social_links": get_list_social_links(),
+        "social_links_images": get_list_social_links_images(),
+    }
+    html_content = get_template('client/payment_reminder_email.html').render(context)
+    text_content = get_template('client/payment_reminder_email.txt').render(context)
+    clients_emails = [
+        client['email'] for client in Client.objects.filter(is_active=True, type="tenant").values('email')
+    ]
+    msg = EmailMultiAlternatives(reminder_email_data['object'], text_content, settings.EMAIL_HOST_USER, clients_emails[0:1],
+                                 bcc=clients_emails[1:], )
+    msg.attach_alternative(html_content, "text/html")
+    msg.content_subtype = 'html'
+    msg.mixed_subtype = 'related'
+    msg.send()
+    # send_email("Test celery", "Celery work perfectly", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
