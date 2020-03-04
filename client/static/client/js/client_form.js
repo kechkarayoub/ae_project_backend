@@ -42,9 +42,30 @@
                 processData: false,
                 contentType: false,
                 success: function (result) {
-                     if(result.success){
-                        alert(result.message);
-                     }
+                    var message = result.message || "";
+                    if(result.success){
+                        if(result.clients_created){
+                            message = message + "\r\n" + "Clients ajoutés: " + result.clients_created + ".";
+                        }
+                        if(result.clients_updated){
+                            message = message + "\r\n" + "Clients modifiés: " + result.clients_updated + ".";
+                        }
+                        if(result.issues){
+                            message = message + "\r\n" + "Les autres clients ne sont pas ajoutés en raison des problèmes suivants:";
+                            Object.keys(result.issues).map(sheet_name => {
+                                if(result.issues[sheet_name].length > 0){
+                                    message = message + "\r\n" + "Dans la feille " + sheet_name + ":";
+                                    result.issues[sheet_name].map(issue => {
+                                        message = message + "\r\n    " + issue;
+                                    });
+                                }
+                            });
+                        }
+                    }
+                    alert(message);
+                    if(result.success){
+                        location.reload();
+                    }
                 },
                 error: function(error) {
                         alert(error);
