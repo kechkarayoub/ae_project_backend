@@ -618,7 +618,11 @@ msgstr "Pas intéressé par nos messages?"
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 
-#: .\item\templates\item\new_item_template.html:7
+#: .\item\templates\item\new_item_template.html:8
+msgid "A new property has been added!"
+msgstr "Une propriété a été mise à jour!"
+
+#: .\item\templates\item\new_item_template.html:10
 msgid "A new property has been added!"
 msgstr "Une nouvelle propriété a été ajoutée!"
 
@@ -626,9 +630,13 @@ msgstr "Une nouvelle propriété a été ajoutée!"
 msgid "More infos..."
 msgstr "Plus d'informations..."
 
-#: .\item\views.py:151
+#: .\item\views.py:156
 msgid "New property"
 msgstr "Nouvelle propriété"
+
+#: .\item\views.py:156
+msgid "Une propriété a été mise à jour"
+msgstr ""
 
 #: .\newsletter\templates\newsletter\resubscription_template.html:7
 msgid "Resubscribing to the newsletter"

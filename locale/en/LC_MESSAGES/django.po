@@ -619,7 +619,11 @@ msgstr ""
 msgid "Unsubscribe"
 msgstr ""
 
-#: .\item\templates\item\new_item_template.html:7
+#: .\item\templates\item\new_item_template.html:8
+msgid "A property has been updated!"
+msgstr ""
+
+#: .\item\templates\item\new_item_template.html:10
 msgid "A new property has been added!"
 msgstr ""
 
@@ -627,8 +631,12 @@ msgstr ""
 msgid "More infos..."
 msgstr ""
 
-#: .\item\views.py:151
+#: .\item\views.py:156
 msgid "New property"
+msgstr ""
+
+#: .\item\views.py:156
+msgid "A property has been updated"
 msgstr ""
 
 #: .\newsletter\templates\newsletter\resubscription_template.html:7

@@ -131,6 +131,7 @@ def send_new_property_to_newsletters(sender, **kwargs):
     new_item = kwargs['instance']
     new_item_data = ItemSerializer(new_item).data
     images_items = new_item.images.all()
+    is_updated = new_item.is_updated
     context = {
         "backend_url": settings.BACKEND_URL_ROOT,
         "environment": settings.ENVIRONMENT,
@@ -140,6 +141,7 @@ def send_new_property_to_newsletters(sender, **kwargs):
         "property_images": images_items,
         "property_label": new_item_data['label'],
         "property_short_description": new_item_data['short_description'],
+        "is_updated": is_updated,
         "site_name": SettingsDb.get_site_name(),
         "site_url_root": settings.SITE_URL_ROOT,
         "show_unsubscribe_url": True,
@@ -148,8 +150,13 @@ def send_new_property_to_newsletters(sender, **kwargs):
     }
     html_content = get_template('item/new_item_template.html').render(context)
     text_content = get_template('item/new_item_template.txt').render(context)
-    newsletters_emails = [newsletter_email['email'] for newsletter_email in Newsletter.objects.filter(is_active=True).values('email')]
-    msg = EmailMultiAlternatives(_('New property'), text_content, settings.EMAIL_HOST_USER, newsletters_emails[0:1], bcc=newsletters_emails[1:],)
+    newsletters_emails = [
+        newsletter_email['email'] for newsletter_email in Newsletter.objects.filter(is_active=True).values('email')
+    ]
+    msg = EmailMultiAlternatives(
+        _('A property has been updated' if is_updated else 'New property'), text_content,
+        settings.EMAIL_HOST_USER, newsletters_emails[0:1], bcc=newsletters_emails[1:]
+    )
     msg.attach_alternative(html_content, "text/html")
     msg.content_subtype = 'html'
     msg.mixed_subtype = 'related'

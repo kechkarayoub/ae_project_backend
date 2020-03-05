@@ -4,7 +4,11 @@
 {% block content %}
 <tr>
     <td style="text-align: center; font-size:18px; color: #a47355; padding-bottom: 25px;">
-        <b>{% trans "A new property has been added!" %}</b>
+        {% if is_updated %}
+            <b>{% trans "A property has been updated!" %}</b>
+        {% else %}
+            <b>{% trans "A new property has been added!" %}</b>
+        {% endif %}
     </td>
 </tr>
 <table style="width: 100%;">

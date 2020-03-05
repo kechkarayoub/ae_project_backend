@@ -48,6 +48,7 @@ class Item(models.Model):
     )
     catalog = models.FileField(
         _("Description détaillée"),
+        blank=True,
         help_text=_("Description détaillée en pdf"),
         null=True,
         upload_to=settings.CATALOGS_FOLDER + 'item/itemsCatalogs'  # lien du catalog: /media/catalogs/item/itemsCatalogs/*.*
@@ -137,6 +138,13 @@ class Item(models.Model):
     def is_new(self):
         delta = datetime.datetime.now().date() - self.createdAt.date()
         return delta.days < 8
+
+    @property
+    def is_updated(self):
+        now = datetime.datetime.combine(datetime.datetime.now().date(), datetime.datetime.now().time())
+        created_date = datetime.datetime.combine(self.createdAt.date(), self.createdAt.time())
+        diff = now - created_date
+        return int(diff.total_seconds() / 60) > 5
 
 
 class ItemImage(models.Model):
