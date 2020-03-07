@@ -13,7 +13,7 @@ from django.urls import reverse
 from newsletter.models import Newsletter
 import json
 import os
-from .views import send_new_property_to_newsletters
+from .views import send_property_to_newsletters
 
 from django.conf import settings
 from django.core import mail
@@ -361,7 +361,7 @@ class ViewsTest(TestCase):
 #     def setUp(self):
 #         self.client = Client()
 #
-#     def test_send_new_property_to_newsletters(self):
+#     def test_send_property_to_newsletters(self):
 #         item = Item(
 #             item_id="AEXXXXXXXX5",
 #             label="label",

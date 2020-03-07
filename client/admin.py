@@ -12,13 +12,13 @@ class ClientAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None, {
-            'fields': ['first_name', 'last_name', 'email', 'phone', 'is_active']
+            'fields': ['address', 'apartment', 'first_name', 'last_name', 'email', 'phone', 'type', 'is_active']
         }),
     ]
-    list_display = ('first_name', 'last_name', 'email',)
-    list_filter = ['is_active']
+    list_display = ('first_name', 'last_name', 'email', 'address', 'type')
+    list_filter = ['is_active', 'type']
     ordering = ('-createdAt',)
-    search_fields = ['first_name', 'last_name', 'email', 'phone']
+    search_fields = ['first_name', 'last_name', 'email', 'phone', 'address']
 
 
 class LeasingAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from .models import Item
+from .models import Item, SendNewsletterAfterActivating
 from .serializers import ItemSerializer
 from backend.project_conf import NBR_ITEMS_PER_PAGE
 from backend.static_variables import PRICES_RANGES_VALUES
@@ -125,48 +125,54 @@ def on_transaction_commit(func):
 
     return inner
 
+
 @receiver(post_save, sender=Item)
 @on_transaction_commit
-def send_new_property_to_newsletters(sender, **kwargs):
-    new_item = kwargs['instance']
-    new_item_data = ItemSerializer(new_item).data
-    images_items = new_item.images.all()
-    is_updated = new_item.is_updated
-    context = {
-        "backend_url": settings.BACKEND_URL_ROOT,
-        "environment": settings.ENVIRONMENT,
-        "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
-        "property_description": new_item_data['description'],
-        "property_id": new_item_data['pk'],
-        "property_images": images_items,
-        "property_label": new_item_data['label'],
-        "property_short_description": new_item_data['short_description'],
-        "is_updated": is_updated,
-        "site_name": SettingsDb.get_site_name(),
-        "site_url_root": settings.SITE_URL_ROOT,
-        "show_unsubscribe_url": True,
-        "social_links": get_list_social_links(),
-        "social_links_images": get_list_social_links_images(),
-    }
-    html_content = get_template('item/new_item_template.html').render(context)
-    text_content = get_template('item/new_item_template.txt').render(context)
-    newsletters_emails = [
-        newsletter_email['email'] for newsletter_email in Newsletter.objects.filter(is_active=True).values('email')
-    ]
-    msg = EmailMultiAlternatives(
-        _('A property has been updated' if is_updated else 'New property'), text_content,
-        settings.EMAIL_HOST_USER, newsletters_emails[0:1], bcc=newsletters_emails[1:]
-    )
-    msg.attach_alternative(html_content, "text/html")
-    msg.content_subtype = 'html'
-    msg.mixed_subtype = 'related'
-    for item_image in images_items:
-        # Create an inline attachment
-        ext = '.'+item_image.image.url.split('.')[-1]
-        image = MIMEImage(item_image.image.read(), _subtype=ext)
-        image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
-        msg.attach(image)
-    # try:
-    msg.send()
-    # except Exception as e:
-    #     pass
+def send_property_to_newsletters(sender, **kwargs):
+    instance = kwargs['instance']
+    if instance.is_active:
+        instance_data = ItemSerializer(instance).data
+        images_items = instance.images.all()
+        is_updated = not SendNewsletterAfterActivating.objects.filter(item_id=instance.item_id).exists() and \
+                     instance.is_updated
+        context = {
+            "backend_url": settings.BACKEND_URL_ROOT,
+            "environment": settings.ENVIRONMENT,
+            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
+            "property_description": instance_data['description'],
+            "property_id": instance_data['pk'],
+            "property_images": images_items,
+            "property_label": instance_data['label'],
+            "property_short_description": instance_data['short_description'],
+            "is_updated": is_updated,
+            "site_name": SettingsDb.get_site_name(),
+            "site_url_root": settings.SITE_URL_ROOT,
+            "show_unsubscribe_url": True,
+            "social_links": get_list_social_links(),
+            "social_links_images": get_list_social_links_images(),
+        }
+        html_content = get_template('item/new_item_template.html').render(context)
+        text_content = get_template('item/new_item_template.txt').render(context)
+        newsletters_emails = [
+            newsletter_email['email'] for newsletter_email in Newsletter.objects.filter(is_active=True).values('email')
+        ]
+        msg = EmailMultiAlternatives(
+            _('A property has been updated' if is_updated else 'New property'), text_content,
+            settings.EMAIL_HOST_USER, newsletters_emails[0:1], bcc=newsletters_emails[1:]
+        )
+        msg.attach_alternative(html_content, "text/html")
+        msg.content_subtype = 'html'
+        msg.mixed_subtype = 'related'
+        for item_image in images_items:
+            # Create an inline attachment
+            ext = '.'+item_image.image.url.split('.')[-1]
+            image = MIMEImage(item_image.image.read(), _subtype=ext)
+            image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
+            msg.attach(image)
+
+        # try:
+        msg.send()
+        if not is_updated:
+            SendNewsletterAfterActivating.objects.filter(item_id=instance.item_id).delete()
+        # except Exception as e:
+        #     pass

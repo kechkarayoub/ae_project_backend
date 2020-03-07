@@ -483,3 +483,10 @@ PRICES_RANGES_VALUES = {
     }
 }
 
+TYPES = (
+    ("", _("Autre")),
+    ("achteur", _("Achteur")),
+    ("vendeur", _("Vendeur")),
+    ("locataire", _("Locataire"))
+)
+

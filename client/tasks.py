@@ -35,6 +35,7 @@ def create_leasing_entries():
             start_at=leasing.start_at
         )
 
+
 @app.task
 def email_de_rappel_de_paiement():
     reminder_email_data = SettingsDb.get_reminder_email_data()
@@ -55,10 +56,12 @@ def email_de_rappel_de_paiement():
     html_content = get_template('client/payment_reminder_email.html').render(context)
     text_content = get_template('client/payment_reminder_email.txt').render(context)
     clients_emails = [
-        client['email'] for client in Client.objects.filter(is_active=True, type="tenant").values('email')
+        client['email'] for client in Client.objects.filter(is_active=True, type="locataire").values('email')
     ]
-    msg = EmailMultiAlternatives(reminder_email_data['object'], text_content, settings.EMAIL_HOST_USER, clients_emails[0:1],
-                                 bcc=clients_emails[1:], )
+    msg = EmailMultiAlternatives(
+        reminder_email_data['object'], text_content, settings.EMAIL_HOST_USER, clients_emails[0:1],
+        bcc=clients_emails[1:],
+    )
     msg.attach_alternative(html_content, "text/html")
     msg.content_subtype = 'html'
     msg.mixed_subtype = 'related'

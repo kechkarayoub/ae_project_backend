@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.mail import EmailMultiAlternatives
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from django.utils.translation import ugettext as _
 import random
 
@@ -79,3 +81,11 @@ def get_list_social_links_images():
         "twitter": settings.BACKEND_URL_ROOT + static("contact/images/twitter.png"),
         "youtube": settings.BACKEND_URL_ROOT + static("contact/images/youtube.png"),
     }
+
+
+def is_email_valid(email):
+    try:
+        validate_email(email)
+        return True
+    except ValidationError:
+        return False

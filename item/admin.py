@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import ItemImage, Item
+from .models import ItemImage, Item, SendNewsletterAfterActivating
 from backend.utils import generate_id
 from django.contrib import admin
 from django.utils.translation import ugettext as _
@@ -84,12 +84,16 @@ class ItemAdmin(TranslationAdmin):
     readonly_fields = [get_item_image_map_preview]
 
     def save_model(self, request, obj, form, change):
+        from client.tasks import email_de_rappel_de_paiement
+        email_de_rappel_de_paiement()
         if not obj.item_id:
             try:
                 last_id = Item.objects.latest('createdAt').item_id
             except Item.DoesNotExist:
                 last_id = None
             obj.item_id = generate_id(last_id)
+            if not obj.is_active:
+                SendNewsletterAfterActivating.objects.create(item_id=obj.item_id)
         super(ItemAdmin, self).save_model(request, obj, form, change)
 
 

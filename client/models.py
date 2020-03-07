@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from backend.static_variables import TYPES
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -6,12 +7,6 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from item.models import Item
 import datetime
-
-TYPES = (
-    ("buyer", _("Achteur")),
-    ("seller", _("Vendeur")),
-    ("tenant", _("Locataire"))
-)
 
 
 YEARMONTH_INPUT_FORMATS = (
@@ -23,13 +18,15 @@ class Client(models.Model):
     class Meta:
         db_table = "client"
 
+    address = models.CharField(_("Adresse"), blank=True, max_length=510, null=True)
+    apartment = models.CharField(_("Appartement"), blank=True, max_length=255, null=True)
     createdAt = models.DateTimeField(_("Créé le"), auto_now_add=True)
     email = models.EmailField(_("Email"), null=True)
     first_name = models.CharField(_("Prénom"), blank=False, max_length=30)
     is_active = models.BooleanField(_("Est active"), default=True)
     last_name = models.CharField(_("Nom"), blank=False, max_length=30)
     phone = models.CharField(_("Téléphone"), blank=True, default="", max_length=20)
-    type = models.CharField(_("Type"), blank=False, choices=TYPES, default="tenant", max_length=20)
+    type = models.CharField(_("Type"), blank=False, choices=TYPES, default="locataire", max_length=20)
 
     def full_name(self):
         return self.first_name + " " + self.last_name

@@ -99,7 +99,7 @@ class Item(models.Model):
         upload_to=settings.IMAGES_FOLDER + 'item/itemsImages'  # lien de l'image: /media/item/images/itemsImages/*.*
     )
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
-    is_active = models.BooleanField(_("Est active"), default=True)
+    is_active = models.BooleanField(_("Est active"), default=False)
     label = models.CharField(_("Étiquette"), blank=False, max_length=255, null=False)
     lot_size = models.PositiveIntegerField(_("Taille de la propriété(m²)"), default=0)
     maximum_loan = models.DecimalField(
@@ -169,3 +169,14 @@ class ItemImage(models.Model):
     @property
     def image_filename(self):
         return os.path.basename(self.image.name)
+
+
+class SendNewsletterAfterActivating(models.Model):
+    class Meta:
+        db_table = "send_newsletter_after_activating"
+
+    item_id = models.CharField(_("Id"), max_length=255, unique=True)
+
+    def __str__(self):
+        return self.item_id
+
