@@ -84,8 +84,6 @@ class ItemAdmin(TranslationAdmin):
     readonly_fields = [get_item_image_map_preview]
 
     def save_model(self, request, obj, form, change):
-        from client.tasks import email_de_rappel_de_paiement
-        email_de_rappel_de_paiement()
         if not obj.item_id:
             try:
                 last_id = Item.objects.latest('createdAt').item_id

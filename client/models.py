@@ -26,7 +26,7 @@ class Client(models.Model):
     is_active = models.BooleanField(_("Est active"), default=True)
     last_name = models.CharField(_("Nom"), blank=False, max_length=30)
     phone = models.CharField(_("Téléphone"), blank=True, default="", max_length=20)
-    type = models.CharField(_("Type"), blank=False, choices=TYPES, default="locataire", max_length=20)
+    type = models.CharField(_("Type"), blank=True, choices=TYPES, default="locataire", max_length=20)
 
     def full_name(self):
         return self.first_name + " " + self.last_name

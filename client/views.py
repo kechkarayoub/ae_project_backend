@@ -84,13 +84,13 @@ def import_clients(request):
                                     if not Client.objects.filter(email=email).exists():
                                         Client.objects.create(
                                             email=email, first_name=first_name, last_name=last_name,
-                                            address=address, apartment=apartment
+                                            address=address, apartment=apartment, type=type
                                         )
                                         clients_created += 1
                                     else:
                                         Client.objects.filter(email=email).update(
                                             is_active=True, first_name=first_name, last_name=last_name,
-                                            address=address, apartment=apartment
+                                            address=address, apartment=apartment, type=type
                                         )
                                         clients_updated += 1
 
