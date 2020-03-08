@@ -4,6 +4,7 @@ import datetime
 from backend.utils import send_email
 from django.conf import settings
 from .models import Client
+import json
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
@@ -37,7 +38,7 @@ def create_leasing_entries():
 
 
 @app.task
-def email_de_rappel_de_paiement(is_test=False, to_emails_test=["kechkarayoub@gmail.com"]):
+def email_de_rappel_de_paiement(is_test=False, to_emails_test='["kechkarayoub@gmail.com"]'):
     reminder_email_data = SettingsDb.get_reminder_email_data()
     context = {
         "backend_url": settings.BACKEND_URL_ROOT,
@@ -56,7 +57,10 @@ def email_de_rappel_de_paiement(is_test=False, to_emails_test=["kechkarayoub@gma
     html_content = get_template('client/payment_reminder_email.html').render(context)
     text_content = get_template('client/payment_reminder_email.txt').render(context)
     if is_test:
-        clients_emails = to_emails_test if len(to_emails_test) else ["kechkarayoub@gmail.com"]
+        clients_emails = json.loads(to_emails_test) if len(to_emails_test) > 2 else ["kechkarayoub@gmail.com"]
+        f = open("/home/ubuntu/log_backend/test_log.txt", "w+")
+        f.write("This is line {}\r\n".format(clients_emails[0]))
+        f.close()
     else:
         clients_emails = [
             client['email'] for client in Client.objects.filter(is_active=True, type="locataire").values('email')
