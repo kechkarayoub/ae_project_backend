@@ -29,6 +29,8 @@ class AdminData(models.Model):
         try:
             return cls.objects.get().email
         except:
+            if settings.ENVIRONMENT == "development":
+                return "kechkarayoub@gmail.com"
             return "Jalil.elmahboubi@gmail.com"
 
     @classmethod

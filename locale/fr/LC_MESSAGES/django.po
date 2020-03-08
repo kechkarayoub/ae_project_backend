@@ -418,6 +418,10 @@ msgstr "Statut"
 msgid "Buying a property!"
 msgstr "Acheter une propriété!"
 
+#: .\contact\templates\contact\contact_renting_template.html:6
+msgid "Renting a property!"
+msgstr "Louer une propriété!"
+
 #: .\contact\templates\contact\contact_buying_template.html:14
 #: .\contact\templates\contact\contact_template.html:15
 msgid "Client information"
@@ -453,6 +457,10 @@ msgstr "Taille de la propriété min"
 #: .\contact\views.py:102
 msgid "Buying property"
 msgstr "Achat de propriété"
+
+#: .\contact\views.py:102
+msgid "Renting property"
+msgstr "Location de propriété"
 
 #: .\funding\models.py:33 .\item\models.py:70
 msgid "Description"
