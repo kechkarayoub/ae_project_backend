@@ -38,7 +38,7 @@ def create_leasing_entries():
 
 
 @app.task
-def email_de_rappel_de_paiement(is_test=False, to_emails_test='["kechkarayoub@gmail.com"]'):
+def email_de_rappel_de_paiement(is_test=False, to_email_test="kechkarayoub@gmail.com"):
     reminder_email_data = SettingsDb.get_reminder_email_data()
     context = {
         "backend_url": settings.BACKEND_URL_ROOT,
@@ -57,9 +57,12 @@ def email_de_rappel_de_paiement(is_test=False, to_emails_test='["kechkarayoub@gm
     html_content = get_template('client/payment_reminder_email.html').render(context)
     text_content = get_template('client/payment_reminder_email.txt').render(context)
     if is_test:
-        clients_emails = json.loads(to_emails_test) if len(to_emails_test) > 2 else ["kechkarayoub@gmail.com"]
         f = open("/home/ubuntu/log_backend/test_log.txt", "w+")
-        f.write("This is line {}\r\n".format(clients_emails[0]))
+        f.write("hfgfhfhfh \r\n")
+        f.write("This is line {}\r\n".format(str(is_test)))
+        f.write("This is line {}\r\n".format(to_email_test))
+        clients_emails = [to_email_test if to_email_test else "kechkarayoub@gmail.com"]
+        f.write("okokok {}\r\n".format(clients_emails[0]))
         f.close()
     else:
         clients_emails = [
