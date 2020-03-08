@@ -43,6 +43,7 @@ def import_clients(request):
             clients_created = 0
             clients_updated = 0
             issues_exist = False
+            message = ""
             for sheet_name in document.sheet_names():
                 sheet_issues = []
                 worksheet = document.sheet_by_name(sheet_name)
@@ -81,6 +82,7 @@ def import_clients(request):
                                         type = client_row[col_type].value.lower().strip() or ""
                                     except:
                                         type = ""
+                                    type = type if type in ["locataire", "vendeur", "achteur"] else ""
                                     if not Client.objects.filter(email=email).exists():
                                         Client.objects.create(
                                             email=email, first_name=first_name, last_name=last_name,

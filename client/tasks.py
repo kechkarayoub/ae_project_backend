@@ -37,7 +37,7 @@ def create_leasing_entries():
 
 
 @app.task
-def email_de_rappel_de_paiement():
+def email_de_rappel_de_paiement(is_test=False, to_emails_test=["kechkarayoub@gmail.com"]):
     reminder_email_data = SettingsDb.get_reminder_email_data()
     context = {
         "backend_url": settings.BACKEND_URL_ROOT,
@@ -55,9 +55,12 @@ def email_de_rappel_de_paiement():
     }
     html_content = get_template('client/payment_reminder_email.html').render(context)
     text_content = get_template('client/payment_reminder_email.txt').render(context)
-    clients_emails = [
-        client['email'] for client in Client.objects.filter(is_active=True, type="locataire").values('email')
-    ]
+    if is_test:
+        clients_emails = to_emails_test if len(to_emails_test) else ["kechkarayoub@gmail.com"]
+    else:
+        clients_emails = [
+            client['email'] for client in Client.objects.filter(is_active=True, type="locataire").values('email')
+        ]
     msg = EmailMultiAlternatives(
         reminder_email_data['object'], text_content, settings.EMAIL_HOST_USER, clients_emails[0:1],
         bcc=clients_emails[1:],
