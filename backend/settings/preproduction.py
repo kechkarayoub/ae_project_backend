@@ -14,7 +14,7 @@ DATABASES = {
         "PORT": "3306"
     }
 }
-SERVER_URL = '15.222.49.90'
+SERVER_URL = '99.79.49.82'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
