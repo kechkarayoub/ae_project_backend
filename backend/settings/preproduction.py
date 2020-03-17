@@ -30,7 +30,10 @@ ENVIRONMENT = "preproduction"
 
 EMAIL_HOST_USER = "elmahboub.preprod@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.preprod"
-
+try:
+    from .environement import DROPBOX_ACCESS_TOKEN
+except:
+    DROPBOX_ACCESS_TOKEN = ""
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'gdThVLGpVbAAAAAAAAAAItFFlaa5PxswQi2WlribiTbgB9JBPko1YSzjYZJ2KuoP',
+    'oauth2_access_token': DROPBOX_ACCESS_TOKEN,
 }

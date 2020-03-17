@@ -33,9 +33,12 @@ ENVIRONMENT = "production"
 
 EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.com"
-
+try:
+    from .environement import DROPBOX_ACCESS_TOKEN
+except:
+    DROPBOX_ACCESS_TOKEN = ""
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'BjiK4PwJO8AAAAAAAAAAFksZ5TCdI4CkWcT1uydZhGDTZNmKHbIYPWmwCN92Sb-Y',
+    'oauth2_access_token': DROPBOX_ACCESS_TOKEN,
 }
 
 
