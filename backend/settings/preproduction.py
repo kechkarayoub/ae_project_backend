@@ -32,5 +32,5 @@ EMAIL_HOST_USER = "elmahboub.preprod@gmail.com"
 EMAIL_HOST_PASSWORD = "epassword.preprod"
 
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'gdThVLGpVbAAAAAAAAAADU8bL3IZ2PKWJkrZvIX2qjfvj3bmEEXSUs4KH3oTUtqP',
+    'oauth2_access_token': 'gdThVLGpVbAAAAAAAAAAH9Hxo2CbF1DZOijJkSiCctlBQXulBPFOGiUL6chlUH65',
 }

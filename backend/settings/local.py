@@ -30,7 +30,7 @@ EMAIL_HOST_USER = "buildingssite2019@gmail.com"
 EMAIL_HOST_PASSWORD = "building2019"
 
 DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': 'ZqIdsaSERAAAAAAAAAAAIQu77bKBlxLw3S19dQoPCbcGax7AyLxVw7nyBe96lkrF',
+    'oauth2_access_token': 'ZqIdsaSERAAAAAAAAAAAOlCQ2PjxB70bx339vQoMDsjsV8JbZOyYu8LugI6758ap',
 }
 
 # MIGRATION_MODULES = dict([(app, 'migrations') for app in INSTALLED_APPS])
