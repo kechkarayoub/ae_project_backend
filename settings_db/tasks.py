@@ -25,5 +25,8 @@ def backup_function():
         kwargs.update({
             "settings": "backend.settings.production"
         })
+    send_email("Begin", "settings: {}".format(kwargs["settings"]), settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
     management.call_command('dbbackup', **kwargs)
+    send_email("End Begin", "dbbackup is done now mediabackup", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
     management.call_command('mediabackup', **kwargs)
+    send_email("End", "all is done", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
