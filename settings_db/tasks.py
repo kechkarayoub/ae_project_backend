@@ -14,19 +14,19 @@ def test___task():
     print('........................')
 
 
-@app.task
-def backup_function():
-    kwargs = {}
-    if settings.ENVIRONMENT == "preproduction":
-        kwargs.update({
-            "settings": "backend.settings.preproduction"
-        })
-    elif settings.ENVIRONMENT == "production":
-        kwargs.update({
-            "settings": "backend.settings.production"
-        })
-    send_email("Begin", "settings: {}".format(kwargs["settings"]), settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
-    management.call_command('dbbackup', **kwargs)
-    send_email("End Begin", "dbbackup is done now mediabackup", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
-    management.call_command('mediabackup', **kwargs)
-    send_email("End", "all is done", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
+# @app.task
+# def backup_function():
+#     kwargs = {}
+#     if settings.ENVIRONMENT == "preproduction":
+#         kwargs.update({
+#             "settings": "backend.settings.preproduction"
+#         })
+#     elif settings.ENVIRONMENT == "production":
+#         kwargs.update({
+#             "settings": "backend.settings.production"
+#         })
+#     send_email("Begin", "settings: {}".format(kwargs["settings"]), settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
+#     management.call_command('dbbackup', **kwargs)
+#     send_email("End Begin", "dbbackup is done now mediabackup", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
+#     management.call_command('mediabackup', **kwargs)
+#     send_email("End", "all is done", settings.EMAIL_HOST_USER, "kechkarayoub@gmail.com")
