@@ -1,6 +1,13 @@
 1) Pull new code
-and create environement.py file in settings directory that contains line:
+and create special_settings.py file in settings directory these contains lines:
+DATABASES_SETTINGS = {}
+DROPBOX_ACCESS_TOKEN = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_USER = "xxx@gmail.com"
 ENVIRONMENT = ""
+SERVER_URL = ""
+
+
 2) Activating virtualenv
 3) Run:
     $ pip3 install dropbox==9.4.0 django-storages==1.8 django-dbbackup==3.2.0

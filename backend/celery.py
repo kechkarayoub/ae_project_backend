@@ -6,7 +6,7 @@ from django.conf import settings
 
 # set the default Django settings module for the 'celery' program.
 try:
-    from .settings.environement import ENVIRONMENT
+    from .settings.special_settings import ENVIRONMENT
 except:
     ENVIRONMENT = "production"
 if ENVIRONMENT == "production":

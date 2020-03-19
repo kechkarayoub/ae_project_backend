@@ -5,14 +5,24 @@ DEBUG = True
 IMAGES_FOLDER = "dev/images/"
 CATALOGS_FOLDER = "dev/catalogs/"
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
-SERVER_URL = 'localhost'
+try:
+    from .special_settings import DATABASES_SETTINGS
+    from .special_settings import DROPBOX_ACCESS_TOKEN
+    from .special_settings import EMAIL_HOST_PASSWORD
+    from .special_settings import EMAIL_HOST_USER
+    from .special_settings import SERVER_URL
+except:
+    DATABASES_SETTINGS = {}
+    DROPBOX_ACCESS_TOKEN = ""
+    EMAIL_HOST_PASSWORD = ""
+    EMAIL_HOST_USER = ""
+    SERVER_URL = ""
+
+DATABASES_SETTINGS['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = {
+    'default': DATABASES_SETTINGS
+}
 
 SITE_URL = "{}:3000".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
@@ -26,13 +36,6 @@ CORS_ORIGIN_WHITELIST = (
 
 ENVIRONMENT = "development"
 
-EMAIL_HOST_USER = "buildingssite2019@gmail.com"
-EMAIL_HOST_PASSWORD = "building2019"
-
-try:
-    from .environement import DROPBOX_ACCESS_TOKEN
-except:
-    DROPBOX_ACCESS_TOKEN = ""
 DBBACKUP_STORAGE_OPTIONS = {
     'oauth2_access_token': DROPBOX_ACCESS_TOKEN,
 }

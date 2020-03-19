@@ -4,20 +4,23 @@ DEBUG = False
 
 IMAGES_FOLDER = "images/"
 CATALOGS_FOLDER = "catalogs/"
-DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "ae_django_db",
-        "USER": "ae_django_db",
-        "PASSWORD": "ae_django_db",
-        "HOST": "localhost",
-        "PORT": "3306"
-    }
-}
+
 try:
-    from .prod_conf import SERVER_URL
+    from .special_settings import DATABASES_SETTINGS
+    from .special_settings import DROPBOX_ACCESS_TOKEN
+    from .special_settings import EMAIL_HOST_PASSWORD
+    from .special_settings import EMAIL_HOST_USER
+    from .special_settings import SERVER_URL
 except:
-    SERVER_URL = 'www.elmahboubi.com'
+    DATABASES_SETTINGS = {}
+    DROPBOX_ACCESS_TOKEN = ""
+    EMAIL_HOST_PASSWORD = ""
+    EMAIL_HOST_USER = ""
+    SERVER_URL = ""
+
+DATABASES = {
+    'default': DATABASES_SETTINGS
+}
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
@@ -31,12 +34,6 @@ CORS_ORIGIN_WHITELIST = (
 
 ENVIRONMENT = "production"
 
-EMAIL_HOST_USER = "elmahboubi.com@gmail.com"
-EMAIL_HOST_PASSWORD = "epassword.com"
-try:
-    from .environement import DROPBOX_ACCESS_TOKEN
-except:
-    DROPBOX_ACCESS_TOKEN = ""
 DBBACKUP_STORAGE_OPTIONS = {
     'oauth2_access_token': DROPBOX_ACCESS_TOKEN,
 }

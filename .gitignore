@@ -122,7 +122,7 @@ server_settings.json
 
 prod_conf.py
 
-backend/settings/environement.py
+backend/settings/special_settings.py
 environement.txt
 *.pid
 

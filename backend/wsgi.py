@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 try:
-    from .settings.environement import ENVIRONMENT
+    from .settings.special_settings import ENVIRONMENT
 except:
     ENVIRONMENT = "production"
 if ENVIRONMENT == "preproduction":

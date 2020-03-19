@@ -4,17 +4,23 @@ DEBUG = True
 
 IMAGES_FOLDER = "preprod/images/"
 CATALOGS_FOLDER = "preprod/catalogs/"
+
+try:
+    from .special_settings import DATABASES_SETTINGS
+    from .special_settings import DROPBOX_ACCESS_TOKEN
+    from .special_settings import EMAIL_HOST_PASSWORD
+    from .special_settings import EMAIL_HOST_USER
+    from .special_settings import SERVER_URL
+except:
+    DATABASES_SETTINGS = {}
+    DROPBOX_ACCESS_TOKEN = ""
+    EMAIL_HOST_PASSWORD = ""
+    EMAIL_HOST_USER = ""
+    SERVER_URL = ""
+
 DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "ae_django_db",
-        "USER": "ae_django_db",
-        "PASSWORD": "ae_django_db",
-        "HOST": "localhost",
-        "PORT": "3306"
-    }
+    'default': DATABASES_SETTINGS
 }
-SERVER_URL = '99.79.49.82'
 
 SITE_URL = "{}".format(SERVER_URL)
 SITE_URL_ROOT = "http://{}".format(SITE_URL)
@@ -28,12 +34,6 @@ CORS_ORIGIN_WHITELIST = (
 
 ENVIRONMENT = "preproduction"
 
-EMAIL_HOST_USER = "elmahboub.preprod@gmail.com"
-EMAIL_HOST_PASSWORD = "epassword.preprod"
-try:
-    from .environement import DROPBOX_ACCESS_TOKEN
-except:
-    DROPBOX_ACCESS_TOKEN = ""
 DBBACKUP_STORAGE_OPTIONS = {
     'oauth2_access_token': DROPBOX_ACCESS_TOKEN,
 }
