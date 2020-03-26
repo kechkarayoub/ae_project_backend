@@ -14,6 +14,68 @@ YEARMONTH_INPUT_FORMATS = (
 )
 
 
+class GroupClient(models.Model):
+    class Meta:
+        db_table = "group_client"
+
+    group_name = models.CharField(_("Nom du groupe"), blank=False, default="", max_length=30)
+    is_active = models.BooleanField(_("Est active"), default=True)
+    reminder_payment_email_footer_line1 = models.CharField(
+        _("1ere line du footer de l'email"), blank=True, default="Cordialement,", max_length=765, null=True
+    )
+    reminder_payment_email_footer_line2 = models.CharField(
+        _("2eme line du footer de l'email"), blank=True, default="Jalil ELMAHBOUBI", max_length=765, null=True
+    )
+    reminder_payment_email_message1 = models.TextField(
+        _("Paragraphe 1 de l'email de rappel de paiment"), blank=False,
+        default="Veuillez payer votre loyer le 1er du mois. Si vous payer par Interac, veuillez utiliser le courriel"
+                " suivant: Jalil.elmahboubi@gmail.com",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=False
+    )
+    reminder_payment_email_message2 = models.TextField(
+        _("Paragraphe 2 de l'email de rappel de paiment"), blank=True,
+        default="Une pénalité de 25.00$ sera ajouter après le 5 de chaque mois. \r\n Une pénalité de 125$ et demande "
+                "de résiliation de votre bail si le retard dépasse 3 semaines.",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=True
+    )
+    reminder_payment_email_message3 = models.TextField(
+        _("Paragraphe 3 de l'email de rappel de paiment"), blank=True, default="",
+        help_text="Utiliser 'br/' à l'intérieur de <> pour retourner à la ligne.", null=True
+    )
+    reminder_payment_email_object = models.CharField(
+        _("Sujet de l'email de rappel de paiment"), blank=False,
+        default="Rappelle: Paiement du loyer", max_length=765, null=False
+    )
+
+    def __str__(self):
+        return self.group_name
+    @classmethod
+    def get_reminder_email_data(cls):
+        try:
+            return cls.objects.get().to_reminder_email_data()
+        except:
+            return {
+                "object": "Rappelle: Paiement du loyer",
+                "message_1": "Veuillez payer votre loyer le 1er du mois. Si vous payer par Interac, veuillez utiliser"
+                             " le courriel suivant: Jalil.elmahboubi@gmail.com",
+                "message_2": "Une pénalité de 25.00$ sera ajouter après le 5 de chaque mois. \r\n Une pénalité de 125$ "
+                             "et demande de résiliation de votre bail si le retard dépasse 3 semaines.",
+                "message_3": "",
+                "footer_1": "Cordialement,",
+                "footer_2": "Jalil ELMAHBOUBI",
+            }
+
+    def to_reminder_email_data(self):
+        return {
+            "object": self.reminder_payment_email_object,
+            "message_1": self.reminder_payment_email_message1,
+            "message_2": self.reminder_payment_email_message2,
+            "message_3": self.reminder_payment_email_message3,
+            "footer_1": self.reminder_payment_email_footer_line1,
+            "footer_2": self.reminder_payment_email_footer_line2,
+        }
+
+
 class Client(models.Model):
     class Meta:
         db_table = "client"
@@ -23,6 +85,7 @@ class Client(models.Model):
     createdAt = models.DateTimeField(_("Créé le"), auto_now_add=True)
     email = models.EmailField(_("Email"), null=True)
     first_name = models.CharField(_("Prénom"), blank=False, max_length=30)
+    group_client = models.ForeignKey(GroupClient, on_delete=models.CASCADE, related_name="clients", null=True)
     is_active = models.BooleanField(_("Est active"), default=True)
     last_name = models.CharField(_("Nom"), blank=False, max_length=30)
     phone = models.CharField(_("Téléphone"), blank=True, default="", max_length=20)
@@ -60,28 +123,3 @@ class YearMonthField(models.CharField):
         raise ValidationError(self.error_messages['invalid'])
 
 
-class Leasing(models.Model):
-    class Meta:
-        db_table = "leasing"
-        unique_together = ['client', 'item', 'month_treated']
-
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="rented_items_by_months")
-    createdAt = models.DateTimeField(_("Créé le"), auto_now_add=True)
-    createdBy = models.CharField(_("Créé par"), blank=False, default="celery", max_length=30)
-    end_at = models.DateTimeField(_("Fin à"), null=True)
-    is_active = models.BooleanField(_("Est active"), default=True)
-    is_paid = models.BooleanField(_("Est payé"), default=False)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="tenants_by_months")
-    month_treated = YearMonthField(
-        default=format(datetime.datetime.now(), '%m/%Y'), help_text="mm/aaaa ou mm-aaaa", max_length=10
-    )
-    payment_day = models.PositiveIntegerField(
-        _("Jour de paiement"), default=28, validators=[MaxValueValidator(31), MinValueValidator(1)]
-    )
-    price = models.DecimalField(
-        _("Prix"), blank=False, decimal_places=0, default=0, max_digits=9, null=False
-    )
-    start_at = models.DateTimeField(_("Commencer à"), default=datetime.datetime.now)
-
-    def __str__(self):
-        return self.client.full_name() + "-" + self.item.label + "-" + str(self.month_treated)

@@ -241,6 +241,10 @@ msgstr ""
 msgid "Quadrex"
 msgstr ""
 
+#: .\backend\static_variables.py:423
+msgid "5 plex and more"
+msgstr ""
+
 #: .\backend\static_variables.py:426 .\backend\static_variables.py:435
 msgid "Select a number"
 msgstr ""

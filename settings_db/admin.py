@@ -35,19 +35,19 @@ def get_logo_image_preview(obj):
 
 
 get_header_image_preview.allow_tags = True
-get_header_image_preview.short_description = _("Header Bg Image Preview")
+get_header_image_preview.short_description = _("Preview de l'image du background de l'entete")
 
 
 get_header_background_image_preview.allow_tags = True
-get_header_background_image_preview.short_description = _("Header Background Image Preview")
+get_header_background_image_preview.short_description = _("Preview de l'image du background de l'entete")
 
 
 get_main_bg_image_preview.allow_tags = True
-get_main_bg_image_preview.short_description = _("Header Bg Image Preview")
+get_main_bg_image_preview.short_description = _("Preview de l'image principale du background de l'entete")
 
 
 get_logo_image_preview.allow_tags = True
-get_logo_image_preview.short_description = _("Logo Image Preview")
+get_logo_image_preview.short_description = _("Preview du l'image du logo")
 
 
 class SettingsDbAdmin(TranslationAdmin):
@@ -58,10 +58,10 @@ class SettingsDbAdmin(TranslationAdmin):
         )
     list_display = ('__str__',)
     fieldsets = [
-        (_("Global settings"), {
+        (_("Paramètres générals"), {
             'fields': ['main_bg_image', get_main_bg_image_preview]
         }),
-        (_("Header settings"), {
+        (_("Paramètres de l'entete"), {
             'fields': [
                 'site_name', 'header_background_image', get_header_background_image_preview, 'header_image',
                 get_header_image_preview, "header_text_color", "logo", get_logo_image_preview
@@ -74,7 +74,7 @@ class SettingsDbAdmin(TranslationAdmin):
                 'reminder_payment_email_footer_line2'
             ]
         }),
-        (_("Home page settings"), {
+        (_("Paramètres de la page d'accueil"), {
             'fields': [
                 'home_page_title_1', 'home_page_title_2', 'home_page_row_1_title', 'home_page_row_1_p_1',
                 'home_page_row_1_p_2', 'home_page_row_1_p_3', 'home_page_row_2_title', 'home_page_row_2_p_1',

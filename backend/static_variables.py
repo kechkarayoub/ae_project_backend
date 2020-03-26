@@ -420,6 +420,7 @@ BUILDINGS_TYPES = [
     ["attached", _("Attached")],
     ["attached_corner_unit", _("Attached corner unit")],
     ["quadrex", _("Quadrex")],
+    ["5plex", _("5 plex and more")],
 ]
 
 BEDROOMS_NUMBER = [

@@ -22,7 +22,7 @@ class Item(models.Model):
     added_field_3_value = models.CharField(_("Valeur du 1er champ ajouté"), blank=True, max_length=255, null=True)
     address = models.CharField(_("Adresse"), blank=False, max_length=510, null=False)
     annual_income = models.DecimalField(
-        _("Revenus annuels ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Revenus annuels ($)"), blank=True, decimal_places=2, max_digits=11, null=True
     )
     apartments_number = models.PositiveIntegerField(_("Nombre d'appartements"), blank=True, null=True)
     bathrooms_number = models.CharField(
@@ -54,7 +54,7 @@ class Item(models.Model):
         upload_to=settings.CATALOGS_FOLDER + 'item/itemsCatalogs'  # lien du catalog: /media/catalogs/item/itemsCatalogs/*.*
     )
     ccd = models.DecimalField(
-        _("Ccd (CCD)"), blank=True, decimal_places=2, max_digits=5, null=True
+        _("CCD"), blank=True, decimal_places=2, max_digits=5, null=True
     )
     city = models.CharField(
         _("Ville"),
@@ -72,15 +72,15 @@ class Item(models.Model):
         max_length=50
     )
     cost_per_housing = models.DecimalField(
-        _("Coût par logement (CPL) ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Coût par logement (CPL) ($)"), blank=True, decimal_places=2, max_digits=11, null=True
     )
     createdAt = models.DateTimeField(_("Created at"), auto_now_add=True)
     description = models.TextField(_("Description"), blank=False, null=False)
     down_payment_required = models.DecimalField(
-        _("Mise de fond minimal ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Mise de fond minimal ($)"), blank=True, decimal_places=2, max_digits=11, null=True
     )
     economic_value = models.DecimalField(
-        _("Valeur économique ($)"), blank=True, decimal_places=0, max_digits=9, null=True
+        _("Valeur économique ($)"), blank=True, decimal_places=2, max_digits=11, null=True
     )
     gps_latitude = models.FloatField(_("Latitude"), blank=True, default=46.813878, null=True)
     gps_longitude = models.FloatField(_("Longitude"), blank=True, default=-71.207981, null=True)
@@ -101,18 +101,18 @@ class Item(models.Model):
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
     is_active = models.BooleanField(_("Est active"), default=False)
     label = models.CharField(_("Étiquette"), blank=False, max_length=255, null=False)
-    lot_size = models.PositiveIntegerField(_("Taille de la propriété(m²)"), default=0)
+    lot_size = models.PositiveIntegerField(_("Taille de la propriété(m²)"), blank=False,  default=0, null=False)
     maximum_loan = models.DecimalField(
-        _("Prêt maximal (%)"), blank=True, decimal_places=2, max_digits=5, null=True
+        _("Prêt maximal ($)"), blank=True, decimal_places=2, max_digits=11, null=True
     )
     net_income_multiplier = models.DecimalField(
-        _("Multiplicateur de revenu net (MRN)"), blank=True, decimal_places=1, max_digits=4, null=True
+        _("Multiplicateur de revenu net (MRN)"), blank=True, decimal_places=2, max_digits=5, null=True
     )
     overall_rate_update = models.DecimalField(
-        _("Taux global d'actualisation (TGA) (%)"), blank=True, decimal_places=1, max_digits=4, null=True
+        _("Taux global d'actualisation (TGA) (%)"), blank=True, decimal_places=2, max_digits=5, null=True
     )
     price = models.DecimalField(
-        _("Prix"), blank=False, decimal_places=0, default=0, max_digits=9, null=False
+        _("Prix"), blank=False, decimal_places=2, default=0, max_digits=11, null=False
     )
     property_type = models.CharField(
         _("Type de la Propriété"),

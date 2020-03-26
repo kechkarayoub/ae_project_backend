@@ -49,25 +49,29 @@ class ItemAdmin(TranslationAdmin):
         'bathrooms_number', 'is_active',
     )
     fieldsets = [
-        (_("General information"), {
+        (_("Informations générales"), {
             'fields': ['label', 'short_description', 'description', 'address', 'city', 'price']
         }),
-        (_("Characteristics"), {
+        (_("Caractéristiques"), {
             'fields': [
-                'annual_income', 'bedrooms_number', 'bathrooms_number', 'building_type', 'ccd', 'construction_age',
-                'cost_per_housing', 'down_payment_required', 'economic_value', 'gross_revenue_multiplier',
-                'property_type', 'apartments_number', 'housing_descriptions', 'has_dining_room', 'has_fireplace',
-                'has_garage', 'has_swimming_pool', 'has_garden', 'lot_size', 'maximum_loan', 'net_income_multiplier',
-                'overall_rate_update', 'catalog'
+                'bedrooms_number', 'bathrooms_number', 'building_type', 'construction_age', 'property_type',
+                'apartments_number', 'housing_descriptions', 'has_dining_room', 'has_fireplace', 'has_garage',
+                'has_swimming_pool', 'has_garden', 'lot_size', 'catalog'
             ]
         }),
-        (_("Added fields"), {
+        (_("Caractéristiques économiques"), {
+            'fields': [
+                'annual_income', 'ccd', 'cost_per_housing', 'down_payment_required', 'economic_value',
+                'gross_revenue_multiplier', 'net_income_multiplier', 'maximum_loan', 'overall_rate_update'
+            ]
+        }),
+        (_("Champs ajoutés"), {
             'fields': [
                 'added_field_1_label', 'added_field_1_value', 'added_field_2_label', 'added_field_2_value',
                 'added_field_3_label', 'added_field_3_value',
             ]
         }),
-        (_("Map options"), {
+        (_("Options de carte"), {
             'fields': ['with_map', 'gps_latitude', 'gps_longitude', ('image_map', get_item_image_map_preview,)]
         }),
         (None, {

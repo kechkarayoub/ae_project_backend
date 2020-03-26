@@ -240,6 +240,10 @@ msgstr "En rangée sur coin"
 msgid "Quadrex"
 msgstr "Quadrex"
 
+#: .\backend\static_variables.py:423
+msgid "5 plex and more"
+msgstr "5 plex et plus"
+
 #: .\backend\static_variables.py:426 .\backend\static_variables.py:435
 msgid "Select a number"
 msgstr ""
