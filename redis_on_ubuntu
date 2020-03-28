@@ -18,7 +18,7 @@ For production:
 4. Run this command in project directory:
     production:
         $ chmod u+x gunicorn_start_prod.bash
-   preproduction:
+    preproduction:
         $ chmod u+x gunicorn_start_preprod.bash
 5. Install supervisor:
     $ sudo apt-get install supervisor

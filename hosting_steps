@@ -75,7 +75,7 @@ Listen 81
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
         Configure sites enabled:
-            $ sudo nano /etc/apache2/sites-enabled/000-default.conf
+            $ sudo nano /etc/apache2/sites-available/000-default.conf
 
 000-default.conf content:
 <VirtualHost *:81>
@@ -215,25 +215,8 @@ server {
         #}
 }
 
-
-# Virtual Host configuration for example.com
-#
-# You can move that to a different file under sites-available/ and symlink that
-# to sites-enabled/ to enable it.
-#
-#server {
-#       listen 80;
-#       listen [::]:80;
-#
-#       server_name example.com;
-#
-#       root /var/www/example.com;
-#       index index.html;
-#
-#       location / {
-#               try_files $uri $uri/ =404;
-#       }
-#}
+run:
+    $ sudo ln -s /etc/nginx/sites-available/conf_file /etc/nginx/sites-enabled/conf_file
 
 
 For existing database:
