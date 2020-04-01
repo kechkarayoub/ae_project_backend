@@ -100,6 +100,7 @@ class Item(models.Model):
     )
     item_id = models.CharField(_("Id"), max_length=255, primary_key=True, unique=True)
     is_active = models.BooleanField(_("Est active"), default=False)
+    is_public = models.BooleanField(_("Est public"), default=False)
     label = models.CharField(_("Étiquette"), blank=False, max_length=255, null=False)
     lot_size = models.PositiveIntegerField(_("Taille de la propriété(m²)"), blank=True,  default=0, null=True)
     maximum_loan = models.DecimalField(

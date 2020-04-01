@@ -67,7 +67,7 @@ def items_list(request):
         Q(description__contains=searched_txt) |
         Q(label__contains=searched_txt) |
         Q(short_description__contains=searched_txt)
-    ).distinct().filter(is_active=True, **kwargs).exclude(status="sold").order_by('-createdAt')
+    ).distinct().filter(is_active=True, is_public=True, **kwargs).exclude(status="sold").order_by('-createdAt')
     page = int(request.GET.get('current_page', 0)) + 1
     paginator = Paginator(items, NBR_ITEMS_PER_PAGE)
     try:
@@ -138,7 +138,7 @@ def send_property_to_newsletters(sender, **kwargs):
         context = {
             "backend_url": settings.BACKEND_URL_ROOT,
             "environment": settings.ENVIRONMENT,
-            "logo_url": settings.BACKEND_URL_ROOT + static("contact/images/logo.jpg"),
+            "logo_url": SettingsDb.get_emails_image(),
             "property_description": instance_data['description'],
             "property_id": instance_data['pk'],
             "property_images": images_items,

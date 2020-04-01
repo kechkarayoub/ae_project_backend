@@ -46,7 +46,7 @@ class ItemAdmin(TranslationAdmin):
     form = ItemForm
     list_display = (
         'item_id', 'city', 'property_type', 'building_type', 'price', 'lot_size', 'status', 'bedrooms_number',
-        'bathrooms_number', 'is_active',
+        'bathrooms_number', 'is_public', 'is_active',
     )
     fieldsets = [
         (_("Informations générales"), {
@@ -75,14 +75,14 @@ class ItemAdmin(TranslationAdmin):
             'fields': ['with_map', 'gps_latitude', 'gps_longitude', ('image_map', get_item_image_map_preview,)]
         }),
         (None, {
-            'fields': ['status', 'is_active']
+            'fields': ['status', 'is_active', 'is_public']
         }),
     ]
     inlines = [ItemImagesInline]
     list_filter = [
         'apartments_number', 'bathrooms_number', 'bedrooms_number', 'building_type', 'construction_age', 'createdAt',
-        'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden', 'has_swimming_pool', 'is_active', 'lot_size',
-        'price', 'property_type', 'status', 'with_map'
+        'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden', 'has_swimming_pool', 'is_active', 'is_public',
+        'lot_size', 'price', 'property_type', 'status', 'with_map'
     ]
     search_fields = ['address', 'description', 'label', 'housing_descriptions', 'item_id', 'short_description']
     readonly_fields = [get_item_image_map_preview]

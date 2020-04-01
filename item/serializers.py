@@ -30,9 +30,9 @@ class ItemSerializer(serializers.ModelSerializer):
             'bedrooms_number', 'bathrooms_number', 'building_type', 'ccd', 'city', 'construction_age',
             'cost_per_housing', 'description', 'down_payment_required', 'economic_value', 'gps_latitude',
             'gps_longitude', 'gross_revenue_multiplier', 'has_dining_room', 'has_fireplace', 'has_garage', 'has_garden',
-            'has_swimming_pool', 'housing_descriptions', 'image_map', 'images', 'is_active', "is_new", 'label',
-            'lot_size', 'maximum_loan', 'net_income_multiplier', 'overall_rate_update', 'property_type', 'price',
-            'short_description', 'status', 'with_map', 'catalog'
+            'has_swimming_pool', 'housing_descriptions', 'image_map', 'images', 'is_active', 'is_public', "is_new",
+            'label', 'lot_size', 'maximum_loan', 'net_income_multiplier', 'overall_rate_update', 'property_type',
+            'price', 'short_description', 'status', 'with_map', 'catalog'
         )
 
     def to_representation(self, instance):

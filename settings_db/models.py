@@ -3,6 +3,7 @@
 
 from colorfield.fields import ColorField
 from django.conf import settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -11,6 +12,12 @@ class SettingsDb(models.Model):
     class Meta:
         db_table = "settings_db"
 
+    emails_image = models.ImageField(
+        blank=True,
+        help_text=_("Image des email"),
+        null=True,
+        upload_to=settings.IMAGES_FOLDER + 'settings_db/header'
+    )
     header_image = models.ImageField(
         blank=True,
         help_text=_("Image d'en-tête"),
@@ -55,6 +62,16 @@ class SettingsDb(models.Model):
 
     def __str__(self):
         return "Settings databases"
+
+    @classmethod
+    def get_emails_image(cls):
+        try:
+            return (settings.BACKEND_URL_ROOT + cls.objects.get().emails_image.url) if cls.objects.get().emails_image\
+                and cls.objects.get().emails_image else (
+                    settings.BACKEND_URL_ROOT + static("contact/images/emails_image.jpg")
+            )
+        except:
+            return settings.BACKEND_URL_ROOT + static("contact/images/emails_image.jpg")
 
     @classmethod
     def get_site_name(cls):
