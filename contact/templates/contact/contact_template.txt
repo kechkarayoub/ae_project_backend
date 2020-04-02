@@ -1,8 +1,8 @@
-User info:
-    Name: {{first_name}} {{last_name}}
+Informations du client:
+    Nom: {{first_name}} {{last_name}}
     Email: {{email}}
     {% if phone %}
-    Phone: {{phone}}
+    Téléphone: {{phone}}
     {% endif %}
 
 Message:
@@ -10,5 +10,5 @@ Message:
 
 
 {% if property_url %}
-    Property url: {{property_url}}
+    Le client a besoin de plus d'informations sur cette propriété: {{property_url}}
 {% endif %}

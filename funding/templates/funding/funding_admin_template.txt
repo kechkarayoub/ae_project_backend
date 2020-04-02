@@ -1,4 +1,4 @@
-User info:
-    Name: {{first_name}} {{last_name}}
+Information du client:
+    Nome: {{first_name}} {{last_name}}
     Email: {{email}}
 

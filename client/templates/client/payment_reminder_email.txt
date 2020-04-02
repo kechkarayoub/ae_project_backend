@@ -13,4 +13,4 @@ Bonjour,
 {{footer_2}}
 
 
-For more information, visit this link: {{site_url_root}}
+Pour plus d'informations, visitez ce lien: {{site_url_root}}

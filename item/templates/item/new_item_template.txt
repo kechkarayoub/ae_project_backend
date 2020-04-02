@@ -1,5 +1,5 @@
 
-A new property has been added!
+Une nouvelle propriété a été ajoutée!
 
 {{property_label}}
 
@@ -7,4 +7,4 @@ A new property has been added!
 
 {{property_description|truncatechars:1}}
 
-For more information, visit this link: {{site_url_root}}/#/property/{{property_id}}
+Pour plus d'informations, visitez ce lien: {{site_url_root}}/#/property/{{property_id}}

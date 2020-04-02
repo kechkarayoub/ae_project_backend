@@ -1,11 +1,9 @@
 {{site_name}}
 
-Dear {{first_name}} {{last_name}},
+Cher(e) {{first_name}} {{last_name}},
 
-Thank you!
+Merci de vous être réinscrit à notre newsletter.
 
-Thanks for resubscribing to our newsletter.
-
-Visit {{site_url_root}}
+Visitez {{site_url_root}}
 
 {{footer_text_content}}
