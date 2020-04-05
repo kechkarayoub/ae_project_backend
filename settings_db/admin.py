@@ -90,7 +90,8 @@ class SettingsDbAdmin(TranslationAdmin):
         }),
     ]
     readonly_fields = [
-        get_emails_image_preview, get_header_background_image_preview, get_header_image_preview, get_main_bg_image_preview, get_logo_image_preview
+        get_emails_image_preview, get_header_background_image_preview, get_header_image_preview,
+        get_main_bg_image_preview, get_logo_image_preview
     ]
 
     def save_model(self, request, obj, form, change):

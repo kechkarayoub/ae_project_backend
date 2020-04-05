@@ -67,7 +67,7 @@ class SettingsDb(models.Model):
     def get_emails_image(cls):
         try:
             return (settings.BACKEND_URL_ROOT + cls.objects.get().emails_image.url) if cls.objects.get().emails_image\
-                and cls.objects.get().emails_image else (
+                and cls.objects.get().emails_image.url else (
                     settings.BACKEND_URL_ROOT + static("contact/images/emails_image.jpg")
             )
         except:
@@ -97,7 +97,7 @@ class SettingsDb(models.Model):
     def to_header_settings(self):
         return {
                 "header_image": (settings.BACKEND_URL_ROOT + self.header_image.url)
-                if self.header_image and self.header_image .url else "",
+                if self.header_image and self.header_image.url else "",
                 "header_background_image": (settings.BACKEND_URL_ROOT + self.header_background_image.url)
                 if self.header_background_image and self.header_background_image else "",
                 "header_text_color": self.header_text_color,
