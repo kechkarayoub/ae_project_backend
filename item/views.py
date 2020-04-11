@@ -133,8 +133,7 @@ def send_property_to_newsletters(sender, **kwargs):
     if instance.is_active:
         instance_data = ItemSerializer(instance).data
         images_items = instance.images.all()
-        is_updated = not SendNewsletterAfterActivating.objects.filter(item_id=instance.item_id).exists() and \
-                     instance.is_updated
+        is_updated = not SendNewsletterAfterActivating.objects.filter(item_id=instance.item_id).exists()
         context = {
             "backend_url": settings.BACKEND_URL_ROOT,
             "environment": settings.ENVIRONMENT,
