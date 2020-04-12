@@ -6,12 +6,14 @@ IMAGES_FOLDER = "images/"
 CATALOGS_FOLDER = "catalogs/"
 
 try:
+    from .special_settings import ADDED_EMAILS_ACCOUNTS
     from .special_settings import DATABASES_SETTINGS
     from .special_settings import DROPBOX_ACCESS_TOKEN
     from .special_settings import EMAIL_HOST_PASSWORD
     from .special_settings import EMAIL_HOST_USER
     from .special_settings import SERVER_URL
 except:
+    ADDED_EMAILS_ACCOUNTS = []
     DATABASES_SETTINGS = {}
     DROPBOX_ACCESS_TOKEN = ""
     EMAIL_HOST_PASSWORD = ""

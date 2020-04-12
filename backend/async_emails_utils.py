@@ -2,12 +2,28 @@
 
 from email.mime.image import MIMEImage
 from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from item.models import SendNewsletterAfterActivating
 import smtplib
 import threading
 
 
 NBR_RECIPIENTS_BY_TIME = 50
+
+
+def send_python_email(host_user, host_password, msg, recipients_list):
+
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+
+    mail.ehlo()
+
+    mail.starttls()
+
+    mail.login(host_user, host_password)
+    mail.sendmail(host_user, recipients_list, msg.as_string())
+    mail.quit()
 
 
 class EmailThread(threading.Thread):
@@ -36,13 +52,41 @@ class EmailThread(threading.Thread):
                     image.add_header('Content-ID', '<{}>'.format(image.image_filename))
                     msg.attach(image)
         i = 0
-        while len(self.recipient_list[i:i+NBR_RECIPIENTS_BY_TIME]) > 0:
-            msg.bcc = self.recipient_list[i:i+NBR_RECIPIENTS_BY_TIME]
+        recipients_list_ = self.recipient_list[i:i+NBR_RECIPIENTS_BY_TIME]
+        while len(recipients_list_) > 0:
+            recipients_list_ = self.recipient_list[i:i + NBR_RECIPIENTS_BY_TIME]
+            msg.bcc = recipients_list_
             try:
                 msg.send(self.fail_silently)
             except smtplib.SMTPDataError:
-                print("***********************************************")
-                print("daily_excessed")
+                is_ok = False
+                msg = MIMEMultipart('alternative')
+                msg['Subject'] = self.subject
+                msg['From'] = self.from_email
+                msg['bcc'] = ", ".join(recipients_list_)
+                part1 = MIMEText(self.body, 'plain')
+                part2 = MIMEText(self.html, 'html')
+                msg.attach(part1)
+                msg.attach(part2)
+                msg.content_subtype = 'html'
+                msg.mixed_subtype = 'related'
+                if self.images:
+                    for image in self.images:
+                        ext = '.' + image.image.url.split('.')[-1]
+                        image = MIMEImage(image.image.read(), _subtype=ext)
+                        image.add_header('Content-ID', '<{}>'.format(image.image_filename))
+                        msg.attach(image)
+                for added_email_account in settings.ADDED_EMAILS_ACCOUNTS:
+                    if is_ok:
+                        break
+                    try:
+                        send_python_email(
+                            added_email_account['host_user'], added_email_account['host_password'], msg,
+                            recipients_list_
+                        )
+                        is_ok = True
+                    except:
+                        pass
             i += NBR_RECIPIENTS_BY_TIME
         if self.args_tuple and self.args_tuple[0] is False:
             SendNewsletterAfterActivating.objects.filter(item_id=self.args_tuple[1]).delete()
