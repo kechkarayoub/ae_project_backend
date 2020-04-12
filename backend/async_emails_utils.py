@@ -60,28 +60,28 @@ class EmailThread(threading.Thread):
                 msg.send(self.fail_silently)
             except smtplib.SMTPDataError:
                 is_ok = False
-                msg = MIMEMultipart('alternative')
-                msg['Subject'] = self.subject
-                msg['From'] = self.from_email
-                msg['bcc'] = ", ".join(recipients_list_)
+                msg2 = MIMEMultipart('alternative')
+                msg2['Subject'] = self.subject
+                msg2['From'] = self.from_email
+                msg2['bcc'] = ", ".join(recipients_list_)
                 part1 = MIMEText(self.body, 'plain')
                 part2 = MIMEText(self.html, 'html')
-                msg.attach(part1)
-                msg.attach(part2)
-                msg.content_subtype = 'html'
-                msg.mixed_subtype = 'related'
+                msg2.attach(part1)
+                msg2.attach(part2)
+                msg2.content_subtype = 'html'
+                msg2.mixed_subtype = 'related'
                 if self.images:
                     for image in self.images:
                         ext = '.' + image.image.url.split('.')[-1]
                         image = MIMEImage(image.image.read(), _subtype=ext)
                         image.add_header('Content-ID', '<{}>'.format(image.image_filename))
-                        msg.attach(image)
+                        msg2.attach(image)
                 for added_email_account in settings.ADDED_EMAILS_ACCOUNTS:
                     if is_ok:
                         break
                     try:
                         send_python_email(
-                            added_email_account['host_user'], added_email_account['host_password'], msg,
+                            added_email_account['host_user'], added_email_account['host_password'], msg2,
                             recipients_list_
                         )
                         is_ok = True
