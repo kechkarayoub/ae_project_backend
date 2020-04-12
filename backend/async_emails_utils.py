@@ -89,8 +89,17 @@ class EmailThread(threading.Thread):
                             recipients_list_
                         )
                         is_ok = True
-                    except:
-                        pass
+                    except Exception as e:
+                        # for the repr
+                        print("the repr: ")
+                        print(repr(e))
+                        # for just the message, or str(e), since print calls str under the hood
+                        print("just the message, or str(e): ")
+                        print(e)
+                        # the arguments that the exception has been called with.
+                        # the first one is usually the message. (OSError is different, though)
+                        print("the arguments that the exception has been called with: ")
+                        print(e.args)
             i += NBR_RECIPIENTS_BY_TIME
         if self.args_tuple and self.args_tuple[0] is False:
             SendNewsletterAfterActivating.objects.filter(item_id=self.args_tuple[1]).delete()
