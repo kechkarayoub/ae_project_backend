@@ -5,6 +5,7 @@ from .models import Item, SendNewsletterAfterActivating
 from .serializers import ItemSerializer
 from backend.project_conf import NBR_ITEMS_PER_PAGE
 from backend.static_variables import PRICES_RANGES_VALUES
+from backend.async_emails_utils import EmailThread
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.utils.translation import ugettext as _
@@ -155,23 +156,6 @@ def send_property_to_newsletters(sender, **kwargs):
         newsletters_emails = [
             newsletter_email['email'] for newsletter_email in Newsletter.objects.filter(is_active=True).values('email')
         ]
-        msg = EmailMultiAlternatives(
-            _('Une propriété a été mise à jour' if is_updated else 'Nouvelle propriété'), text_content,
-            settings.EMAIL_HOST_USER, newsletters_emails[0:1], bcc=newsletters_emails[1:]
-        )
-        msg.attach_alternative(html_content, "text/html")
-        msg.content_subtype = 'html'
-        msg.mixed_subtype = 'related'
-        for item_image in images_items:
-            # Create an inline attachment
-            ext = '.'+item_image.image.url.split('.')[-1]
-            image = MIMEImage(item_image.image.read(), _subtype=ext)
-            image.add_header('Content-ID', '<{}>'.format(item_image.image_filename))
-            msg.attach(image)
-
-        # try:
-        msg.send()
-        if not is_updated:
-            SendNewsletterAfterActivating.objects.filter(item_id=instance.item_id).delete()
-        # except Exception as e:
-        #     pass
+        args_tuple = (is_updated, instance.item_id)
+        EmailThread(_('Une propriété a été mise à jour' if is_updated else 'Nouvelle propriété'), text_content,
+            settings.EMAIL_HOST_USER, newsletters_emails, False, html_content, images_items, args_tuple).start()
