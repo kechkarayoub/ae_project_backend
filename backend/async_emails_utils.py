@@ -3,6 +3,7 @@
 from email.mime.image import MIMEImage
 from django.core.mail import EmailMultiAlternatives
 from item.models import SendNewsletterAfterActivating
+import smtplib
 import threading
 
 
@@ -37,7 +38,11 @@ class EmailThread(threading.Thread):
         i = 0
         while len(self.recipient_list[i:i+NBR_RECIPIENTS_BY_TIME]) > 0:
             msg.bcc = self.recipient_list[i:i+NBR_RECIPIENTS_BY_TIME]
-            msg.send(self.fail_silently)
+            try:
+                msg.send(self.fail_silently)
+            except smtplib.SMTPDataError:
+                print("***********************************************")
+                print("daily_excessed")
             i += NBR_RECIPIENTS_BY_TIME
         if self.args_tuple and self.args_tuple[0] is False:
             SendNewsletterAfterActivating.objects.filter(item_id=self.args_tuple[1]).delete()
