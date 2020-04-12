@@ -59,6 +59,9 @@ class EmailThread(threading.Thread):
             try:
                 msg.send(self.fail_silently)
             except smtplib.SMTPDataError:
+                print("SMTPDataError.......................")
+                print("recipients_list_:")
+                print(str(recipients_list_))
                 is_ok = False
                 msg2 = MIMEMultipart('alternative')
                 msg2['Subject'] = self.subject
@@ -77,6 +80,7 @@ class EmailThread(threading.Thread):
                         image.add_header('Content-ID', '<{}>'.format(image.image_filename))
                         msg2.attach(image)
                 for added_email_account in settings.ADDED_EMAILS_ACCOUNTS:
+                    print("is_ok: "+str(is_ok))
                     if is_ok:
                         break
                     try:
